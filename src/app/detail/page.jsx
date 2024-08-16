@@ -1,5 +1,5 @@
 'use client';
-import Detail from '@/comp/UIUX/Detail';
+import Detail from '../../comp/UIUX/Detail'
 import Link from 'next/link';
 import React from 'react';
 
