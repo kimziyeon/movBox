@@ -6,7 +6,6 @@ const request = axios.create({
     baseURL : 'http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice',
     timeout : 10000
 })
-console.log(request)
 
 export const useStore = create((set)=>({
     dailyBoxOffice:[],
@@ -21,7 +20,7 @@ export const useStore = create((set)=>({
                 },
             });
             const res = req.data.boxOfficeResult.dailyBoxOfficeList;
-            console.log(res)
+            // console.log(res,'aaaa');
             let rank = res.map((item)=>(item.rank));
             let movie_name=res.map((item)=>(item.movieNm));
             let movie_code=res.map((item)=>(item.movieCd))

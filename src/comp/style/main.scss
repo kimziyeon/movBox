@@ -1,0 +1,15 @@
+main{
+    .main_movie{}
+    .box_office{
+        ul{
+            display:flex;
+            flex-wrap: wrap;
+            li{
+                img{
+                    width:200px;
+                }
+            }
+        }
+    }
+    .trailer{}
+}
