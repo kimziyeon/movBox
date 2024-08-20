@@ -1,31 +1,32 @@
 "use client";
-import Link from 'next/link';
 import "../style/main.scss";
 import React, { useEffect } from 'react';
 import { useStore } from '../store/movie_store';
 // import { useStore2 } from '../store/movie_detail_store';
 import { useStore4 } from '../store/movie_poster';
+import { movie_server } from '../store/movie_server';
 import { format, subDays } from 'date-fns';
 
 function Movie(props) {
     let { dataFetch, dailyBoxOffice, dailyRank, movieCode,movieDate } = useStore();
+    let {getMovie} = movie_server();
     // let { dataFetch2 } = useStore2();
     let { dataFetch4, posterUrl } = useStore4();
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
     useEffect(() => {
-        dataFetch(yesterday)
-        
-       
-        // dataFetch2();
-    }, [])   // 현재 : 페이지들어올때마다 영화목록불러옴 / 서버열면 : yesterday(어제날짜)가 바뀌면 서버데이터에 전송
-
-    useEffect(()=>{
-        dataFetch4(dailyBoxOffice,movieDate)
-    },[dailyBoxOffice])
+        // dataFetch(yesterday)
+        getMovie();
     
-    if(dailyBoxOffice.length===0 && posterUrl.length===0) return;
+        // dataFetch2();
+    }, [])
+
+    // useEffect(()=>{
+    //     dataFetch4(dailyBoxOffice,movieDate)
+    // },[dailyBoxOffice])
+    
+    // if(dailyBoxOffice.length===0 && posterUrl.length===0) return;
 
     return (
         <>
@@ -52,11 +53,11 @@ function Movie(props) {
             </section>
             <section className='box_office'>
                 <ul>
-                    {
+                    {/* {
                         posterUrl.map((obj,k)=>(
                             <li key={k}><img src={obj} alt="poster" /></li>
                         ))
-                    }
+                    } */}
                 </ul>
             </section>
             <section className='trailer'>
