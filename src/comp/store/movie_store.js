@@ -10,7 +10,8 @@ const request = axios.create({
 export const useStore = create((set)=>({
     dailyBoxOffice:[],
     dailyRank:[],
-    movieCode:'',
+    movieCode:[],
+    movieDate : [],
     dataFetch : async function(date){
         try{
             const req = await request.get(`/searchDailyBoxOfficeList.json`, {
@@ -20,14 +21,16 @@ export const useStore = create((set)=>({
                 },
             });
             const res = req.data.boxOfficeResult.dailyBoxOfficeList;
-            // console.log(res,'aaaa');
             let rank = res.map((item)=>(item.rank));
             let movie_name=res.map((item)=>(item.movieNm));
-            let movie_code=res.map((item)=>(item.movieCd))
+            let movie_code=res.map((item)=>(item.movieCd));
+            let openDate = res.map((item)=>(item.openDt.replace(/-/g,'')));
+
             set({
                 dailyBoxOffice : movie_name,
                 dailyRank : rank,
-                movieCode : movie_code
+                movieCode : movie_code,
+                movieDate : openDate
             })
         }
         catch(error){

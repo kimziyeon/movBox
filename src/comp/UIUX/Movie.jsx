@@ -4,26 +4,29 @@ import "../style/main.scss";
 import React, { useEffect } from 'react';
 import { useStore } from '../store/movie_store';
 // import { useStore2 } from '../store/movie_detail_store';
-import { useStore3 } from '../store/imgSearch';
+import { useStore4 } from '../store/movie_poster';
 import { format, subDays } from 'date-fns';
 
 function Movie(props) {
-    let { dataFetch, dailyBoxOffice, dailyRank, movieCode } = useStore();
+    let { dataFetch, dailyBoxOffice, dailyRank, movieCode,movieDate } = useStore();
     // let { dataFetch2 } = useStore2();
-    let { dataFetch3,imgUrl } = useStore3();
+    let { dataFetch4, posterUrl } = useStore4();
+
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
     useEffect(() => {
         dataFetch(yesterday)
+        
+       
         // dataFetch2();
     }, [])   // 현재 : 페이지들어올때마다 영화목록불러옴 / 서버열면 : yesterday(어제날짜)가 바뀌면 서버데이터에 전송
+
     useEffect(()=>{
-        dataFetch3(dailyBoxOffice);
+        dataFetch4(dailyBoxOffice,movieDate)
     },[dailyBoxOffice])
-    if(dailyBoxOffice.length===0 || imgUrl.length===0) return;
-    // console.log(dailyBoxOffice) // 영화목록 이름
-    // console.log(dailyRank) // 영화 랭크
-    // console.log(movieCode) // 영화 코드
+    
+    if(dailyBoxOffice.length===0 && posterUrl.length===0) return;
+
     return (
         <>
             <section className='main_movie'>
@@ -49,9 +52,11 @@ function Movie(props) {
             </section>
             <section className='box_office'>
                 <ul>
-                    {imgUrl.map((obj,k)=>{
-                        return <li key={k}><img src={obj} alt="movie_poster" /></li>
-                    })}
+                    {
+                        posterUrl.map((obj,k)=>(
+                            <li key={k}><img src={obj} alt="poster" /></li>
+                        ))
+                    }
                 </ul>
             </section>
             <section className='trailer'>
