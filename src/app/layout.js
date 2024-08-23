@@ -9,9 +9,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-      <M_header/>
-          {children}
-        </body>
+        <M_header />
+        {children}
+      </body>
     </html>
   );
 }
