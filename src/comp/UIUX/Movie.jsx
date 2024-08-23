@@ -1,3 +1,5 @@
+//메인페이지
+
 "use client";
 import "../style/main.scss";
 import React, { useEffect } from 'react';
@@ -8,24 +10,25 @@ import { movie_server } from '../store/movie_server';
 import { format, subDays } from 'date-fns';
 
 function Movie(props) {
-    let { dataFetch, dailyBoxOffice, dailyRank, movieCode,movieDate } = useStore();
-    let {getMovie} = movie_server();
+    let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate } = useStore();
+    let { getMovie } = movie_server();
     // let { dataFetch2 } = useStore2();
     let { dataFetch4, posterUrl } = useStore4();
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
     useEffect(() => {
-        // dataFetch(yesterday)
+        dataFetch(yesterday)
         getMovie();
-    
+
         // dataFetch2();
     }, [])
+    console.log(dailyBoxOffice)
+    useEffect(() => {
+        dataFetch4(dailyBoxOffice, movieDate)
+    }, [dailyBoxOffice])
+    console.log(posterUrl);
 
-    // useEffect(()=>{
-    //     dataFetch4(dailyBoxOffice,movieDate)
-    // },[dailyBoxOffice])
-    
     // if(dailyBoxOffice.length===0 && posterUrl.length===0) return;
 
     return (

@@ -6,9 +6,9 @@ function M_header(props) {
             <h1 className='Logo'>로고이미지</h1>
             <form>
                 <input type="text" />
-                <Link href="">Ticket</Link>
-                <Link href="">Login</Link>
-                <Link href="">My page</Link>
+                <Link href="/reserve">Ticket</Link>
+                <Link href="/login">Login</Link>
+                <Link href="/mypage">My page</Link>
             </form>
         </header>
     );
