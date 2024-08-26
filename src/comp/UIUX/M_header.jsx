@@ -5,13 +5,20 @@ import '../style/header.scss';
 function M_header(props) {
     return (
         <header>
-            <h1 className='Logo'><Image src='/images/logo.png' layout='responsive' alt='logo' width={100} height={100}/></h1>
-            <form>
-                <input type="text" />
-                <Link href="/reserve">Ticket</Link>
-                <Link href="/login">Login</Link>
-                <Link href="/mypage">My page</Link>
-            </form>
+            <h1 className='Logo'><Link href='/'><Image src='/images/logo.png' alt='logo' width={153} height={30}/>Mov_logo</Link></h1>
+            <div className="menu_btn"><span>menu</span></div>
+            <div className='menu'>
+                <nav>
+                    <form >
+                        <input type="text" />
+                        <Image src='/images/search_icon.png' alt='search' width={18} height={18}/>
+                    </form>
+                    <Link href="/reserve">Ticket</Link>
+                    <Link href="/login">Login</Link>
+                    <Link href="/mypage">My page</Link>
+                </nav>
+            </div>
+            <div></div>
         </header>
     );
 }
