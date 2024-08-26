@@ -55,6 +55,18 @@ header {
             background-color: white;
             height: 2px;
         }
+        &.on{
+            justify-content: center;
+            &::before{
+                transform: rotate(45deg) translateX(1px);
+            }
+            &::after{
+                transform: rotate(-45deg) translateX(1px);
+            }
+            span{
+                display:none;
+            }
+        }
     }
 
     .menu {
@@ -87,7 +99,6 @@ header {
 
     .sub_menu {
         display: none;
-
         &.on {
             display: block;
             position: absolute;
@@ -100,8 +111,8 @@ header {
             padding: 42px 32px 0;
 
             form {
-                margin: 0;
-
+                max-width: 1024px;
+                margin:0;
                 input {
                     width: 100%;
                     border: none;
