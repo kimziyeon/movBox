@@ -18,7 +18,7 @@ function M_header(props) {
                     <Link href="/mypage">My page</Link>
                 </nav>
             </div>
-            <div></div>
+            
         </header>
     );
 }
