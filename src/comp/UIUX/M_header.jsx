@@ -8,7 +8,9 @@ function M_header(props) {
     let [menuOn , setMenuOn] = useState(false);
     const menuClick = ()=>{
         setMenuOn(!menuOn)
-        console.log(menuOn)
+    }
+    const pageMove = ()=>{
+        setMenuOn(false)
     }
 
     return (
@@ -38,7 +40,7 @@ function M_header(props) {
                     <p># 송우민</p>
                     <p># 지연</p>
                 </div>
-                <div className='linked'>
+                <div className='linked' onClick={pageMove}>
                     <Link href="/reserve">Ticket</Link>
                     <Link href="/login">Login</Link>
                     <Link href="/mypage">My page</Link>

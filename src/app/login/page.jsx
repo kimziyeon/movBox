@@ -1,10 +1,11 @@
 import React from 'react';
+import Login from '../../comp/UIUX/Login';
 
 function page(props) {
     return (
-        <div>
-            로그인페이지
-        </div>
+        <>
+            <Login />
+        </>
     );
 }
 
