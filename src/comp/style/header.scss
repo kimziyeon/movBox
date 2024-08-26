@@ -1,5 +1,5 @@
 header{
-
+    *{color:white}
     height:80px;
     background-color: transparent;
     display:flex;
@@ -48,6 +48,7 @@ header{
                     width:200px;
                     height:34px;
                     border-radius: 15px;
+                    padding:0 35px 0 15px;
                 }
                 img{
                     position: absolute;
