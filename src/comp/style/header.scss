@@ -1,5 +1,22 @@
-header{
-    *{color:white}
+header {
+    * {
+        color: white
+    }
+    &.on{
+        background-color: #1c1c1c;
+    }
+    form {
+        margin-right: 53px;
+        position: relative;
+        transform: translateY(2px);
+
+        img {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
     height:80px;
     background-color: transparent;
     display:flex;
@@ -7,74 +24,138 @@ header{
     justify-content: space-between;
     padding:0 31px;
     position: relative;
+    z-index: 1;
+
     // gap:90px;
-    h1{
+    h1 {
         font-size: 0;
     }
-    .menu_btn{
+
+    .menu_btn {
         position: absolute;
-        top:50%;
-        right:24px;
+        top: 50%;
+        right: 24px;
         transform: translateY(-40%);
         cursor: pointer;
-        display:flex;
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
         font-size: 0;
-        width:23px;
-        height:18px;
-        &::before,&::after{
+        width: 23px;
+        height: 18px;
+
+        &::before,
+        &::after {
             content: '';
-            height:2px;
+            height: 2px;
             background-color: white;
         }
-        span{
+
+        span {
             background-color: white;
-            height:2px;
+            height: 2px;
         }
     }
-    .menu{
-        display:none;
-        nav{
-            display:flex;
+
+    .menu {
+        display: none;
+
+        nav {
+            display: flex;
             align-items: center;
-            form{
-                margin-right: 53px;
-                position: relative;
-                transform: translateY(2px);
-                input{
+
+            form {
+                input {
                     background-color: black;
-                    border:1px solid white;
-                    width:200px;
-                    height:34px;
+                    border: 1px solid white;
+                    width: 200px;
+                    height: 34px;
                     border-radius: 15px;
-                    padding:0 35px 0 15px;
-                }
-                img{
-                    position: absolute;
-                    right:16px;
-                    top:50%;
-                    transform: translateY(-50%);
+                    padding: 0 35px 0 15px;
                 }
             }
-            a{
-                color:white;
-                +a{
+
+            a {
+                color: white;
+
+                +a {
                     margin-left: 40px;
                 }
             }
         }
     }
+
+    .sub_menu {
+        display: none;
+
+        &.on {
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 0;
+            top: 80px;
+            height: 350px;
+            background-color: #1C1C1C;
+            padding: 42px 32px 0;
+
+            form {
+                margin: 0;
+
+                input {
+                    width: 100%;
+                    border: none;
+                    border-bottom: 1px solid white;
+                    color: #4c4c4c;
+                    background-color: #1c1c1c;
+                    padding: 7px 5px;
+                }
+
+                img {
+                    right: 5px;
+                }
+            }
+
+            .search_record {
+                margin: 15px 0 44px;
+                display: flex;
+                gap: 7px;
+                flex-wrap: wrap;
+
+                p {
+                    border: 1px solid #4c4c4c;
+                    padding: 3px 10px;
+                    border-radius: 15px;
+                    font-size: 14px;
+                    color: #FF3187;
+                }
+            }
+
+            .linked {
+                >a {
+                    display: block;
+                    font-size: 20px;
+
+                    +a {
+                        margin-top: 25px;
+                    }
+                }
+            }
+
+        }
+
+    }
 }
 
 
 @media screen and (min-width : 1024px) {
-    header{
-        .menu_btn{
-            display:none;
+    header {
+        .menu_btn {
+            display: none;
         }
-        .menu{
-            display:block;
+
+        .menu {
+            display: block;
         }
     }
 }
