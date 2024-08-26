@@ -2,9 +2,9 @@ import React from 'react';
 
 function M_footer(props) {
     return (
-        <div>
+        <footer>
             풋터
-        </div>
+        </footer>
     );
 }
 

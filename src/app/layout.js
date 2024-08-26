@@ -1,4 +1,5 @@
 import "../comp/style/common.scss"
+import M_footer from "../comp/UIUX/M_footer";
 import M_header from "../comp/UIUX/M_header";
 export const metadata = {
   title: "Create Next App",
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
       <body>
         <M_header />
         {children}
+        <M_footer />
       </body>
     </html>
   );

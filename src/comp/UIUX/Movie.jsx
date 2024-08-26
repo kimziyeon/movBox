@@ -17,17 +17,17 @@ function Movie(props) {
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
-    useEffect(() => {
-        dataFetch(yesterday)
-        getMovie();
+    // useEffect(() => {
+    //     dataFetch(yesterday)
+    //     getMovie();
 
-        // dataFetch2();
-    }, [])
-    console.log(dailyBoxOffice)
-    useEffect(() => {
-        dataFetch4(dailyBoxOffice, movieDate)
-    }, [dailyBoxOffice])
-    console.log(posterUrl);
+    //     // dataFetch2();
+    // }, [])
+    // console.log(dailyBoxOffice)
+    // useEffect(() => {
+    //     dataFetch4(dailyBoxOffice, movieDate)
+    // }, [dailyBoxOffice])
+    // console.log(posterUrl);
 
     // if(dailyBoxOffice.length===0 && posterUrl.length===0) return;
 
