@@ -69,6 +69,15 @@ function Movie(props) {
                     <li>영화 예고편 유튜브링크</li>
                     <li>영화 예고편 유튜브링크</li>
                 </ul>
+                <div className="btn">
+                    선택완료
+                </div>
+                <div className="btn on">
+                    선택완료
+                </div>
+                <div className="btn mob">
+                    선택완료
+                </div>
             </section>
         </>
     );
