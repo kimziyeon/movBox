@@ -34,80 +34,85 @@ function Movie(props) {
 
     return (
         <>
-            <section className='main_movie'>
-                <ul>
-                    <li>
-                        <div className="poster">
-                            <Image src="/images/아바타.jpg" layout="responsive"
-                                width={100}
-                                height={200}
-                            />
-                            <div className="overlay"></div>
-                        </div>
-
-                        <div className="txt_cont">
-                            <h3 className="name">아바타: 물의 길</h3>
-                            <h3 className="sub_name">Avatar: The Way of Water</h3>
-
-                            <div className='reserve_rate'>
-                                <h4>예매율</h4>
-                                <p>1<span>st</span></p>
-                            </div>
-                            <div className='grade'>
-                                <h4>평점</h4>
-                                <Image src="/images/star_icon.png" width={15} height={15} className="star_icon" />
-                                <p>9.3</p>
-                            </div>
-                            <div className="audience">
-                                <h4>누적관객(만)</h4>
-                                <Image src="/images/person_icon.png" width={15} height={15} className="person_icon" />
-                                <p>547,000+<span>+</span></p>
+            <article className='main_movie'>
+                <div className="inner">
+                    <ul>
+                        <li>
+                            <div className="poster">
+                                <Image src="/images/아바타.jpg" width={1000} height={1500} />
+                                <div className="overlay"></div>
                             </div>
 
-                        </div>
-                    </li>
-                </ul>
-                {/* 스와이퍼 넣을거면 ul li로 짤거고 안넣을거면 ul li 뺄예정 */}
-            </section>
-            <section className='box_office'>
-                <h2>박스 오피스</h2>
-                <ul>
-                    {/* {
+                            <div className="txt_cont">
+                                <h3 className="name">아바타: 물의 길</h3>
+                                <h3 className="sub_name">Avatar: The Way of Water</h3>
+
+                                <div className='reserve_rate'>
+                                    <h4>예매율</h4>
+                                    <p>1<span>st</span></p>
+                                </div>
+                                <div className='grade'>
+                                    <h4>평점</h4>
+                                    <Image src="/images/star_icon.png" width={15} height={15} className="star_icon" />
+                                    <p>9.3</p>
+                                </div>
+                                <div className="audience">
+                                    <h4>누적관객(만)</h4>
+                                    <Image src="/images/person_icon.png" width={15} height={15} className="person_icon" />
+                                    <p>547,000+<span>+</span></p>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                    {/* 스와이퍼 넣을거면 ul li로 짤거고 안넣을거면 ul li 뺄예정 */}
+                </div>
+            </article>
+            <article className='box_office'>
+                <div className="inner">
+                    <h2>박스 오피스</h2>
+                    <ul>
+                        {/* {
                         posterUrl.map((obj,k)=>(
                             <li key={k}><img src={obj} alt="poster" /></li>
                         ))
                     } */}
-                    <li>
-                        <Image src="/images/아바타.jpg"
-                            width={200}
-                            height={250} />
-                    </li>
-                    <li>
-                        <Image src="/images/아바타.jpg"
-                            width={200}
-                            height={250} />
-                    </li>
-                    <li>
-                        <Image src="/images/아바타.jpg"
-                            width={200}
-                            height={250} />
-                    </li>
-
-                </ul>
-            </section>
-            <section className='trailer'>
-                <ul>
-                    <li>영화 예고편 유튜브링크</li>
-                    <li>영화 예고편 유튜브링크</li>
-                    <li>영화 예고편 유튜브링크</li>
-                </ul>
-
-                <div className="btn mob">
-                    선택완료
+                        <li>
+                            <Image src="/images/아바타.jpg"
+                                width={200}
+                                height={250} />
+                            <div className="rank">1</div>
+                        </li>
+                        <li>
+                            <Image src="/images/아바타.jpg"
+                                width={200}
+                                height={250} />
+                            <div className="rank">2</div>
+                        </li>
+                        <li>
+                            <Image src="/images/아바타.jpg"
+                                width={200}
+                                height={250} />
+                            <div className="rank">3</div>
+                        </li>
+                    </ul>
                 </div>
-            </section>
-            <section>
-                <div className='notice'>
+            </article>
+            <article className='trailer'>
+                <div className="inner">
+                    <ul>
+                        <li>영화 예고편 유튜브링크</li>
+                        <li>영화 예고편 유튜브링크</li>
+                        <li>영화 예고편 유튜브링크</li>
+                    </ul>
+
+                    <div className="btn mob">
+                        선택완료
+                    </div>
+                </div>
+            </article>
+            <article className='notice'>
+                <div className="inner">
                     <h2>NOTICE</h2>
                     <ul>
                         <li>전 상영관 리뉴얼 오픈 안내 5/1~</li>
@@ -115,7 +120,7 @@ function Movie(props) {
                         <li>전 상영관 리뉴얼 오픈 안내 5/1~</li>
                     </ul>
                 </div>
-            </section>
+            </article>
         </>
     );
 }
