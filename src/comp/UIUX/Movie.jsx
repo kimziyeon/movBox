@@ -53,12 +53,12 @@ function Movie(props) {
                                 </div>
                                 <div className='grade'>
                                     <h4>평점</h4>
-                                    <Image src="/images/star_icon.png" width={15} height={15} className="star_icon" />
+                                    <Image src="/images/star_icon.svg" width={15} height={15} className="star_icon" />
                                     <p>9.3</p>
                                 </div>
                                 <div className="audience">
                                     <h4>누적관객(만)</h4>
-                                    <Image src="/images/person_icon.png" width={15} height={15} className="person_icon" />
+                                    <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" />
                                     <p>547,000+<span>+</span></p>
                                 </div>
 

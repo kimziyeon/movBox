@@ -6,6 +6,16 @@ footer {
         text-align: center;
         margin-bottom: 32px;
         line-height: 22px;
+        font-weight: 300;
+
+        >span {
+            font-weight: 600;
+
+        }
+
+        .info {
+            display: none;
+        }
     }
 
     .team {
@@ -19,8 +29,12 @@ footer {
             justify-content: center;
             gap: 10px;
 
-            p {
+            >p {
                 width: 50px;
+            }
+
+            .address {
+                display: none;
             }
 
             .link {
@@ -60,9 +74,49 @@ footer {
             justify-content: center;
             gap: 70px;
         }
+
     }
 }
 
 @media screen and (min-width : 1024px) {
-    footer {}
+    footer {
+        .copyright {
+            text-align: left;
+
+            .info {
+                display: block;
+                font-weight: 300;
+                font-size: 10px;
+                color: var(--mov_light-gray);
+            }
+        }
+
+        .team {
+            justify-content: flex-start;
+
+            .member {
+                .link {
+                    display: none;
+                }
+
+                .address {
+                    display: block;
+                    border-left: 1px solid #ffff;
+
+                    p {
+                        font-weight: 300;
+                        line-height: 22px;
+                        margin-left: 20px;
+
+                        >a {
+                            color: #ffff;
+                            font-weight: 300;
+
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
