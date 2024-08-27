@@ -61,7 +61,7 @@ function Movie(props) {
                             <div className="audience">
                                 <h4>누적관객(만)</h4>
                                 <Image src="/images/person_icon.png" width={15} height={15} className="person_icon" />
-                                <p>547,000<span>+</span></p>
+                                <p>547,000+<span>+</span></p>
                             </div>
 
                         </div>
@@ -70,12 +70,29 @@ function Movie(props) {
                 {/* 스와이퍼 넣을거면 ul li로 짤거고 안넣을거면 ul li 뺄예정 */}
             </section>
             <section className='box_office'>
+                <h2>박스 오피스</h2>
                 <ul>
                     {/* {
                         posterUrl.map((obj,k)=>(
                             <li key={k}><img src={obj} alt="poster" /></li>
                         ))
                     } */}
+                    <li>
+                        <Image src="/images/아바타.jpg"
+                            width={200}
+                            height={250} />
+                    </li>
+                    <li>
+                        <Image src="/images/아바타.jpg"
+                            width={200}
+                            height={250} />
+                    </li>
+                    <li>
+                        <Image src="/images/아바타.jpg"
+                            width={200}
+                            height={250} />
+                    </li>
+
                 </ul>
             </section>
             <section className='trailer'>
@@ -87,6 +104,16 @@ function Movie(props) {
 
                 <div className="btn mob">
                     선택완료
+                </div>
+            </section>
+            <section>
+                <div className='notice'>
+                    <h2>NOTICE</h2>
+                    <ul>
+                        <li>전 상영관 리뉴얼 오픈 안내 5/1~</li>
+                        <li>전 상영관 리뉴얼 오픈 안내 5/1~</li>
+                        <li>전 상영관 리뉴얼 오픈 안내 5/1~</li>
+                    </ul>
                 </div>
             </section>
         </>

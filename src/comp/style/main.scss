@@ -1,10 +1,11 @@
 main {
-    padding: 0 31px;
+    padding: 0 32px;
 
     .main_movie {
         width: 100%;
 
         .poster {
+
             position: absolute;
             top: 0;
             left: 0;
@@ -23,6 +24,8 @@ main {
         }
 
         .txt_cont {
+            margin-top: 380px;
+
             .name {
                 font-size: 26px;
             }
@@ -30,11 +33,11 @@ main {
             .sub_name {
                 font-size: 18px;
                 font-weight: 300;
+                margin: 5px 0 15px;
             }
 
             h4 {
                 display: none;
-
             }
 
             .reserve_rate {
@@ -92,17 +95,27 @@ main {
     }
 
     .box_office {
+        margin-top: 90px;
+
+        h2 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
         ul {
             display: flex;
             flex-wrap: wrap;
 
             li {
-                img {
-                    width: 200px;
-                }
+                Image {}
             }
         }
     }
 
     .trailer {}
+
+    .notice {
+        background-color: var(--mov_black);
+    }
 }
