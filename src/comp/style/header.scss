@@ -92,7 +92,7 @@ header {
 
             a {
                 color: #fff;
-
+                font-weight: 300;
                 +a {
                     margin-left: 40px;
                 }
@@ -142,6 +142,7 @@ header {
                     border-radius: 15px;
                     font-size: 14px;
                     color: var(--mov_pink);
+                    font-weight: 300;
                 }
             }
 
@@ -149,7 +150,6 @@ header {
                 >a {
                     display: block;
                     font-size: 20px;
-
                     +a {
                         margin-top: 25px;
                     }
