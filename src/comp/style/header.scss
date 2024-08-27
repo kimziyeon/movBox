@@ -1,9 +1,9 @@
 header {
     * {
-        color: white
+        color: var(--mov_white);
     }
     &.on{
-        background-color: #1c1c1c;
+        background-color: var(--mov_black);
     }
     form {
         margin-right: 53px;
@@ -51,11 +51,11 @@ header {
         &::after {
             content: '';
             height: 2px;
-            background-color: white;
+            background-color: var(--mov_white);
         }
 
         span {
-            background-color: white;
+            background-color: var(--mov_white);
             height: 2px;
         }
         &.on{
@@ -82,7 +82,7 @@ header {
             form {
                 input {
                     background-color: black;
-                    border: 1px solid white;
+                    border: 1px solid var(--mov_white);
                     width: 200px;
                     height: 34px;
                     border-radius: 15px;
@@ -91,7 +91,7 @@ header {
             }
 
             a {
-                color: white;
+                color: var(--mov_white);
 
                 +a {
                     margin-left: 40px;
@@ -110,7 +110,7 @@ header {
             z-index: 0;
             top: 80px;
             height: 350px;
-            background-color: #1C1C1C;
+            background-color: var(--mov_black);
             padding: 42px 32px 0;
 
             form {
@@ -120,8 +120,8 @@ header {
                     width: 100%;
                     border: none;
                     border-bottom: 1px solid white;
-                    color: #4c4c4c;
-                    background-color: #1c1c1c;
+                    color: var(--mov_gray);
+                    background-color: var(--mov_black);
                     padding: 7px 5px;
                 }
 
@@ -141,7 +141,7 @@ header {
                     padding: 3px 10px;
                     border-radius: 15px;
                     font-size: 14px;
-                    color: #FF3187;
+                    color: var(--mov_pink);
                 }
             }
 
