@@ -7,10 +7,11 @@ function Login(props) {
             <form className='login_space'>
                 <input type="text" placeholder='아이디'/>
                 <input type="text" placeholder='비밀번호' />
-                <button>로그인</button>
+                <button className='btn'>로그인</button>
             </form>
             <div className='personal_info'>
                 <p>아이디 / 비밀번호 찾기</p>
+                <p>|</p>
                 <p>회원가입</p>
             </div>
         </div>
