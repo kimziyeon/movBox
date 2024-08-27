@@ -46,15 +46,45 @@ main {
             }
 
             .grade {
+                display: inline-block;
+                background-color: var(--mov_pink);
+                padding: 5px 12px;
+                margin-right: 10px;
+                border-radius: 5px;
+
                 h4 {}
 
-                p {}
+                .star_icon {}
+
+                p {
+                    display: inline;
+                    font-weight: 300;
+                    margin-left: 5px;
+                }
             }
 
             .audience {
+                display: inline-block;
+                background-color: #fff;
+                padding: 5px 12px;
+                border-radius: 5px;
+
+
                 h4 {}
 
-                p {}
+                .person_icon {}
+
+                p {
+                    display: inline;
+                    color: var(--mov_black);
+                    font-weight: 300;
+                    margin-left: 5px;
+
+
+                    span {
+                        font-weight: 300;
+                    }
+                }
             }
         }
 

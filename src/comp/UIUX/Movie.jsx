@@ -55,14 +55,13 @@ function Movie(props) {
                             </div>
                             <div className='grade'>
                                 <h4>평점</h4>
-                                <div class="material-icons">
-                                    star
-                                </div>
+                                <Image src="/images/star_icon.png" width={15} height={15} className="star_icon" />
                                 <p>9.3</p>
                             </div>
                             <div className="audience">
                                 <h4>누적관객(만)</h4>
-                                <p>50<span>+</span></p>
+                                <Image src="/images/person_icon.png" width={15} height={15} className="person_icon" />
+                                <p>547,000<span>+</span></p>
                             </div>
 
                         </div>
@@ -85,12 +84,7 @@ function Movie(props) {
                     <li>영화 예고편 유튜브링크</li>
                     <li>영화 예고편 유튜브링크</li>
                 </ul>
-                <div className="btn">
-                    선택완료
-                </div>
-                <div className="btn on">
-                    선택완료
-                </div>
+
                 <div className="btn mob">
                     선택완료
                 </div>
