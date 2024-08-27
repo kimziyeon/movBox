@@ -1,6 +1,6 @@
 header {
     * {
-        color: var(--mov_white);
+        color: #fff;
     }
     &.on{
         background-color: var(--mov_black);
@@ -51,11 +51,11 @@ header {
         &::after {
             content: '';
             height: 2px;
-            background-color: var(--mov_white);
+            background-color: #fff;
         }
 
         span {
-            background-color: var(--mov_white);
+            background-color: #fff;
             height: 2px;
         }
         &.on{
@@ -82,7 +82,7 @@ header {
             form {
                 input {
                     background-color: black;
-                    border: 1px solid var(--mov_white);
+                    border: 1px solid #fff;
                     width: 200px;
                     height: 34px;
                     border-radius: 15px;
@@ -91,7 +91,7 @@ header {
             }
 
             a {
-                color: var(--mov_white);
+                color: #fff;
 
                 +a {
                     margin-left: 40px;
