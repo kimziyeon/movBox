@@ -1,15 +1,48 @@
 @import './reset.css';
 
-body{
+// font-family: "Noto Serif KR", serif;
+
+body {
     background-color: black;
-    color:white;
+    color: white;
     margin-top: 80px;
 }
 
 @media screen and (min-width : 1024px) {
-    body{
-        
-    width:1024px;
-    margin:80px auto 0;
+    body {
+        width: 1024px;
+        margin: 80px auto 0;
     }
+}
+
+:root {
+    --mov_black: #1C1C1C;
+    --mov_pink: #FF3187;
+    --mov_gray: #4C4C4C;
+    --mov_light_gray: #D9D9D9;
+}
+
+.btn {
+    width: 400px;
+    height: 52px;
+    border-radius: 5px;
+    border: 1px solid #FF3187;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mov_gray);
+    font-size: 20px;
+}
+
+.btn.on {
+    background-color: var(--mov_pink);
+    color: #fff;
+}
+
+.btn.mob {
+    width: 280px;
+    height: 48px;
+    font-size: 18px;
+
 }
