@@ -40,10 +40,10 @@ function M_header(props) {
                     <p># 송우민</p>
                     <p># 지연</p>
                 </div>
-                <div className='linked' onClick={pageMove}>
-                    <Link href="/reserve">Ticket</Link>
-                    <Link href="/login">Login</Link>
-                    <Link href="/mypage">My page</Link>
+                <div className='linked'>
+                    <Link href="/reserve" onClick={pageMove}>Ticket</Link>
+                    <Link href="/login" onClick={pageMove}>Login</Link>
+                    <Link href="/mypage" onClick={pageMove}>My page</Link>
                 </div>
             </div>
         </header>
