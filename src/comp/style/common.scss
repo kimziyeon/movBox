@@ -32,6 +32,7 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--mov_gray);
+    font-size: 20px;
 }
 
 .btn.on {
@@ -42,4 +43,6 @@ body {
 .btn.mob {
     width: 280px;
     height: 48px;
+    font-size: 18px;
+
 }
