@@ -9,6 +9,9 @@ import { useStore4 } from '../store/movie_poster';
 import { movie_server } from '../store/movie_server';
 import { format, subDays } from 'date-fns';
 import Image from 'next/image';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 
 function Movie(props) {
     let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate } = useStore();
@@ -35,14 +38,33 @@ function Movie(props) {
     return (
         <>
             <article className='main_movie'>
-                <div className="inner">
-                    <ul>
-                        <li>
-                            <div className="poster">
-                                <Image src="/images/아바타.jpg" width={1000} height={1500} />
-                                <div className="overlay"></div>
-                            </div>
+                <Swiper
+                    spaceBetween={30}
+                    centeredSlides={true}
+                    // autoplay={{
+                    //     delay: 2500,
+                    //     disableOnInteraction: false,
+                    // }}
 
+                    modules={[Autoplay]}
+                    className="mySwiper"
+                >
+                    <SwiperSlide>
+                        <div className="poster">
+                            <Image src="/images/아바타.jpg" width={1000} height={1500} />
+                            <div className="overlay"></div>
+                        </div>
+
+                    </SwiperSlide>
+
+                    <SwiperSlide>
+                        <div className="poster">
+                            <Image src="/images/아바타.jpg" width={1000} height={1500} />
+                            <div className="overlay"></div>
+                        </div>
+
+
+                        <div className="inner">
                             <div className="txt_cont">
                                 <h3 className="name">아바타: 물의 길</h3>
                                 <h3 className="sub_name">Avatar: The Way of Water</h3>
@@ -61,12 +83,14 @@ function Movie(props) {
                                     <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" />
                                     <p>547,000+<span>+</span></p>
                                 </div>
-
                             </div>
-                        </li>
-                    </ul>
-                    {/* 스와이퍼 넣을거면 ul li로 짤거고 안넣을거면 ul li 뺄예정 */}
-                </div>
+                        </div>
+
+                    </SwiperSlide>
+                </Swiper>
+
+                {/* 스와이퍼 넣을거면 ul li로 짤거고 안넣을거면 ul li 뺄예정 */}
+
             </article>
             <article className='box_office'>
                 <div className="inner">
@@ -77,6 +101,7 @@ function Movie(props) {
                             <li key={k}><img src={obj} alt="poster" /></li>
                         ))
                     } */}
+
                         <li>
                             <Image src="/images/아바타.jpg"
                                 width={200}
