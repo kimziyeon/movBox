@@ -1,6 +1,17 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import '../style/login.scss'
 function Login(props) {
+    let [findIdClick , setFindIdClick]=useState(true);
+    const findId = ()=>{
+        setFindIdClick(!findIdClick);
+        // console.log(findIdClick)
+    }
+    let [findPwClick , setFindPwClick]=useState(true);
+    const findPw = ()=>{
+        setFindPwClick(!findPwClick);
+        // console.log(findIdClick)
+    }
     return (
         <div className='login'>
             <h2>로그인</h2>
@@ -10,11 +21,32 @@ function Login(props) {
                 <button className='btn'>로그인</button>
             </form>
             <div className='personal_info'>
-                <p>아이디 / 비밀번호 찾기</p>
+                <p onClick={findId}>아이디 / 비밀번호 찾기</p>
                 <p>|</p>
                 <p>회원가입</p>
             </div>
+            <div className={findIdClick ? 'find id':'find id on'}>
+                <span className='close' onClick={findId}>close_btn</span>
+                <h2>아이디 찾기</h2>
+                <p>이메일을 정확히 입력해주세요.</p>
+                <form>
+                    <input type="text" placeholder='이메일 (abc@mail.com)' />
+                </form>
+                <button className='btn'>아이디 찾기</button>
+                <p className='find_pw_btn' onClick={()=>{findId();findPw();}}>비밀번호 찾기 {'>'}</p>
+            </div>
+            <div className={findPwClick ? 'find pw':'find pw on'}>
+                <span className='close' onClick={findPw}>close_btn</span>
+                <h2>비밀번호 찾기</h2>
+                <p>이름과 아이디를 입력해주세요.</p>
+                <form>
+                    <input type="text" placeholder='이름' />
+                    <input type="text" placeholder='아이디' />
+                </form>
+                <button className='btn'>비밀번호 찾기</button>
+            </div>
         </div>
+        
     );
 }
 

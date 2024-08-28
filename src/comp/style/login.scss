@@ -1,4 +1,5 @@
 .login{
+    position: relative;
     margin-top:177px;
     // background-color: lime;
     padding:0 32px;
@@ -31,8 +32,83 @@
         margin-top: 9px;
         p{
             font-size: 14px;
+            cursor: pointer;
         }
         
+    }
+    .find{
+        display:none;
+        &.on{
+            display:block;
+        }
+        position: absolute;
+        top:0;
+        left:32px;
+        right:32px;
+        height:400px;
+        background-color: var(--mov_black);
+        padding:0 15px;
+        text-align: center;
+        border-radius: 10px;
+        .close{
+            position: absolute;
+            cursor: pointer;
+            top:24px;
+            right:24px;
+            font-size: 0;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            width:23px;
+            height:18px;
+            &::before{
+                content: '';
+                background-color: #fff;
+                height:2px;
+                transform: rotate(45deg) translateX(1px);
+            }
+            &::after{
+                content: '';
+                background-color: #fff;
+                height:2px;
+                transform: rotate(-45deg) translateX(1px);
+            }
+        }
+        h2{
+            margin-top: 66px;
+            font-size: 18px;
+        }
+        p{
+            margin-top: 38px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        form{
+            input{
+                margin-top: 11px;
+                width:100%;
+                border-radius: 5px;
+                padding:11px 0 11px 15px;
+            }
+        }
+        >button{
+            margin-top: 31px;
+            width:100%;
+            background-color: transparent;
+            font-size: 18px;
+            color:white;
+            font-weight: 600;
+            cursor: pointer;
+            &:hover{
+                background-color: var(--mov_pink);
+            }
+        }
+        .find_pw_btn{
+            margin-top:6px;
+            text-align: right;
+            font-size: 14px;
+            cursor: pointer;
+        }
     }
 }
 
@@ -41,5 +117,9 @@
         max-width: 310px;
         margin:177px auto 60px;
         padding:0;
+        .find{
+            left:0;
+            right:0;
+        }
     }
 }
