@@ -148,38 +148,109 @@ function Movie(props) {
                         ))
                     } */}
 
-                        <li>
-                            <Image src="/images/아바타.jpg"
-                                width={200}
-                                height={250} />
-                            <div className="rank">1</div>
-                        </li>
-                        <li>
-                            <Image src="/images/아바타.jpg"
-                                width={200}
-                                height={250} />
-                            <div className="rank">2</div>
-                        </li>
-                        <li>
-                            <Image src="/images/아바타.jpg"
-                                width={200}
-                                height={250} />
-                            <div className="rank">3</div>
-                        </li>
+                        <Swiper
+                            slidesPerView={1.5}
+                            spaceBetween={10}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            breakpoints={{
+                                768: {
+                                    slidesPerView: 2.5,
+                                    spaceBetween: 20,
+                                },
+                                1024: {
+                                    slidesPerView: 3.5,
+                                    spaceBetween: 30,
+                                },
+                            }}
+                            className="mySwiper"
+
+                        >
+                            <SwiperSlide>
+                                <li>
+                                    <Image src="/images/아바타.jpg"
+                                        width={200}
+                                        height={250} />
+                                    <div className="rank">1</div>
+                                    <div className="list_btn">
+                                        <div className="btn on mob">상세보기</div>
+                                        <div className="btn on mob">예매하기</div>
+                                    </div>
+                                </li>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <li>
+                                    <Image src="/images/아바타.jpg"
+                                        width={200}
+                                        height={250} />
+                                    <div className="rank">2</div>
+                                    <div className="list_btn">
+                                        <div className="btn on mob">상세보기</div>
+                                        <div className="btn on mob">예매하기</div>
+                                    </div>
+                                </li>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <li>
+                                    <Image src="/images/아바타.jpg"
+                                        width={200}
+                                        height={250} />
+                                    <div className="rank">3</div>
+                                    <div className="list_btn">
+                                        <div className="btn on mob">상세보기</div>
+                                        <div className="btn on mob">예매하기</div>
+                                    </div>
+                                </li>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <li>
+                                    <Image src="/images/아바타.jpg"
+                                        width={200}
+                                        height={250} />
+                                    <div className="rank">4</div>
+                                    <div className="list_btn">
+                                        <div className="btn on mob">상세보기</div>
+                                        <div className="btn on mob">예매하기</div>
+                                    </div>
+                                </li>
+                            </SwiperSlide>
+                        </Swiper>
+
+
                     </ul>
                 </div>
             </article>
             <article className='trailer'>
                 <div className="inner">
+                    <h2>트레일러</h2>
                     <ul>
-                        <li>영화 예고편 유튜브링크</li>
-                        <li>영화 예고편 유튜브링크</li>
-                        <li>영화 예고편 유튜브링크</li>
+                        <li>
+                            <Image src="/images/inside.png"
+                                width={200}
+                                height={150} />
+                            <p>&#91;인사이드 아웃 2&#93; 파이널 예고편</p>
+                            <div className="vidio_play">
+                                <Image src="/images/play_icon.svg"
+                                    width={100}
+                                    height={100} />
+                            </div>
+                        </li>
+                        <li>
+                            <Image src="/images/inside.png"
+                                width={200}
+                                height={150} />
+                            <p>&#91;인사이드 아웃 2&#93; 파이널 예고편</p>
+                        </li>
+                        <li>
+                            <Image src="/images/inside.png"
+                                width={200}
+                                height={150} />
+                            <p>&#91;인사이드 아웃 2&#93; 파이널 예고편</p>
+                        </li>
+
                     </ul>
 
-                    <div className="btn mob">
-                        선택완료
-                    </div>
                 </div>
             </article>
             <article className='notice'>
