@@ -5,6 +5,7 @@ import Image from 'next/image';
 
 function M_footer(props) {
     return (
+
         <footer>
             <div className='copyright'>
                 Copyright © <span>Team KIMSONG</span>. <br />All rights reserved.

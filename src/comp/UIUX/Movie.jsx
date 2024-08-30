@@ -140,7 +140,7 @@ function Movie(props) {
                 <div className="inner">
                     <h2>박스 오피스</h2>
                     <ul>
-                        {/* 스와이퍼 넣을거면 ul li로 짤거고 안넣을거면 ul li 뺄예정 */}
+
 
                         {/* {
                         posterUrl.map((obj,k)=>(
@@ -225,30 +225,85 @@ function Movie(props) {
                 <div className="inner">
                     <h2>트레일러</h2>
                     <ul>
-                        <li>
-                            <Image src="/images/inside.png"
-                                width={200}
-                                height={150} />
-                            <p>&#91;인사이드 아웃 2&#93; 파이널 예고편</p>
-                            <div className="play_box">
-                                <Image src="/images/play_icon.svg"
-                                    width={100}
-                                    height={100} />
-                            </div>
-                        </li>
-                        <li>
-                            <Image src="/images/inside.png"
-                                width={200}
-                                height={150} />
-                            <p>&#91;인사이드 아웃 2&#93; 파이널 예고편</p>
-                        </li>
-                        <li>
-                            <Image src="/images/inside.png"
-                                width={200}
-                                height={150} />
-                            <p>&#91;인사이드 아웃 2&#93; 파이널 예고편</p>
-                        </li>
+                        <Swiper
+                            slidesPerView={1}
+                            spaceBetween={10}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            breakpoints={{
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 30,
+                                },
+                            }}
+                            className="mySwiper"
+                        >
+                            <SwiperSlide>
+                                <li>
+                                    <div className="slide">
+                                        <div className="slide_box">
+                                            <Image src="/images/inside.png"
+                                                width={200}
+                                                height={150} />
+                                        </div>
+                                        <div className="play_box">
+                                            <Image src="/images/play_icon.svg"
+                                                width={100}
+                                                height={100} />
+                                        </div>
+                                        <p className="slide_title">
+                                            &#91;인사이드 아웃 2&#93; 파이널 예고편
+                                        </p>
+                                    </div>
+                                </li>
+                            </SwiperSlide>
 
+                            <SwiperSlide>
+                                <li>
+                                    <div className="slide">
+                                        <div className="slide_box">
+                                            <Image src="/images/inside.png"
+                                                width={200}
+                                                height={150} />
+                                        </div>
+                                        <div className="play_box">
+                                            <Image src="/images/play_icon.svg"
+                                                width={100}
+                                                height={100} />
+                                        </div>
+                                        <p className="slide_title">
+                                            &#91;인사이드 아웃 2&#93; 파이널 예고편
+                                        </p>
+                                    </div>
+                                </li>
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <li>
+                                    <div className="slide">
+                                        <div className="slide_box">
+                                            <Image src="/images/inside.png"
+                                                width={200}
+                                                height={150} />
+                                        </div>
+                                        <div className="play_box">
+                                            <Image src="/images/play_icon.svg"
+                                                width={100}
+                                                height={100} />
+                                        </div>
+                                        <p className="slide_title">
+                                            &#91;인사이드 아웃 2&#93; 파이널 예고편
+                                        </p>
+                                    </div>
+                                </li>
+                            </SwiperSlide>
+
+                        </Swiper>
                     </ul>
 
                 </div>
@@ -257,9 +312,22 @@ function Movie(props) {
                 <div className="inner">
                     <h2>NOTICE</h2>
                     <ul>
-                        <li>전 상영관 리뉴얼 오픈 안내 5/1~</li>
-                        <li>전 상영관 리뉴얼 오픈 안내 5/1~</li>
-                        <li>전 상영관 리뉴얼 오픈 안내 5/1~</li>
+                        <Swiper
+                            direction={"vertical"}
+                            loop={true}
+                            centeredSlides={true}
+                            autoplay={{
+                                delay: 2000,
+                                disableOnInteraction: false,
+                            }}
+                            spaceBetween={30}
+                            modules={[Autoplay]}
+                            className="mySwiper"
+
+                        >
+                            <SwiperSlide>서비스 이용약관 개정 안내</SwiperSlide>
+                            <SwiperSlide>전 상영관 리뉴얼 오픈 안내 5/1~</SwiperSlide>
+                        </Swiper>
                     </ul>
                 </div>
             </article>

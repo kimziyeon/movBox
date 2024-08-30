@@ -1,6 +1,6 @@
 footer {
     width: 100%;
-    padding: 32px;
+    padding: 32px 0;
 
     .copyright {
         text-align: center;
@@ -80,8 +80,8 @@ footer {
 
 @media screen and (min-width : 1024px) {
     footer {
+
         .copyright {
-            text-align: left;
 
             .info {
                 display: block;
@@ -92,7 +92,6 @@ footer {
         }
 
         .team {
-            justify-content: flex-start;
 
             .member {
                 .link {
