@@ -2,9 +2,9 @@
 
 "use client";
 import "../style/main.scss";
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStore } from '../store/movie_store';
-// import { useStore2 } from '../store/movie_detail_store';
+import { useStore2 } from '../store/movie_detail_store';
 import { useStore4 } from '../store/movie_poster';
 import { movie_server } from '../store/movie_server';
 import { format, subDays } from 'date-fns';
@@ -16,132 +16,92 @@ import 'swiper/css';
 function Movie(props) {
     let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate } = useStore();
     let { getMovie } = movie_server();
-    // let { dataFetch2 } = useStore2();
+    let { dataFetch2 } = useStore2();
     let { dataFetch4, posterUrl } = useStore4();
+    const [listBtn, setListBtn] = useState();
+
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
-    // useEffect(() => {
-    //     dataFetch(yesterday)
-    //     getMovie();
+    useEffect(() => {
+        dataFetch(yesterday)
+        getMovie();
 
-    //     // dataFetch2();
-    // }, [])
+        dataFetch2();
+    }, [])
     // console.log(dailyBoxOffice)
-    // useEffect(() => {
-    //     dataFetch4(dailyBoxOffice, movieDate)
-    // }, [dailyBoxOffice])
+    useEffect(() => {
+        dataFetch4(dailyBoxOffice, movieDate)
+    }, [dailyBoxOffice])
     // console.log(posterUrl);
 
-    // if(dailyBoxOffice.length===0 && posterUrl.length===0) return;
+    if (dailyBoxOffice.length === 0 && posterUrl.length === 0) return;
 
-
-    const boxOfficeClickHandel = (k) => {
-        const listBtnList = document.querySelectorAll('.list_btn');
-        listBtnList.forEach((listBtn) => {
-            if (listBtn) {
-                listBtn.style.display = listBtn.style.display === 'flex' ? 'none' : 'flex';
-            }
-        })
+    const posterClick = (k) => {
+        setListBtn(k)
     }
 
     return (
         <>
             <article className='main_movie'>
                 <Swiper
-
                     spaceBetween={30}
                     centeredSlides={true}
-                    // autoplay={{
-                    //     delay: 5000,
-                    //     disableOnInteraction: false,
-                    // }}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    }}
 
                     modules={[Autoplay]}
                     className="mySwiper"
                     style={{ height: 'auto' }}
                 >
-                    <SwiperSlide >
-                        <div className="poster">
-                            <Image src="/images/아바타.jpg"
-                                width={1000} height={1500}
-                                alt="아바타 포스터"
-                                priority />
-                            <div className="overlay"></div>
-                        </div>
 
-                        <div className="poster_pc">
-                            <Image src="/images/아바타.jpg"
-                                width={1000} height={1500}
-                                alt="아바타 포스터"
-                            />
-                        </div>
+                    {
+                        posterUrl.slice(0, 3).map((obj, k) => (
+                            <SwiperSlide key={k}>
+                                <div className="poster">
+                                    <Image src={obj}
+                                        width={1000} height={1500}
+                                        alt={dailyBoxOffice[k]}
+                                        priority />
+                                    <div className="overlay"></div>
+                                </div>
 
-                        <div className="inner">
-                            <div className="txt_group">
-                                <h3 className="name">아바타: 물의 길</h3>
-                                <h3 className="sub_name">Avatar: The Way of Water</h3>
+                                <div className="poster_pc">
+                                    <Image src={obj}
+                                        width={1000} height={1500}
+                                        alt={dailyBoxOffice[k]}
+                                    />
+                                </div>
 
-                                <div className="txt_conts">
-                                    <div className='reserve_rate'>
-                                        <h4>예매율</h4>
-                                        <p>1<span> st</span></p>
-                                    </div>
-                                    <div className='grade'>
-                                        <h4>평점</h4>
-                                        <Image src="/images/star_icon.svg" width={15} height={15} className="star_icon" />
-                                        <p>9.3</p>
-                                    </div>
-                                    <div className="audience">
-                                        <h4>누적관객(만)</h4>
-                                        <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" />
-                                        <p>547,000<span> +</span></p>
+                                <div className="inner">
+                                    <div className="txt_group">
+                                        <h3 className="name">{dailyBoxOffice[k]}</h3>
+                                        <h3 className="sub_name">Avatar: The Way of Water</h3>
+
+                                        <div className="txt_conts">
+                                            <div className='reserve_rate'>
+                                                <h4>예매율</h4>
+                                                <p>{dailyRank[k]}<span> st</span></p>
+                                            </div>
+                                            <div className='grade'>
+                                                <h4>평점</h4>
+                                                <Image src="/images/star_icon.svg" width={15} height={15} className="star_icon" />
+                                                <p>9.3</p>
+                                            </div>
+                                            <div className="audience">
+                                                <h4>누적관객(만)</h4>
+                                                <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" />
+                                                <p>547,000<span> +</span></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                    </SwiperSlide>
-
-                    <SwiperSlide>
-                        <div className="poster">
-                            <Image src="/images/아바타.jpg" width={1000} height={1500} />
-                            <div className="overlay"></div>
-                        </div>
-
-                        <div className="poster_pc">
-                            <Image src="/images/아바타.jpg"
-                                width={1000} height={1500}
-                                alt="아바타 포스터"
-                            />
-                        </div>
-
-                        <div className="inner">
-                            <div className="txt_group">
-                                <h3 className="name">아바타: 물의 길</h3>
-                                <h3 className="sub_name">Avatar: The Way of Water</h3>
-
-                                <div className="txt_conts">
-                                    <div className='reserve_rate'>
-                                        <h4>예매율</h4>
-                                        <p>1<span> st</span></p>
-                                    </div>
-                                    <div className='grade'>
-                                        <h4>평점</h4>
-                                        <Image src="/images/star_icon.svg" width={15} height={15} className="star_icon" />
-                                        <p>9.3</p>
-                                    </div>
-                                    <div className="audience">
-                                        <h4>누적관객(만)</h4>
-                                        <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" />
-                                        <p>547,000<span> +</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </SwiperSlide>
+                            </SwiperSlide>
+                        ))
+                    }
                 </Swiper>
 
 
@@ -150,14 +110,6 @@ function Movie(props) {
                 <div className="inner">
                     <h2>박스 오피스</h2>
                     <ul>
-
-
-                        {/* {
-                        posterUrl.map((obj,k)=>(
-                            <li key={k}><img src={obj} alt="poster" /></li>
-                        ))
-                    } */}
-
                         <Swiper
                             slidesPerView={1.5}
                             spaceBetween={10}
@@ -175,56 +127,25 @@ function Movie(props) {
                                 },
                             }}
                             className="mySwiper"
-
                         >
-                            <SwiperSlide>
-                                <li className="boxoffice_list" onClick={() => { boxOfficeClickHandel() }}>
-                                    <Image src="/images/아바타.jpg"
-                                        width={200}
-                                        height={250} />
-                                    <div className="rank">1</div>
-                                    <div className="list_btn">
-                                        <div className="btn on mob boxoffice_detail">상세보기</div>
-                                        <div className="btn on mob boxoffice_reserve">예매하기</div>
-                                    </div>
-                                </li>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <li className="boxoffice_list" onClick={() => { boxOfficeClickHandel() }}>
-                                    <Image src="/images/아바타.jpg"
-                                        width={200}
-                                        height={250} />
-                                    <div className="rank">2</div>
-                                    <div className="list_btn">
-                                        <div className="btn on mob boxoffice_detail">상세보기</div>
-                                        <div className="btn on mob boxoffice_reserve" >예매하기</div>
-                                    </div>
-                                </li>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <li>
-                                    <Image src="/images/아바타.jpg"
-                                        width={200}
-                                        height={250} />
-                                    <div className="rank">3</div>
-                                    <div className="list_btn">
-                                        <div className="btn on mob">상세보기</div>
-                                        <div className="btn on mob">예매하기</div>
-                                    </div>
-                                </li>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <li>
-                                    <Image src="/images/아바타.jpg"
-                                        width={200}
-                                        height={250} />
-                                    <div className="rank">4</div>
-                                    <div className="list_btn">
-                                        <div className="btn on mob">상세보기</div>
-                                        <div className="btn on mob">예매하기</div>
-                                    </div>
-                                </li>
-                            </SwiperSlide>
+                            {
+                                posterUrl.map((obj, k) => (
+                                    <SwiperSlide key={k}>
+                                        <li className="boxoffice_list" onClick={() => posterClick(k)}>
+                                            <Image src={obj}
+                                                width={200}
+                                                height={250}
+                                                alt="박스오피스 영화포스터" />
+                                            <div className="rank">{k + 1}</div>
+                                            <div className={`list_btn ${listBtn === k ? 'active' : ''}`}>
+                                                <div className="btn on mob ">상세보기</div>
+                                                <div className="btn on mob ">예매하기</div>
+                                            </div>
+                                        </li>
+                                    </SwiperSlide>
+                                ))
+                            }
+
                         </Swiper>
 
 
@@ -259,12 +180,17 @@ function Movie(props) {
                                         <div className="slide_box">
                                             <Image src="/images/inside.png"
                                                 width={200}
-                                                height={150} />
+                                                height={150}
+                                                alt="트레일러 썸네일"
+                                                priority
+                                            />
                                         </div>
                                         <div className="play_box">
                                             <Image src="/images/play_icon.svg"
                                                 width={100}
-                                                height={100} />
+                                                height={100}
+                                                alt="play icon"
+                                            />
                                         </div>
                                         <p className="slide_title">
                                             &#91;인사이드 아웃 2&#93; 파이널 예고편
@@ -279,12 +205,17 @@ function Movie(props) {
                                         <div className="slide_box">
                                             <Image src="/images/inside.png"
                                                 width={200}
-                                                height={150} />
+                                                height={150}
+                                                alt="트레일러 썸네일"
+                                                priority
+                                            />
                                         </div>
                                         <div className="play_box">
                                             <Image src="/images/play_icon.svg"
                                                 width={100}
-                                                height={100} />
+                                                height={100}
+                                                alt="play icon"
+                                            />
                                         </div>
                                         <p className="slide_title">
                                             &#91;인사이드 아웃 2&#93; 파이널 예고편
@@ -299,12 +230,17 @@ function Movie(props) {
                                         <div className="slide_box">
                                             <Image src="/images/inside.png"
                                                 width={200}
-                                                height={150} />
+                                                height={150}
+                                                alt="트레일러 썸네일"
+                                                priority
+                                            />
                                         </div>
                                         <div className="play_box">
                                             <Image src="/images/play_icon.svg"
                                                 width={100}
-                                                height={100} />
+                                                height={100}
+                                                alt="play icon"
+                                            />
                                         </div>
                                         <p className="slide_title">
                                             &#91;인사이드 아웃 2&#93; 파이널 예고편
