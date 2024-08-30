@@ -35,6 +35,16 @@ function Movie(props) {
 
     // if(dailyBoxOffice.length===0 && posterUrl.length===0) return;
 
+
+    const boxOfficeClickHandel = (k) => {
+        const listBtnList = document.querySelectorAll('.list_btn');
+        listBtnList.forEach((listBtn) => {
+            if (listBtn) {
+                listBtn.style.display = listBtn.style.display === 'flex' ? 'none' : 'flex';
+            }
+        })
+    }
+
     return (
         <>
             <article className='main_movie'>
@@ -168,26 +178,26 @@ function Movie(props) {
 
                         >
                             <SwiperSlide>
-                                <li>
+                                <li className="boxoffice_list" onClick={() => { boxOfficeClickHandel() }}>
                                     <Image src="/images/아바타.jpg"
                                         width={200}
                                         height={250} />
                                     <div className="rank">1</div>
                                     <div className="list_btn">
-                                        <div className="btn on mob">상세보기</div>
-                                        <div className="btn on mob">예매하기</div>
+                                        <div className="btn on mob boxoffice_detail">상세보기</div>
+                                        <div className="btn on mob boxoffice_reserve">예매하기</div>
                                     </div>
                                 </li>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <li>
+                                <li className="boxoffice_list" onClick={() => { boxOfficeClickHandel() }}>
                                     <Image src="/images/아바타.jpg"
                                         width={200}
                                         height={250} />
                                     <div className="rank">2</div>
                                     <div className="list_btn">
-                                        <div className="btn on mob">상세보기</div>
-                                        <div className="btn on mob">예매하기</div>
+                                        <div className="btn on mob boxoffice_detail">상세보기</div>
+                                        <div className="btn on mob boxoffice_reserve" >예매하기</div>
                                     </div>
                                 </li>
                             </SwiperSlide>
