@@ -230,7 +230,7 @@ function Movie(props) {
                                 width={200}
                                 height={150} />
                             <p>&#91;인사이드 아웃 2&#93; 파이널 예고편</p>
-                            <div className="vidio_play">
+                            <div className="play_box">
                                 <Image src="/images/play_icon.svg"
                                     width={100}
                                     height={100} />
