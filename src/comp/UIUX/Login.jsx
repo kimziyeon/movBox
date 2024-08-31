@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import '../style/login.scss'
+import Link from 'next/link';
 function Login(props) {
     let [findIdClick , setFindIdClick]=useState(true);
     const findId = ()=>{
@@ -23,7 +24,7 @@ function Login(props) {
             <div className='personal_info'>
                 <p onClick={findId}>아이디 / 비밀번호 찾기</p>
                 <p>|</p>
-                <p>회원가입</p>
+                <p><Link href='/login/join'>회원가입</Link></p>
             </div>
             <div className={findIdClick ? 'find id':'find id on'}>
                 <span className='close' onClick={findId}>close_btn</span>
