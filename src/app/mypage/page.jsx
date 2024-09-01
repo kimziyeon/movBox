@@ -1,9 +1,10 @@
 import React from 'react';
+import Mypage from '../../comp/UIUX/Mypage';
 
 function page(props) {
     return (
         <div>
-            마이페이지
+            <Mypage />
         </div>
     );
 }
