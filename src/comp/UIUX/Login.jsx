@@ -7,11 +7,10 @@ function Login({router}) {
     let { userTable,userData } = user();
     useEffect(()=>{
         userTable('get');
-        console.log(router,'라우터')
     },[])
-    useEffect(()=>{
-        console.log(userData)
-    },[userData])
+    // useEffect(()=>{
+    //     console.log(userData)
+    // },[userData])
 
 
     let [findIdClick , setFindIdClick]=useState(true);

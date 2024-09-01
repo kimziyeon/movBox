@@ -11,7 +11,6 @@ export async function GET(){
 
 export async function POST(req){
     const newUser = await req.json();
-    console.log(newUser.user_name,'REQ입니다.')
     const birth = newUser.birth || null;
     const data = await queryExecute('insert into user (user_id,user_pw,user_email,user_name,user_birth) values (?,?,?,?,?)', [newUser.id,newUser.pw,newUser.user_email,newUser.user_name,birth]);
     return NextResponse.json(data);
