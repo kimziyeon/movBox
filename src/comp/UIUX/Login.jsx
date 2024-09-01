@@ -1,17 +1,26 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../style/login.scss'
 import Link from 'next/link';
-function Login(props) {
+import { user } from '../store/user';
+function Login({router}) {
+    let { userTable,userData } = user();
+    useEffect(()=>{
+        userTable('get');
+        console.log(router,'라우터')
+    },[])
+    useEffect(()=>{
+        console.log(userData)
+    },[userData])
+
+
     let [findIdClick , setFindIdClick]=useState(true);
     const findId = ()=>{
         setFindIdClick(!findIdClick);
-        // console.log(findIdClick)
     }
     let [findPwClick , setFindPwClick]=useState(true);
     const findPw = ()=>{
         setFindPwClick(!findPwClick);
-        // console.log(findIdClick)
     }
     return (
         <div className='login'>

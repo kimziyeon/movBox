@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import Join from '../../../comp/UIUX/Join';
 
 function page(props) {

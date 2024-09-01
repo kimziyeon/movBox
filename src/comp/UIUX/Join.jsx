@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import '../style/join.scss'
 import Image from 'next/image';
 import Link from 'next/link';
+import { user } from '../store/user';
 
 function Join() {
+    let { userTable } = user();
     const fields = [
         { id: 'id', label: '아이디', placeholder: '필수 | 2자 이상, 6자 이내', hasButton: true },
-        { id: 'pw', label: '비밀번호', placeholder: '필수 | 2자 이상' },
+        { id: 'pw', label: '비밀번호', placeholder: '필수 | 6자 이상' },
         { id: 'user_name', label: '이름', placeholder: '필수 | 2자 이상' },
         { id: 'user_email', label: '이메일', placeholder: '필수 | abc@mail.com', hasButton: true },
         { id: 'birth', label: '생년월일', placeholder: '선택 | 19960105' },
@@ -55,7 +57,7 @@ function Join() {
         setValueCheck(checked);
         if(Object.values(checked).every(obj=>obj)){
             init();
-            console.log(inputValue);
+            userTable('post',inputValue)
             setSuccessJoin(true);
         } else{
             console.log('실패')

@@ -104,7 +104,7 @@
         margin:177px auto 0;
         .check{
             text-align: right;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             justify-content: start;
             align-items: center;
             gap:10px;
@@ -124,10 +124,21 @@
                 width:400px;
                 margin:0;
             }
+            .error{
+                order:3;
+                flex-basis: 100%;
+                text-align: left;
+                padding-left: 90px;
+                
+            }
+            +.check{
+                .error{
+                    padding-left: 90px;
+                }
+            }
         }
         >.btn{
             width:537px;
-            // max-width: 626px;
             margin:113px auto 0;
         }
     }
