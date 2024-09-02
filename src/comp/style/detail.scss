@@ -1,0 +1,159 @@
+.inner {
+    padding: 0 32px;
+}
+
+.detail_movie {
+    .poster {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -999;
+        overflow: hidden;
+
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+
+        }
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
+        z-index: 0;
+    }
+
+    .poster_pc {
+        display: none;
+    }
+
+    .inner {
+        position: absolute;
+        top: 15%;
+        left: 0;
+        right: 0;
+        z-index: 11;
+        color: #fff;
+
+        .txt_group {
+
+            .name {
+                font-size: 26px;
+            }
+
+            .sub_name {
+                font-size: 18px;
+                font-weight: 300;
+                margin: 5px 0 15px;
+            }
+
+            .txt_conts {
+                h4 {
+                    display: none;
+                }
+
+                .reserve_rate {
+                    display: none;
+
+                    h4 {}
+
+                    p {}
+                }
+
+                .grade {
+                    display: inline-block;
+                    background-color: var(--mov_pink);
+                    padding: 5px 12px;
+                    margin-right: 10px;
+                    border-radius: 5px;
+
+                    h4 {}
+
+                    .star_icon {
+                        vertical-align: bottom;
+                    }
+
+                    p {
+                        display: inline;
+                        font-weight: 300;
+                        margin-left: 5px;
+                    }
+                }
+
+                .audience {
+                    display: inline-block;
+                    background-color: #fff;
+                    padding: 5px 12px;
+                    border-radius: 5px;
+
+
+                    h4 {}
+
+                    .person_icon {
+                        vertical-align: bottom;
+                    }
+
+                    p {
+                        display: inline;
+                        color: var(--mov_black);
+                        font-weight: 300;
+                        margin-left: 5px;
+
+
+                        span {
+                            font-weight: 300;
+                        }
+                    }
+                }
+            }
+        }
+
+        .txt_group_detail {
+            margin-top: 30px;
+
+            .txt_conts_01 {
+                p {
+                    margin: 10px 0;
+
+                    span {}
+                }
+            }
+
+            .txt_conts_02 {
+
+
+                .txt_box_01 {
+
+
+                    p {
+                        font-weight: 300;
+
+                    }
+                }
+
+                .txt_box_02 {
+                    p {}
+                }
+            }
+        }
+
+        .btn {
+            margin-top: 30px;
+            color: #fff;
+
+            &:hover {
+                background-color: var(--mov_pink);
+            }
+        }
+    }
+
+}

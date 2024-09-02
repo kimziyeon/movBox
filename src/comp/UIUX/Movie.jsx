@@ -8,9 +8,11 @@ import { useStore2 } from '../store/movie_detail_store';
 import { useStore4 } from '../store/movie_poster';
 import { movie_server } from '../store/movie_server';
 import { format, subDays } from 'date-fns';
-import Image from 'next/image';
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useRouter } from 'next/navigation'
 import { Autoplay } from 'swiper/modules';
+import Link from 'next/link';
+import Image from 'next/image';
 import 'swiper/css';
 
 function Movie(props) {
@@ -18,8 +20,9 @@ function Movie(props) {
     let { getMovie } = movie_server();
     let { dataFetch2 } = useStore2();
     let { dataFetch4, posterUrl } = useStore4();
-    const [listBtn, setListBtn] = useState();
 
+    const [listBtn, setListBtn] = useState();
+    const [movCode, setMovCode] = useState();
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
@@ -29,7 +32,7 @@ function Movie(props) {
 
         dataFetch2();
     }, [])
-    // console.log(dailyBoxOffice)
+    // console.log(dailyBoxOffice, movieCode)
     useEffect(() => {
         dataFetch4(dailyBoxOffice, movieDate)
     }, [dailyBoxOffice])
@@ -39,6 +42,11 @@ function Movie(props) {
 
     const posterClick = (k) => {
         setListBtn(k)
+    }
+
+    const movieClick = (movieDate) => {
+        setMovCode()
+        console.log(movieDate)
     }
 
     return (
@@ -75,29 +83,40 @@ function Movie(props) {
                                     />
                                 </div>
 
-                                <div className="inner">
-                                    <div className="txt_group">
-                                        <h3 className="name">{dailyBoxOffice[k]}</h3>
-                                        <h3 className="sub_name">Avatar: The Way of Water</h3>
+                                <Link href={{
+                                    pathname: '/detail',
+                                    query: {
+                                        date: movieDate[k],
+                                        posterUrl: posterUrl[k]
+                                    }
 
-                                        <div className="txt_conts">
-                                            <div className='reserve_rate'>
-                                                <h4>예매율</h4>
-                                                <p>{dailyRank[k]}<span> st</span></p>
-                                            </div>
-                                            <div className='grade'>
-                                                <h4>평점</h4>
-                                                <Image src="/images/star_icon.svg" width={15} height={15} className="star_icon" />
-                                                <p>9.3</p>
-                                            </div>
-                                            <div className="audience">
-                                                <h4>누적관객(만)</h4>
-                                                <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" />
-                                                <p>547,000<span> +</span></p>
+                                }}
+                                    key={k}
+                                >
+                                    <div className="inner" onClick={() => { movieClick(k) }}>
+                                        <div className="txt_group">
+                                            <h3 className="name">{dailyBoxOffice[k]}</h3>
+                                            <h3 className="sub_name">Avatar: The Way of Water</h3>
+
+                                            <div className="txt_conts">
+                                                <div className='reserve_rate'>
+                                                    <h4>예매율</h4>
+                                                    <p>{dailyRank[k]}</p>
+                                                </div>
+                                                <div className='grade'>
+                                                    <h4>평점</h4>
+                                                    <Image src="/images/star_icon.svg" width={15} height={15} className="star_icon" alt='star_icon' />
+                                                    <p>9.3</p>
+                                                </div>
+                                                <div className="audience">
+                                                    <h4>누적관객(만)</h4>
+                                                    <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" alt='person_icon' />
+                                                    <p>547,000<span> +</span></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
 
                             </SwiperSlide>
                         ))
