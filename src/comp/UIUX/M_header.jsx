@@ -1,16 +1,22 @@
 "use client";
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import '../style/header.scss';
+import { loginStore } from '../store/login_store';
+
 function M_header(props) {
+    // const [isLogin, setIsLogin] = useState(sessionStorage.getItem('login'));
+    let { storegeFn,storege,isLogined } = loginStore();
+    console.log(isLogined)
 
     let [menuOn , setMenuOn] = useState(false);
     const menuClick = ()=>{
         setMenuOn(!menuOn)
     }
-    const pageMove = ()=>{
-        setMenuOn(false)
+
+    const logout = ()=>{
+        storegeFn('logout')
     }
 
     return (
@@ -24,7 +30,7 @@ function M_header(props) {
                         <Image src='/images/search_icon.png' alt='search' width={18} height={18}/>
                     </form>
                     <Link href="/reserve">Ticket</Link>
-                    <Link href="/login">Login</Link>
+                    <Link href={storege?"/":"/login"} onClick={logout}>{isLogined?'Logout':'Login'}</Link>
                     <Link href="/mypage">My page</Link>
                 </nav>
             </div>
@@ -41,9 +47,9 @@ function M_header(props) {
                     <p># 지연</p>
                 </div>
                 <div className='linked'>
-                    <Link href="/reserve" onClick={pageMove}>Ticket</Link>
-                    <Link href="/login" onClick={pageMove}>Login</Link>
-                    <Link href="/mypage" onClick={pageMove}>My page</Link>
+                    <Link href="/reserve" onClick={()=>setMenuOn(false)}>Ticket</Link>
+                    <Link href={storege?"/":"/login"} onClick={logout}>{isLogined?'Logout':'Login'}</Link>
+                    <Link href="/mypage" onClick={()=>setMenuOn(false)}>My page</Link>
                 </div>
             </div>
         </header>

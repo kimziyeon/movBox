@@ -3,19 +3,16 @@ import React, { useEffect, useState } from 'react';
 import '../style/login.scss'
 import Link from 'next/link';
 import { user } from '../store/user';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import { loginStore } from '../store/login_store';
 function Login() {
     let { userTable,userData } = user();
+    let { storegeFn } = loginStore();
     const router = useRouter();
     useEffect(()=>{
         userTable('get');
         
     },[])
-    
-    // useEffect(()=>{
-    //     console.log(userData)
-    // },[userData])
-
 
     let [findIdClick , setFindIdClick]=useState(true);
     const findId = ()=>{
@@ -38,15 +35,13 @@ function Login() {
                 console.log(idCheck)
                 if(idCheck[0].user_pw===userPw){
                     console.log('로그인성공');
-                    sessionStorage.setItem('login', JSON.stringify(idCheck));
+                    storegeFn('login',idCheck)
+                    // sessionStorage.setItem('login', JSON.stringify(idCheck));
                     router.push('/');
                 } else{
                     alert('아이디 또는 비밀번호를 확인해주세요')
                 }
             }
-        // const dataId = userData.map((obj)=>obj.user_id);
-        // const dataPw = userData.map((obj)=>obj.user_pw);
-        // console.log(dataId,dataPw)
         
     }
     return (
