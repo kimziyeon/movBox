@@ -4,7 +4,6 @@
 import "../style/main.scss";
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../store/movie_store';
-import { useStore2 } from '../store/movie_detail_store';
 import { useStore4 } from '../store/movie_poster';
 import { movie_server } from '../store/movie_server';
 import { format, subDays } from 'date-fns';
@@ -15,14 +14,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import 'swiper/css';
 
+//제목밑에 개봉일 , 상영시간 12세이용가
+
 function Movie(props) {
-    let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate } = useStore();
-    let { getMovie } = movie_server();
-    let { dataFetch2 } = useStore2();
-    let { dataFetch4, posterUrl } = useStore4();
+    let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate } = useStore(); // 박스오피스 영화 10개 가져오는 스토어
+    let { getMovie } = movie_server();  // 우리 자체 서버에 영화 담으려고 만든 스토어
+    let { dataFetch4, posterUrl } = useStore4();  // 포스터 URl 가져오는 스토어
 
     const [listBtn, setListBtn] = useState();
-    const [movCode, setMovCode] = useState();
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
@@ -30,7 +29,6 @@ function Movie(props) {
         dataFetch(yesterday)
         getMovie();
 
-        dataFetch2();
     }, [])
     // console.log(dailyBoxOffice, movieCode)
     useEffect(() => {
@@ -44,10 +42,7 @@ function Movie(props) {
         setListBtn(k)
     }
 
-    const movieClick = (movieDate) => {
-        setMovCode()
-        console.log(movieDate)
-    }
+
 
     return (
         <>
@@ -86,14 +81,14 @@ function Movie(props) {
                                 <Link href={{
                                     pathname: '/detail',
                                     query: {
-                                        date: movieDate[k],
-                                        posterUrl: posterUrl[k]
+                                        posterUrl: posterUrl[k],
+                                        movieCd: movieCode[k]
                                     }
 
                                 }}
                                     key={k}
                                 >
-                                    <div className="inner" onClick={() => { movieClick(k) }}>
+                                    <div className="inner">
                                         <div className="txt_group">
                                             <h3 className="name">{dailyBoxOffice[k]}</h3>
                                             <h3 className="sub_name">Avatar: The Way of Water</h3>
@@ -157,7 +152,20 @@ function Movie(props) {
                                                 alt="박스오피스 영화포스터" />
                                             <div className="rank">{k + 1}</div>
                                             <div className={`list_btn ${listBtn === k ? 'active' : ''}`}>
-                                                <div className="btn on mob ">상세보기</div>
+
+                                                <Link href={{
+                                                    pathname: '/detail',
+                                                    query: {
+                                                        posterUrl: posterUrl[k],
+                                                        movieCd: movieCode[k]
+                                                    }
+
+                                                }}
+                                                    key={k}
+                                                >
+                                                    <div className="btn on mob ">상세보기</div>
+                                                </Link>
+
                                                 <div className="btn on mob ">예매하기</div>
                                             </div>
                                         </li>

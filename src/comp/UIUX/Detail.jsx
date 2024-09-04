@@ -2,20 +2,40 @@
 
 "use client";
 import "../style/detail.scss";
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import { useEffect } from 'react';
+import { useSearchParams } from "next/navigation";
+import { useStore2 } from '../store/movie_detail_store';
+import { format, subDays } from 'date-fns';
 function Detail(props) {
+    const params = useSearchParams()
+    const date = params.get('date');
+    const posterUrl = params.get('posterUrl');
+    const movieCode = params.get('movieCd');
+    let { dataFetch2, detail } = useStore2();
+
+    useEffect(() => {
+        dataFetch2(movieCode)
+    }, [])  // []안에가 조건이다, 조건이 만족했을때 한번만 실행해줘
+    console.log(detail.MvName, 'detail')
+    if (detail.MvName === undefined) return;
+    const dateObject = new Date(
+        Number(detail.MvDate.slice(0, 4)), // 연도
+        Number(detail.MvDate.slice(4, 6)) - 1, // 월 (0부터 시작하므로 1을 빼줌)
+        Number(detail.MvDate.slice(6, 8)) // 일
+    );
+    const openDate = format(dateObject, 'yyyy.MM.dd');
+    // console.log(detail.MvDate.slice(4, 6) - 1, 'asdasdasdadadasdadas')
+    // console.log(detail.MvActor.slice(0, 3), 'dddd')
+    const mvactor = detail.MvActor.slice(0, 3).join(', ');
+
     return (
-        <>
-            <article className='detail_movie'>
-                {/* http://localhost:3000/detail?date=20240814 */}
-                {/* http://localhost:3000/detail?date=20240731&posterUrl=http%3A%2F%2Ffile.koreafilm.or.kr%2Fthm%2F02%2F99%2F18%2F41%2Ftn_DPK021958.jpg&daily=%ED%8C%8C%EC%9D%BC%EB%9F%BF */}
+        <article className="detail">
+            <div className='detail_movie'>
 
                 <div className="poster">
-                    <Image src="/images/아바타.jpg"
+                    <Image src={posterUrl}
                         width={1000} height={1500}
                         alt="아바타포스터"
                         priority />
@@ -23,7 +43,7 @@ function Detail(props) {
                 </div>
 
                 <div className="poster_pc">
-                    <Image src="/images/아바타.jpg"
+                    <Image src={posterUrl}
                         width={1000} height={1500}
                         alt="아바타포스터"
                     />
@@ -31,31 +51,32 @@ function Detail(props) {
 
                 <div className="inner">
                     <div className="txt_group">
-                        <h3 className="name">아바타: 물의 길</h3>
-                        <h3 className="sub_name">Avatar: The Way of Water</h3>
+                        <h3 className="name">{detail.MvName}</h3>
+                        <h3 className="sub_name">{detail.MvEnName}</h3>
                     </div>
 
                     <div className="txt_group_detail">
                         <div className='txt_conts_01'>
                             <p className="genres">
-                                <span>액션</span>
-                                <span>어드벤쳐</span>
-                                <span>SF</span>
-                                <span>스릴러</span>
+                                {
+                                    detail.genre.map((obj, k) => (
+                                        <span key={k}>{obj.genreNm}</span>
+                                    ))
+                                }
                             </p>
                         </div>
                         <div className='txt_conts_02'>
-                            <p><span>2022.12.14</span> 개봉</p>
-                            <p><span>192</span> 분</p>
-                            <p><span>12세</span> 이상</p>
+                            <p><span>{openDate}</span> 개봉</p>
+                            <p><span>{detail.MvTime}</span> 분</p>
+                            <p>{detail.MvAge}</p> {/* 관람과 앞에 띄어쓰기 */}
                         </div>
                         <div className='txt_conts_03'>
                             <p className='txt_1'>출연</p>
-                            <p className='txt_2'>샐다나, 샘 워싱턴,  스티븐 랭, 케미트 윈슬렛, 시고니 위버</p>
+                            <p className='txt_2'>{mvactor}</p>
                             <p className='txt_3'>감독</p>
-                            <p className='txt_4'>제임스 카메론</p>
+                            <p className='txt_4'>{detail.MvDirector}</p>
                             <p className='txt_5'>제작사</p>
-                            <p className='txt_6'>월트디즈니컴퍼니코리마 유한책임회사</p>
+                            <p className='txt_6'>{detail.MvComp}</p>
                         </div>
 
                     </div>
@@ -66,8 +87,8 @@ function Detail(props) {
 
 
 
-            </article>
-        </>
+            </div>
+        </article>
     );
 }
 

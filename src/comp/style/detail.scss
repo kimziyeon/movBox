@@ -2,10 +2,8 @@
     padding: 0 32px;
 }
 
-footer {
-    position: absolute;
-    bottom: -10%;
-    left: 0;
+.detail {
+    height: 80vh;
 }
 
 .detail_movie {
@@ -144,6 +142,9 @@ footer {
 }
 
 @media screen and (min-width : 768px) {
+
+
+
     .detail_movie {
         .poster {
             img {
@@ -154,10 +155,8 @@ footer {
         }
     }
 
-    footer {
-        bottom: 0;
-    }
 }
+
 
 @media screen and (min-width : 1024px) {
 
@@ -165,6 +164,9 @@ footer {
         padding: 0;
     }
 
+    .detail {
+        height: 100vh;
+    }
 
     .detail_movie {
         position: absolute;
@@ -252,7 +254,5 @@ footer {
         }
     }
 
-    footer {
-        bottom: -25%;
-    }
+
 }
