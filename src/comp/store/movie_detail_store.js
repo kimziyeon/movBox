@@ -29,17 +29,15 @@ export const useStore2 = create((set) => ({
             // let movie_name=res.map((item)=>(item.movieNm));
             set({
                 detail: {
-                    MvName: detailMv.movieNm,
-                    MvEnName: detailMv.movieNmEn,
-                    genre: detailMv.genres,
-                    MvDate: detailMv.openDt,
-                    MvTime: detailMv.showTm,
+                    MvName: detailMv.movieNm || '',
+                    MvEnName: detailMv.movieNmEn || '',
+                    genre: detailMv.genres || '',
+                    MvDate: detailMv.openDt || '',
+                    MvTime: detailMv.showTm || '',
                     MvAge: detailMv.audits[0].watchGradeNm,
-                    MvActor: detailMv.actors.map((obj) => (
-                        obj.peopleNm
-                    )),
-                    MvDirector: detailMv.directors[0].peopleNm,
-                    MvComp: detailMv.companys[0].companyNm
+                    MvActor: detailMv.actors?.map((obj) => obj.peopleNm) || '',
+                    MvDirector: detailMv.directors?.[0]?.peopleNm || '',
+                    MvComp: detailMv.companys[0].companyNm || ''
                 }
                 // detail.MvName : detailMv.movieNm
                 // dailyBoxOffice : movie_name,

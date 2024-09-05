@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useSearchParams } from "next/navigation";
 import { useStore2 } from '../store/movie_detail_store';
 import { format, subDays } from 'date-fns';
+
 function Detail(props) {
     const params = useSearchParams()
     const date = params.get('date');
@@ -20,15 +21,18 @@ function Detail(props) {
     }, [])  // []안에가 조건이다, 조건이 만족했을때 한번만 실행해줘
     console.log(detail.MvName, 'detail')
     if (detail.MvName === undefined) return;
+
     const dateObject = new Date(
         Number(detail.MvDate.slice(0, 4)), // 연도
         Number(detail.MvDate.slice(4, 6)) - 1, // 월 (0부터 시작하므로 1을 빼줌)
         Number(detail.MvDate.slice(6, 8)) // 일
     );
     const openDate = format(dateObject, 'yyyy.MM.dd');
-    // console.log(detail.MvDate.slice(4, 6) - 1, 'asdasdasdadadasdadas')
     // console.log(detail.MvActor.slice(0, 3), 'dddd')
-    const mvactor = detail.MvActor.slice(0, 3).join(', ');
+
+    const mvActor = detail.MvActor.slice(0, 3).join(', ');
+    const mvAgeView = detail.MvAge.replace('관람', ' 관람');
+    console.log(detail, 'd1234r5')
 
     return (
         <article className="detail">
@@ -68,11 +72,11 @@ function Detail(props) {
                         <div className='txt_conts_02'>
                             <p><span>{openDate}</span> 개봉</p>
                             <p><span>{detail.MvTime}</span> 분</p>
-                            <p>{detail.MvAge}</p> {/* 관람과 앞에 띄어쓰기 */}
+                            <p>{mvAgeView}</p>
                         </div>
                         <div className='txt_conts_03'>
                             <p className='txt_1'>출연</p>
-                            <p className='txt_2'>{mvactor}</p>
+                            <p className='txt_2'>{mvActor}</p>
                             <p className='txt_3'>감독</p>
                             <p className='txt_4'>{detail.MvDirector}</p>
                             <p className='txt_5'>제작사</p>

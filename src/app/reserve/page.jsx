@@ -1,9 +1,14 @@
+'use client';
+import Reserve from '../../comp/UIUX/Reserve';
 import React from 'react';
 
 function page(props) {
     return (
         <div>
-            예매페이지
+            <Reserve />
+            {/* < 좌석/> */}
+            {/* < 예매완료/> */}
+
         </div>
     );
 }

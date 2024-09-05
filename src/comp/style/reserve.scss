@@ -1,0 +1,169 @@
+.inner {
+    padding: 0 32px;
+}
+
+.reserve {
+    padding-top: 80px;
+    max-width: 600px;
+    margin: 0 auto;
+
+    .user_selected {
+        width: 200px;
+        height: 220px;
+        margin: 0 auto;
+        text-align: center;
+        align-content: center;
+
+        div {
+            align-content: center;
+            padding: 10px 0;
+            margin: 5px 0;
+        }
+
+        .user_mv {
+            font-size: 24px;
+        }
+
+        .user_date {
+            font-size: 14px;
+            font-weight: 300;
+            border: 1px solid #fff;
+            border-radius: 5px;
+        }
+
+        .user_time {
+            font-size: 20px;
+            font-weight: 300;
+            display: none;
+        }
+    }
+
+    .list_box {
+
+        p {
+            width: 100%;
+            height: 60px;
+            background-color: var(--mov_deep_gray);
+            text-align: center;
+            align-content: center;
+            margin: 1px 0;
+            cursor: pointer;
+        }
+
+        .list_mv {}
+
+        .list_date {
+            display: none;
+
+        }
+
+        .list_time {
+            display: none;
+        }
+
+
+    }
+
+    .btn {
+        width: 280px;
+        margin: 50px auto;
+    }
+}
+
+@media screen and (min-width : 768px) {
+    .reserve {
+        overflow: hidden;
+
+        .user_selected {
+            .user_mv {}
+
+            .user_date {}
+
+            .user_time {}
+        }
+
+        .list_box {
+            display: flex;
+            gap: 30px;
+            transform: translateX(21%);
+            // transform: translateX(-42%);
+            // transform: translateX(-106%);
+
+
+            p {
+                width: 310px;
+            }
+
+            .list_mv {
+                display: block;
+            }
+
+            .list_date {
+                display: block;
+            }
+
+            .list_time {
+                display: block;
+
+            }
+        }
+
+        .btn {
+            width: 310px;
+
+        }
+    }
+}
+
+@media screen and (min-width : 1024px) {
+
+
+    .inner {
+        padding: 0;
+    }
+
+    .reserve {
+        padding-top: 0;
+        max-width: 100%;
+
+        .user_selected {
+            .user_mv {}
+
+            .user_date {}
+
+            .user_time {}
+        }
+
+        .list_box {
+            transform: none;
+            justify-content: center;
+
+
+            p {}
+
+            .list_mv {
+                height: 500px;
+                overflow-y: scroll;
+            }
+
+
+            ::-webkit-scrollbar {
+                width: 3px;
+                background: var(--mov_pink);
+                border-radius: 3px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: #fff;
+                border: 3px solid #fff;
+                border-radius: 6px;
+            }
+
+            .list_date {}
+
+            .list_time {}
+        }
+
+        .btn {}
+    }
+}
