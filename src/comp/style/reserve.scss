@@ -8,8 +8,8 @@
     margin: 0 auto;
 
     .user_selected {
-        width: 200px;
-        height: 220px;
+        width: 100%;
+        height: 230px;
         margin: 0 auto;
         text-align: center;
         align-content: center;
@@ -25,6 +25,9 @@
         }
 
         .user_date {
+            max-width: 250px;
+            width: 60%;
+            margin: 0 auto;
             font-size: 14px;
             font-weight: 300;
             border: 1px solid #fff;
@@ -34,7 +37,6 @@
         .user_time {
             font-size: 20px;
             font-weight: 300;
-            display: none;
         }
     }
 
@@ -75,42 +77,56 @@
         overflow: hidden;
 
         .user_selected {
-            .user_mv {}
+            .user_mv {
+                font-size: 40px;
+            }
 
-            .user_date {}
+            .user_date {
+                width: 100%;
+                font-size: 20px;
+            }
 
-            .user_time {}
+            .user_time {
+                font-size: 30px;
+            }
         }
 
         .list_box {
             display: flex;
-            gap: 30px;
-            transform: translateX(21%);
-            // transform: translateX(-42%);
-            // transform: translateX(-106%);
-
-
-            p {
-                width: 310px;
-            }
+            gap: 20px;
+            transform: translateX(19%);
+            // transform: translateX(-38%%);
+            // transform: translateX(-88%);
 
             .list_mv {
                 display: block;
+
+                p {
+                    width: 330px;
+                }
             }
 
             .list_date {
                 display: block;
+
+                p {
+                    width: 250px;
+                }
             }
 
             .list_time {
                 display: block;
 
+                p {
+                    width: 250px;
+                }
+
             }
         }
 
         .btn {
-            width: 310px;
-
+            width: 400px;
+            height: 52px;
         }
     }
 }
@@ -142,8 +158,11 @@
             p {}
 
             .list_mv {
+                p {}
+
                 height: 500px;
                 overflow-y: scroll;
+                overflow-x: hidden;
             }
 
 

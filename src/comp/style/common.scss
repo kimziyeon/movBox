@@ -33,11 +33,13 @@ body {
     justify-content: center;
     color: var(--mov_gray);
     font-size: 20px;
+
 }
 
 .btn.on {
     background-color: var(--mov_pink);
     color: #fff;
+    cursor: pointer;
 }
 
 .btn.mob {
