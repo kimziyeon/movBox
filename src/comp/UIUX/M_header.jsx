@@ -4,11 +4,8 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import '../style/header.scss';
 import { loginStore } from '../store/login_store';
-
 function M_header(props) {
-    // const [isLogin, setIsLogin] = useState(sessionStorage.getItem('login'));
     let { storegeFn, storege, isLogined } = loginStore();
-    console.log(isLogined)
 
     let [menuOn, setMenuOn] = useState(false);
     const menuClick = () => {
@@ -18,6 +15,8 @@ function M_header(props) {
     const logout = () => {
         storegeFn('logout')
     }
+
+
 
     return (
         <header className={menuOn ? 'on' : ''}>
@@ -31,7 +30,7 @@ function M_header(props) {
                     </form>
                     <Link href="/reserve">Ticket</Link>
                     <Link href={isLogined ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
-                    <Link href="/mypage">My page</Link>
+                    <Link href={isLogined ? "/mypage" : "/login"}>My page</Link>
                 </nav>
             </div>
             <div className={menuOn ? 'sub_menu on' : 'sub_menu'}>
