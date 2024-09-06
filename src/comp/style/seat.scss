@@ -37,6 +37,10 @@
 
     }
 
+    .poster_pc {
+        display: none;
+    }
+
 
 
     .seat_box {
@@ -203,11 +207,7 @@
             }
 
             .inner {
-                .screen {
-                    >div {
-                        font-size: 30px;
-                    }
-                }
+                .screen {}
 
                 .seat_list {
                     .row {
@@ -256,13 +256,61 @@
 
         .poster {}
 
+        .poster_pc {
+            display: block;
+            position: absolute;
+            top: 18%;
+            left: 13%;
+            z-index: 2;
+
+
+            img {
+                width: 40%;
+                height: auto;
+            }
+        }
+
+        .seat_box_back {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 75%;
+            height: 100%;
+            background-color: var(--mov_black);
+        }
 
         .seat_box {
+            width: auto;
+            top: 15%;
+            left: 50%;
+            transform: none;
+
+
+            .user_selected {
+                .user_mv {
+                    font-size: 30px;
+                }
+
+                .user_date {
+                    font-size: 14px;
+                }
+
+                .user_time {}
+            }
+
             .inner {
-                .screen {}
+                margin: 0;
+                background-color: transparent;
+                padding: 0;
+
+                .screen {
+                    max-width: 400px;
+                }
 
                 .seat_list {
                     .row {
+                        gap: 15px;
+
                         .list {}
 
                         .list_num {}
@@ -272,6 +320,8 @@
                 }
 
                 .seat_info {
+                    margin: 30px 0 40px;
+
                     p {
                         span {}
                     }

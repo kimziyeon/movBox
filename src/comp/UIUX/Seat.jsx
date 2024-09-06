@@ -20,6 +20,15 @@ function Seat() {
                         <div className="overlay"></div>
                     </div>
 
+                    <div className="poster_pc">
+                        <Image src="/images/아바타.jpg"
+                            width={1000} height={1500}
+                            alt="아바타포스터"
+                        />
+                    </div>
+
+                    <div className='seat_box_back'></div>
+
                     <div className='seat_box'>
                         <div className='user_selected'>
                             <div className='user_mv'>아바타: 물의 길</div>
