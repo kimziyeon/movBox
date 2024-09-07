@@ -67,14 +67,6 @@ main {
                     }
 
                     .reserve_rate {
-                        display: none;
-
-                        h4 {}
-
-                        p {}
-                    }
-
-                    .grade {
                         display: inline-block;
                         background-color: var(--mov_pink);
                         padding: 5px 12px;
@@ -91,7 +83,15 @@ main {
                             display: inline;
                             font-weight: 300;
                             margin-left: 5px;
+
+                            span {
+                                display: none;
+                            }
                         }
+                    }
+
+                    .open {
+                        display: none;
                     }
 
                     .audience {
@@ -411,7 +411,8 @@ main {
                         }
 
                         .reserve_rate {
-                            display: block;
+                            background-color: transparent;
+
 
                             h4 {}
 
@@ -419,10 +420,21 @@ main {
                                 text-align: center;
                                 font-family: "Noto Serif KR", serif;
                                 font-size: 45px;
+
+                                span {
+                                    display: inline-block;
+                                    font-size: 20px;
+                                    font-weight: 300;
+                                }
+                            }
+
+                            >img {
+                                display: none;
                             }
                         }
 
-                        .grade {
+                        .open {
+                            display: block;
                             background-color: transparent;
 
                             h4 {}
@@ -433,6 +445,7 @@ main {
                                 margin: 0;
                                 font-family: "Noto Serif KR", serif;
                                 font-size: 45px;
+                                font-weight: 300;
                             }
 
                             >img {

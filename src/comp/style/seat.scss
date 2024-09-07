@@ -259,9 +259,10 @@
         .poster_pc {
             display: block;
             position: absolute;
-            top: 18%;
+            top: 54%;
             left: 13%;
-            z-index: 2;
+            z-index: -1;
+            transform: translateY(-50%);
 
 
             img {
@@ -274,6 +275,7 @@
             position: absolute;
             top: 0;
             right: 0;
+            z-index: -2;
             width: 75%;
             height: 100%;
             background-color: var(--mov_black);
@@ -281,7 +283,7 @@
 
         .seat_box {
             width: auto;
-            top: 15%;
+            top: 16%;
             left: 50%;
             transform: none;
 

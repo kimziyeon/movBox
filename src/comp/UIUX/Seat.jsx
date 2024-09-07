@@ -23,6 +23,7 @@ function Seat() {
                     <div className="poster_pc">
                         <Image src="/images/아바타.jpg"
                             width={1000} height={1500}
+                            priority
                             alt="아바타포스터"
                         />
                     </div>

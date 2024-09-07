@@ -14,10 +14,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import 'swiper/css';
 
-//제목밑에 개봉일 , 상영시간 12세이용가
-
 function Movie(props) {
-    let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate } = useStore(); // 박스오피스 영화 10개 가져오는 스토어
+    let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate, movieAcc } = useStore(); // 박스오피스 영화 10개 가져오는 스토어
     let { getMovie } = movie_server();  // 우리 자체 서버에 영화 담으려고 만든 스토어
     let { dataFetch4, posterUrl } = useStore4();  // 포스터 URl 가져오는 스토어
 
@@ -30,7 +28,7 @@ function Movie(props) {
         getMovie();
 
     }, [])
-    // console.log(dailyBoxOffice, movieCode)
+    // console.log(dailyBoxOffice, movieCode, movieAcc)
     useEffect(() => {
         dataFetch4(dailyBoxOffice, movieDate)
     }, [dailyBoxOffice])
@@ -96,17 +94,19 @@ function Movie(props) {
                                             <div className="txt_conts">
                                                 <div className='reserve_rate'>
                                                     <h4>예매율</h4>
-                                                    <p>{dailyRank[k]}</p>
-                                                </div>
-                                                <div className='grade'>
-                                                    <h4>평점</h4>
                                                     <Image src="/images/star_icon.svg" width={15} height={15} className="star_icon" alt='star_icon' />
-                                                    <p>9.3</p>
+                                                    <p>{dailyRank[k]}<span> 위</span></p>
                                                 </div>
+
                                                 <div className="audience">
-                                                    <h4>누적관객(만)</h4>
+                                                    <h4>누적관객수</h4>
                                                     <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" alt='person_icon' />
-                                                    <p>547,000<span> +</span></p>
+                                                    <p>{movieAcc[k]}<span> +</span></p>
+                                                </div>
+                                                <div className='open'>
+                                                    <h4>개봉일</h4>
+
+                                                    <p>{movieDate[k]}</p>
                                                 </div>
                                             </div>
                                         </div>
