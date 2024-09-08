@@ -20,7 +20,7 @@ function M_header(props) {
 
     return (
         <header className={menuOn ? 'on' : ''}>
-            <h1 className='Logo'><Link href='/'><Image src='/images/logo.png' alt='logo' width={153} height={30} />Mov_logo</Link></h1>
+            <h1 className='Logo'><Link href='/'><Image src='/images/logo.svg' alt='logo' width={153} height={30} />Mov_logo</Link></h1>
             <div className={menuOn ? "menu_btn on" : "menu_btn"} onClick={menuClick}><span>menu</span></div>
             <div className='menu'>
                 <nav>
