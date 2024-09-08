@@ -1,12 +1,14 @@
 import React from 'react';
 import '../style/mypage.scss'
 import Image from 'next/image';
-function Mypage(props) {
-
+function Mypage({setSettingClick}) {
+    const settingLink = ()=>{
+        setSettingClick(true)
+    }
     //로고 svg로 바꾸기, 마이페이지 css작업하기, 
     return (
         <div className='mypage'>
-            <h2>마이페이지<Image src='/images/setting.png' width={30} height={30} alt='setting_icon' /></h2>
+            <h2>마이페이지<Image src='/images/setting.png' width={30} height={30} alt='setting_icon' onClick={settingLink} /></h2>
             <div className='ticket on'>
                 <div className='movie_info'>
                     <p className='ticket_num'>240901-0000-0000</p>
