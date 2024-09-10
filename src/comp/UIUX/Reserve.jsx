@@ -1,12 +1,33 @@
 //예매페이지(ticket)
 
 "use client";
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useStore } from '../store/movie_store';
+import { useSearchParams } from "next/navigation";
 import "../style/reserve.scss";
 import Link from 'next/link';
 import Image from 'next/image';
 
 function Reserve(props) {
+    let { dataFetch, dailyBoxOffice, movieCode } = useStore(); // 박스오피스 영화 10개 가져오는 스토어
+    const params = useSearchParams()
+    const UsermovieCode = params.get('movieCd');
+
+    console.log(UsermovieCode, 'mmmmmmmmmmmovieCode')
+    // console.log(dailyBoxOffice, movieCode)
+
+    const ticketMvList = dailyBoxOffice.map((mvTitle, id) => {
+        return { mvTitle, mvCode: movieCode[id] };
+    })
+    // console.log(ticketMvList)
+
+    const userMvSelect = (k, mvTitle) => {
+        console.log(k, mvTitle)
+    }
+
+    // useEffect(() => {
+    //     dataFetch(dailyBoxOffice, movieCode)
+    // }, [])
 
     return (
         <>
@@ -20,16 +41,14 @@ function Reserve(props) {
 
                     <div className='list_box'>
                         <div className='list_mv'>
-                            <p >안녕, 할부지</p>
-                            <p>비틀쥬스 비틀쥬스</p>
-                            <p>에이리언: 로물루스</p>
-                            <p>파일럿</p>
-                            <p>임영웅│아임 히어로 더 스타디움</p>
-                            <p>소년시절의 너</p>
-                            <p>트위스터스</p>
-                            <p>레드불 T1 다큐멘터리 : 함께 날아오르다</p>
-                            <p>빅토리</p>
-                            <p>늘봄가든</p>
+                            {
+                                ticketMvList.map((obj, k) => (
+                                    <p key={k} onClick={() => { userMvSelect(k, obj.mvTitle) }}>
+                                        {obj.mvTitle}
+                                    </p>
+                                ))
+                            }
+
                         </div>
                         <div className='list_date'>
                             <p>08월 14일</p>

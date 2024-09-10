@@ -32,7 +32,7 @@ function Detail(props) {
 
     const mvActor = detail.MvActor.slice(0, 3).join(', ');
     const mvAgeView = detail.MvAge.replace('관람', ' 관람');
-    console.log(detail, 'd1234r5')
+    // console.log(detail, 'd1234r5')
 
     return (
         <article className="detail">
@@ -85,7 +85,13 @@ function Detail(props) {
 
                     </div>
 
-                    <Link href='reserve'><div className='btn on mob'>예매하기</div></Link>
+                    <Link href={{
+                        pathname: '/reserve',
+                        query: {
+                            movieCd: movieCode
+                        }
+                    }}
+                    ><div className='btn on mob'>예매하기</div></Link>
 
                 </div>
 

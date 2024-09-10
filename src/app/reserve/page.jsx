@@ -8,9 +8,9 @@ import React from 'react';
 function page(props) {
     return (
         <div>
-            {/* <Reserve /> */}
+            <Reserve />
             {/* <Seat /> */}
-            <Complete />
+            {/* <Complete /> */}
         </div>
     );
 }

@@ -50,6 +50,11 @@
             align-content: center;
             margin: 1px 0;
             cursor: pointer;
+
+            // & .active {
+            //     background-color: #fff;
+            //     color: var(--mov_black);
+            // }
         }
 
         .list_mv {}

@@ -166,7 +166,14 @@ function Movie(props) {
                                                     <div className="btn on mob ">상세보기</div>
                                                 </Link>
 
-                                                <div className="btn on mob ">예매하기</div>
+                                                <Link href={{
+                                                    pathname: '/reserve',
+                                                    query: {
+                                                        movieCd: movieCode[k],
+                                                    }
+                                                }}>
+                                                    <div className="btn on mob ">예매하기</div>
+                                                </Link>
                                             </div>
                                         </li>
                                     </SwiperSlide>
