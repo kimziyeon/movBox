@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import "../style/reserve.scss";
 import Link from 'next/link';
 import Image from 'next/image';
+import { format, subDays } from 'date-fns';
 
 function Reserve(props) {
     let { dataFetch, dailyBoxOffice, movieCode } = useStore(); // 박스오피스 영화 10개 가져오는 스토어
@@ -25,9 +26,11 @@ function Reserve(props) {
         console.log(k, mvTitle)
     }
 
-    // useEffect(() => {
-    //     dataFetch(dailyBoxOffice, movieCode)
-    // }, [])
+    let today = new Date();
+    let yesterday = format(subDays(today, 1), "yyyyMMdd")
+    useEffect(() => {
+        dataFetch(yesterday)
+    }, [])
 
     return (
         <>
