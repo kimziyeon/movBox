@@ -13,6 +13,7 @@ import { Autoplay } from 'swiper/modules';
 import Link from 'next/link';
 import Image from 'next/image';
 import 'swiper/css';
+import axios from 'axios';
 
 function Movie(props) {
     let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate, movieAcc } = useStore(); // 박스오피스 영화 10개 가져오는 스토어
@@ -23,25 +24,38 @@ function Movie(props) {
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
+    const youtubeMv = dailyBoxOffice.slice(0,3);
+    // console.log(youtubeID)
+    
+    let [youtubeID,setYoutubeID] = useState();
     useEffect(() => {
         dataFetch(yesterday)
         getMovie();
-
     }, [])
     // console.log(dailyBoxOffice, movieCode, movieAcc)
     useEffect(() => {
         dataFetch4(dailyBoxOffice, movieDate)
+        // youtubeMv.forEach((movie)=>{
+        //     axios.get(
+        //         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${movie} 예고편&type=video&key=AIzaSyD8Kj9MiGCaOF-6YkWkkLZmBhXxGGZSK2g`
+        //     )
+        //     .then((res) => {
+        //         setYoutubeID(res.data.items[0].id.videoId);
+        //     })
+        //     .catch((err) => {
+        //         console.error(`Error fetching trailer for ${movie}: `, err);
+        //       });
+        // })
     }, [dailyBoxOffice])
     // console.log(posterUrl);
 
     if (dailyBoxOffice.length === 0 && posterUrl.length === 0) return;
-
     const posterClick = (k) => {
         setListBtn(k)
     }
 
-
-
+    
+    // console.log(youtubeID)
     return (
         <>
             <article className='main_movie'>
@@ -211,7 +225,8 @@ function Movie(props) {
                             <SwiperSlide>
                                 <li>
                                     <div className="slide">
-                                        <div className="slide_box">
+
+                                        {/* <div className="slide_box">
                                             <Image src="/images/inside.png"
                                                 width={200}
                                                 height={150}
@@ -225,7 +240,7 @@ function Movie(props) {
                                                 height={100}
                                                 alt="play icon"
                                             />
-                                        </div>
+                                        </div> */}
                                         <p className="slide_title">
                                             &#91;인사이드 아웃 2&#93; 파이널 예고편
                                         </p>
