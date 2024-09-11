@@ -88,9 +88,12 @@ function Join() {
                 alert('중복된 아이디 입니다.')
             } else if (inputValue.id === '') {
                 alert('아이디를 입력해주세요')
+            } else if(inputValue.id.length<2){
+                alert('2자 이상 입력해주세요')
             } else {
                 alert('사용가능한 아이디 입니다.')
-            }
+            } 
+            
         } else if (k === 3) {
             console.log(inputValue.user_email)
             if (inputValue.user_email === '') {
@@ -99,18 +102,6 @@ function Join() {
                 alert('중복된 이메일 입니다.')
             }
         }
-        // if (idChecked.length !== 0) {
-        //     alert('중복된 아이디 입니다.')
-        // }
-        // if (inputValue.id === '') {
-        //     alert('아이디를 입력해주세요')
-        // }
-        // if (inputValue.email === '') {
-        //     alert('이메일을 입력해주세요')
-        // }
-        // if (emailChecked !== 0) {
-        //     alert('중복된 이메일 입니다.')
-        // }
     }
 
     return (
