@@ -25,12 +25,15 @@ function Reserve(props) {
     const userMvSelect = (k, mvTitle) => {
         console.log(k, mvTitle)
     }
-
-    let today = new Date(); //여기추가
-    let yesterday = format(subDays(today, 1), "yyyyMMdd") //여기추가
+    let fnsDate = new Date(); //여기추가
+    const today = format(fnsDate,'yyyy년MM월dd일')
+    
+    let yesterday = format(subDays(fnsDate, 1), "yyyyMMdd") //여기추가
     useEffect(() => {
         dataFetch(yesterday) //여기추가
     }, [])
+
+    //날짜는 내가 받아왔구 영화이름이나 이런건 userMvSelect 함수에서 가져온 mvTitle이용해서 영화제목 가져오면 될듯합니다?
 
     return (
         <>
@@ -38,7 +41,7 @@ function Reserve(props) {
                 <div className='inner'>
                     <div className='user_selected'>
                         <div className='user_mv'>아바타: 물의 길</div>
-                        <div className='user_date'>2024년 8월 15일</div>
+                        <div className='user_date'>{today}</div>
                         <div className='user_time'>20 : 50 ~</div>
                     </div>
 
