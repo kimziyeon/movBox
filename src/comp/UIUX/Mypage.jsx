@@ -8,7 +8,7 @@ function Mypage({setSettingClick}) {
     return (
         <div className='mypage'>
             <h2>마이페이지<Image src='/images/setting.png' width={30} height={30} alt='setting_icon' onClick={()=>{setSettingClick(true)}} /></h2>
-            <div className='ticket on'>
+            <div className='ticket'>
                 <div className='movie_info'>
                     <p className='ticket_num'>240901-0000-0000</p>
                     <h3 className='title_ko'>아바타 : 물의길</h3>
@@ -22,7 +22,7 @@ function Mypage({setSettingClick}) {
                 <p className='notify'>영화 상영시작시간 15분 전까지 취소가 가능하며 캡쳐화면은 입장이 제한될 수 있습니다.</p>
             </div>
 
-            <div className='no_ticket'>
+            <div className='no_ticket on'>
                 <Image Image src='/images/o-o.png' width={200} height={70} alt='oops_img' />
                 <p>예매된 티켓이 없습니다.</p>
             </div>

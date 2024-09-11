@@ -13,6 +13,7 @@ export const user = create((set)=>({
                 case 'get': req = await request.get('/');
                     break;
                 case 'post' : await request.post('/',data)
+                case 'delete' : await console.log('delete')
             }
             
             set({
