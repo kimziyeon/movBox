@@ -48,7 +48,7 @@ function M_header(props) {
                 <div className='linked'>
                     <Link href="/reserve" onClick={() => setMenuOn(false)}>Ticket</Link>
                     <Link href={storege ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
-                    <Link href="/mypage" onClick={() => setMenuOn(false)}>My page</Link>
+                    <Link href={isLogined ? "/mypage" : "/login"} onClick={() => setMenuOn(false)}>My page</Link>
                 </div>
             </div>
         </header>
