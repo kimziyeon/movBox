@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import "../style/reserve.scss";
 import { format, subDays } from 'date-fns';
 
-function Reserve({ props }) {
+function Reserve({ moveNext }) {
     let { dataFetch, dailyBoxOffice, movieCode } = useStore();
     const params = useSearchParams()
     const usermovieCode = params.get('movieCd');
@@ -60,8 +60,8 @@ function Reserve({ props }) {
         setTimeEl(time)
     }
 
-    //선택완료버튼
-    const selectOK = () => {
+    //다음버튼
+    const afterBtn = () => {
         if (screenWidth > 1024) { //1024이상 한번에 선택
             if (!mvElTitle) {
                 alert('영화를 선택해주세요');
@@ -81,6 +81,7 @@ function Reserve({ props }) {
                 time: timeEl,
             });
             console.log(mvElTitle, dateEl, timeEl, '유저선택완료');
+            moveNext();
         }
         else if (ingStep === 'movie') {
             if (!mvElTitle) {
@@ -111,8 +112,28 @@ function Reserve({ props }) {
                 time: timeEl,
             });
             console.log(mvElTitle, dateEl, timeEl, '유저선택완료');
+            moveNext();
         }
 
+    }
+
+    //이전버튼
+    const beforeBtn = () => {
+        if (screenWidth >= 768 && screenWidth <= 1024) {
+            if (ingStep === 'time') {
+                setIngStep('date')
+                setSlideClass('slide_date_back')
+            } else if (ingStep === 'date') {
+                setIngStep('movie')
+                setSlideClass('slide_movie_back')
+            }
+        } else if (screenWidth < 768) {
+            if (ingStep === 'time') {
+                setIngStep('date')
+            } else if (ingStep === 'date') {
+                setIngStep('movie')
+            }
+        }
     }
 
     let fnsDate = new Date();
@@ -187,9 +208,18 @@ function Reserve({ props }) {
                         </div>
                     </div>
 
-                    <div className="btn mob on"
-                        onClick={selectOK}
-                    >선택 완료</div>
+                    <div className='btn_group'>
+                        <div className='btn mob before'
+                            onClick={beforeBtn}>
+                            이전
+                        </div>
+
+                        <div className="btn mob on after"
+                            onClick={afterBtn}>
+                            다음
+                        </div>
+                    </div>
+
                 </div>
             </article>
         </>

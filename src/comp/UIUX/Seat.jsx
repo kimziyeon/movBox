@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import "../style/seat.scss";
 import Image from 'next/image';
 
-function Seat() {
+function Seat({ moveNext }) {
 
     return (
         <>

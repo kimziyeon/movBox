@@ -1,0 +1,13 @@
+.container {
+    width: 100%;
+    overflow: hidden;
+
+    .container_inner {
+        display: flex;
+
+        .reserve_page {
+            width: 100%;
+            flex-shrink: 0;
+        }
+    }
+}
