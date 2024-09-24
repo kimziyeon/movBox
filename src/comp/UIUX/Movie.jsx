@@ -24,10 +24,10 @@ function Movie(props) {
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
-    const youtubeMv = dailyBoxOffice.slice(0,3);
+    const youtubeMv = dailyBoxOffice.slice(0, 3);
     // console.log(youtubeID)
-    
-    let [youtubeID,setYoutubeID] = useState();
+
+    let [youtubeID, setYoutubeID] = useState();
     useEffect(() => {
         dataFetch(yesterday)
         getMovie();
@@ -54,7 +54,7 @@ function Movie(props) {
         setListBtn(k)
     }
 
-    
+
     // console.log(youtubeID)
     return (
         <>
@@ -103,7 +103,7 @@ function Movie(props) {
                                     <div className="inner">
                                         <div className="txt_group">
                                             <h3 className="name">{dailyBoxOffice[k]}</h3>
-                                            <h3 className="sub_name">Avatar: The Way of Water</h3>
+                                            <h3 className="sub_name">{movieDate[k]} 개봉</h3>
 
                                             <div className="txt_conts">
                                                 <div className='reserve_rate'>
@@ -117,11 +117,10 @@ function Movie(props) {
                                                     <Image src="/images/person_icon.svg" width={15} height={15} className="person_icon" alt='person_icon' />
                                                     <p>{movieAcc[k]}<span> +</span></p>
                                                 </div>
-                                                <div className='open'>
+                                                {/* <div className='open'>
                                                     <h4>개봉일</h4>
-
-                                                    <p>{movieDate[k]}</p>
-                                                </div>
+                                                    <p></p>
+                                                </div> */}
                                             </div>
                                         </div>
                                     </div>
@@ -183,7 +182,8 @@ function Movie(props) {
                                                 <Link href={{
                                                     pathname: '/reserve',
                                                     query: {
-                                                        movieCd: movieCode[k],
+                                                        posterUrl: posterUrl[k],
+                                                        movieCd: movieCode[k]
                                                     }
                                                 }}>
                                                     <div className="btn on mob ">예매하기</div>

@@ -1,11 +1,15 @@
 //예매페이지(좌석선택)
 
 "use client";
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../style/seat.scss";
 import Image from 'next/image';
 
-function Seat({ moveNext }) {
+function Seat({ moveNext, isAllSelect, setIsSeatSelect }) {
+
+    console.log(isAllSelect, 'isAllSelect(Reserve컴포넌트 유저선택정보)')
+
+    //page에서 담아온 setIsSeatSelect 에 선택된 좌석 담을 예정
 
     return (
         <>
@@ -32,9 +36,9 @@ function Seat({ moveNext }) {
 
                     <div className='seat_box'>
                         <div className='user_selected'>
-                            <div className='user_mv'>아바타: 물의 길</div>
-                            <div className='user_date'>2024년 8월 15일</div>
-                            <div className='user_time'>20 : 50 ~</div>
+                            <div className='user_mv'>{isAllSelect.title}</div>
+                            <div className='user_date'>{isAllSelect.date}</div>
+                            <div className='user_time'>{isAllSelect.time}</div>
                         </div>
 
                         <div className='inner'>

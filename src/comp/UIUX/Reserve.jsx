@@ -7,15 +7,16 @@ import { useSearchParams } from "next/navigation";
 import "../style/reserve.scss";
 import { format, subDays } from 'date-fns';
 
-function Reserve({ moveNext }) {
+function Reserve({ moveNext, setIsAllSelect }) {
     let { dataFetch, dailyBoxOffice, movieCode } = useStore();
     const params = useSearchParams()
     const usermovieCode = params.get('movieCd');
+    const usermoviePoster = params.get('posterUrl');
+
     const [mvElIndex, setMvElIndex] = useState();
     const [mvElTitle, setMvElTitle] = useState();
     const [dateEl, setDateEl] = useState();
     const [timeEl, setTimeEl] = useState();
-    const [isAllSelect, setIsAllSelect] = useState(null);
     const [ingStep, setIngStep] = useState('movie')
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [slideClass, setSlideClass] = useState('');
