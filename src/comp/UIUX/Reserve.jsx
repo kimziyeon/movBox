@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import "../style/reserve.scss";
 import { format, subDays } from 'date-fns';
 
-function Reserve({ posterUrlList, moveNext, setIsAllSelect }) {
+function Reserve({ moveNext, setIsAllSelect }) {
     let { dataFetch, dailyBoxOffice, movieCode } = useStore();
     const params = useSearchParams()
     const usermovieCode = params.get('movieCd');
@@ -20,10 +20,13 @@ function Reserve({ posterUrlList, moveNext, setIsAllSelect }) {
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [slideClass, setSlideClass] = useState('');
 
+
     const ticketMvList = dailyBoxOffice.map((mvTitle, id) => {
         return { mvTitle, mvCode: movieCode[id] };
     })
-    // console.log(posterUrlList, 'posterUrlList')
+
+    // console.log(ticketMvList, 'ticketMvList')
+
 
     useEffect(() => {
         const handleResize = () => {

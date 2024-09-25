@@ -9,10 +9,6 @@ import "../../comp/style/page.scss";
 function page(props) {
 
     const params = useSearchParams();
-    const posterUrlList = JSON.parse(params.get('posterUrlList'));
-
-    //console.log(posterUrlList, 'posterUrlList')
-
 
     //유저 영화선택 정보
     const [isAllSelect, setIsAllSelect] = useState(null);
@@ -30,13 +26,19 @@ function page(props) {
         setStep((beforeStep) => beforeStep - 1)
     }
 
+    useEffect(() => {
+        const posterList = JSON.parse(params.get('posterUrlList'));
+        // console.log(posterList, 'posterList')
+    }, []);
+
+
     return (
         <div className='container'>
             <div className='container_inner' >
                 <div className='reserve_page'>
                     {
                         step === 0 &&
-                        <Reserve posterUrlList={posterUrlList} moveNext={moveNext} setIsAllSelect={setIsAllSelect} />
+                        <Reserve moveNext={moveNext} setIsAllSelect={setIsAllSelect} />
                     }
                 </div>
                 <div className='reserve_page'>

@@ -55,7 +55,7 @@ function M_header(props) {
                     <Link href={{
                         pathname: '/reserve',
                         query: {
-                            posterUrlList: posterUrl
+                            posterUrlList: JSON.stringify(posterUrl)
                         }
                     }} onClick={() => setMenuOn(false)}>Ticket</Link>
                     <Link href={storege ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
