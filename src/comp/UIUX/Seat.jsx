@@ -7,9 +7,8 @@ import Image from 'next/image';
 
 function Seat({ moveNext, isAllSelect, setIsSeatSelect }) {
 
-    console.log(isAllSelect, 'isAllSelect(Reserve컴포넌트 유저선택정보)')
+    // console.log(isAllSelect, 'isAllSelect(Reserve컴포넌트 유저선택정보)')
 
-    //page에서 담아온 setIsSeatSelect 에 선택된 좌석 담을 예정
 
     return (
         <>

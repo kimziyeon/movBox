@@ -130,7 +130,7 @@
 
         .user_selected {
             .user_mv {
-                font-size: 40px;
+                font-size: 36px;
             }
 
             .user_date {
@@ -218,7 +218,9 @@
         max-width: 100%;
 
         .user_selected {
-            .user_mv {}
+            .user_mv {
+                font-size: 40px;
+            }
 
             .user_date {}
 

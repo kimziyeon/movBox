@@ -1,11 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from "next/navigation";
 import Reserve from '../../comp/UIUX/Reserve';
 import Seat from '../../comp/UIUX/Seat';
 import Complete from '../../comp/UIUX/Complete';
 import "../../comp/style/page.scss";
 
 function page(props) {
+
+    const params = useSearchParams();
+    const posterUrlList = JSON.parse(params.get('posterUrlList'));
+
+    //console.log(posterUrlList, 'posterUrlList')
+
+
     //유저 영화선택 정보
     const [isAllSelect, setIsAllSelect] = useState(null);
 
@@ -22,14 +30,13 @@ function page(props) {
         setStep((beforeStep) => beforeStep - 1)
     }
 
-
     return (
         <div className='container'>
             <div className='container_inner' >
                 <div className='reserve_page'>
                     {
                         step === 0 &&
-                        <Reserve moveNext={moveNext} setIsAllSelect={setIsAllSelect} />
+                        <Reserve posterUrlList={posterUrlList} moveNext={moveNext} setIsAllSelect={setIsAllSelect} />
                     }
                 </div>
                 <div className='reserve_page'>

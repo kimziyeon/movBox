@@ -7,11 +7,10 @@ import { useSearchParams } from "next/navigation";
 import "../style/reserve.scss";
 import { format, subDays } from 'date-fns';
 
-function Reserve({ moveNext, setIsAllSelect }) {
+function Reserve({ posterUrlList, moveNext, setIsAllSelect }) {
     let { dataFetch, dailyBoxOffice, movieCode } = useStore();
     const params = useSearchParams()
     const usermovieCode = params.get('movieCd');
-    const usermoviePoster = params.get('posterUrl');
 
     const [mvElIndex, setMvElIndex] = useState();
     const [mvElTitle, setMvElTitle] = useState();
@@ -24,6 +23,7 @@ function Reserve({ moveNext, setIsAllSelect }) {
     const ticketMvList = dailyBoxOffice.map((mvTitle, id) => {
         return { mvTitle, mvCode: movieCode[id] };
     })
+    // console.log(posterUrlList, 'posterUrlList')
 
     useEffect(() => {
         const handleResize = () => {
@@ -35,7 +35,6 @@ function Reserve({ moveNext, setIsAllSelect }) {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
 
     //유저영화선택
     const userMvSelect = (k, mvTitle) => {
@@ -120,6 +119,7 @@ function Reserve({ moveNext, setIsAllSelect }) {
 
     //이전버튼
     const beforeBtn = () => {
+
         if (screenWidth >= 768 && screenWidth <= 1024) {
             if (ingStep === 'time') {
                 setIngStep('date')
@@ -148,7 +148,6 @@ function Reserve({ moveNext, setIsAllSelect }) {
     useEffect(() => {
         dataFetch(yesterday)
     }, [])
-
 
     useEffect(() => {
         if (usermovieCode) {

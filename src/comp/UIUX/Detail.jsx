@@ -12,7 +12,7 @@ import { format, subDays } from 'date-fns';
 function Detail(props) {
     const params = useSearchParams()
     const date = params.get('date');
-    const posterUrl = params.get('posterUrl');
+    const posterUrlDetail = params.get('posterUrlDetail');
     const movieCode = params.get('movieCd');
     let { dataFetch2, detail } = useStore2();
 
@@ -39,17 +39,17 @@ function Detail(props) {
             <div className='detail_movie'>
 
                 <div className="poster">
-                    <Image src={posterUrl}
+                    <Image src={posterUrlDetail}
                         width={1000} height={1500}
-                        alt="아바타포스터"
+                        alt="영화포스터"
                         priority />
                     <div className="overlay"></div>
                 </div>
 
                 <div className="poster_pc">
-                    <Image src={posterUrl}
+                    <Image src={posterUrlDetail}
                         width={1000} height={1500}
-                        alt="아바타포스터"
+                        alt="영화포스터"
                     />
                 </div>
 

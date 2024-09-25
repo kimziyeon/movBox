@@ -93,7 +93,7 @@ function Movie(props) {
                                 <Link href={{
                                     pathname: '/detail',
                                     query: {
-                                        posterUrl: posterUrl[k],
+                                        posterUrlDetail: posterUrl[k],
                                         movieCd: movieCode[k]
                                     }
 
@@ -169,7 +169,7 @@ function Movie(props) {
                                                 <Link href={{
                                                     pathname: '/detail',
                                                     query: {
-                                                        posterUrl: posterUrl[k],
+                                                        posterUrlDetail: posterUrl[k],
                                                         movieCd: movieCode[k]
                                                     }
 
@@ -182,7 +182,7 @@ function Movie(props) {
                                                 <Link href={{
                                                     pathname: '/reserve',
                                                     query: {
-                                                        posterUrl: posterUrl[k],
+                                                        posterUrlDetail: posterUrl[k],
                                                         movieCd: movieCode[k]
                                                     }
                                                 }}>

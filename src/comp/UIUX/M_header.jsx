@@ -1,10 +1,13 @@
 "use client";
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useStore4 } from '../store/movie_poster';
 import Image from 'next/image';
 import '../style/header.scss';
 import { loginStore } from '../store/login_store';
 function M_header(props) {
+
+    let { posterUrl } = useStore4();
     let { storegeFn, storege, isLogined } = loginStore();
 
     let [menuOn, setMenuOn] = useState(false);
@@ -16,8 +19,6 @@ function M_header(props) {
         storegeFn('logout')
     }
 
-
-
     return (
         <header className={menuOn ? 'on' : ''}>
             <h1 className='Logo'><Link href='/'><Image src='/images/logo.svg' alt='logo' width={153} height={30} />Mov_logo</Link></h1>
@@ -28,7 +29,12 @@ function M_header(props) {
                         <input type="text" />
                         <Image src='/images/search_icon.png' alt='search' width={18} height={18} />
                     </form>
-                    <Link href="/reserve">Ticket</Link>
+                    <Link href={{
+                        pathname: '/reserve',
+                        query: {
+                            posterUrlList: JSON.stringify(posterUrl)
+                        }
+                    }}>Ticket</Link>
                     <Link href={isLogined ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
                     <Link href={isLogined ? "/mypage" : "/login"}>My page</Link>
                 </nav>
@@ -46,7 +52,12 @@ function M_header(props) {
                     <p># 지연</p>
                 </div>
                 <div className='linked'>
-                    <Link href="/reserve" onClick={() => setMenuOn(false)}>Ticket</Link>
+                    <Link href={{
+                        pathname: '/reserve',
+                        query: {
+                            posterUrlList: posterUrl
+                        }
+                    }} onClick={() => setMenuOn(false)}>Ticket</Link>
                     <Link href={storege ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
                     <Link href={isLogined ? "/mypage" : "/login"} onClick={() => setMenuOn(false)}>My page</Link>
                 </div>
