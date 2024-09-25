@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react';
 import "../style/seat.scss";
 import Image from 'next/image';
 
-function Seat({ moveNext, isAllSelect, setIsSeatSelect }) {
+function Seat({ moveNext, isAllSelect }) {
 
-    // console.log(isAllSelect, 'isAllSelect(Reserve컴포넌트 유저선택정보)')
+    console.log(isAllSelect, 'isAllSelect(Reserve컴포넌트 유저선택정보)')
 
 
     return (

@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import "../style/reserve.scss";
 import { format, subDays } from 'date-fns';
 
-function Reserve({ moveNext, setIsAllSelect }) {
+function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
     let { dataFetch, dailyBoxOffice, movieCode } = useStore();
     const params = useSearchParams()
     const usermovieCode = params.get('movieCd');
@@ -43,6 +43,7 @@ function Reserve({ moveNext, setIsAllSelect }) {
     const userMvSelect = (k, mvTitle) => {
         setMvElIndex(k)
         setMvElTitle(mvTitle)
+        setPosterId(k)
     }
 
     //유저날짜선택
@@ -81,7 +82,7 @@ function Reserve({ moveNext, setIsAllSelect }) {
             setIsAllSelect({
                 title: mvElTitle,
                 date: dateEl,
-                time: timeEl,
+                time: timeEl
             });
             console.log(mvElTitle, dateEl, timeEl, '유저선택완료');
             moveNext();

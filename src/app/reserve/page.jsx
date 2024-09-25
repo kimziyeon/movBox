@@ -9,6 +9,12 @@ import "../../comp/style/page.scss";
 function page(props) {
 
     const params = useSearchParams();
+    const posterList = JSON.parse(params.get('posterUrlList'));
+    const [posterId, setPosterId] = useState()
+
+    // console.log(posterList, 'posterList')
+    // console.log(posterId, 'posterId')
+
 
     //유저 영화선택 정보
     const [isAllSelect, setIsAllSelect] = useState(null);
@@ -26,10 +32,22 @@ function page(props) {
         setStep((beforeStep) => beforeStep - 1)
     }
 
+
     useEffect(() => {
-        const posterList = JSON.parse(params.get('posterUrlList'));
-        // console.log(posterList, 'posterList')
-    }, []);
+        // 최초 로드 시 `posterId`를 설정
+        const idxFromParams = params.get('id');
+        if (idxFromParams && idxFromParams !== posterId) {
+            setPosterId(idxFromParams);
+        }
+        console.log(posterList, '전체포스터리스트');
+    }, [params]);
+
+    useEffect(() => {
+        // posterId가 변경될 때마다 발생하는 동작
+        if (posterList && posterList[posterId]) {
+            console.log(posterList[posterId], '선택된영화포스터');
+        }
+    }, [posterId, posterList]);
 
 
     return (
@@ -38,13 +56,13 @@ function page(props) {
                 <div className='reserve_page'>
                     {
                         step === 0 &&
-                        <Reserve moveNext={moveNext} setIsAllSelect={setIsAllSelect} />
+                        <Reserve moveNext={moveNext} setIsAllSelect={setIsAllSelect} setPosterId={setPosterId} />
                     }
                 </div>
                 <div className='reserve_page'>
                     {
                         step === 1 &&
-                        <Seat moveNext={moveNext} moveBefore={moveBefore} isAllSelect={isAllSelect} setIsSeatSelect={setIsSeatSelect} />
+                        <Seat moveNext={moveNext} moveBefore={moveBefore} isAllSelect={isAllSelect} />
                     }
                 </div>
                 <div className='reserve_page'>

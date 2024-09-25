@@ -182,8 +182,9 @@ function Movie(props) {
                                                 <Link href={{
                                                     pathname: '/reserve',
                                                     query: {
-                                                        posterUrlDetail: posterUrl[k],
-                                                        movieCd: movieCode[k]
+                                                        movieCd: movieCode[k],
+                                                        posterUrlList: JSON.stringify(posterUrl),
+                                                        id: [k]
                                                     }
                                                 }}>
                                                     <div className="btn on mob ">예매하기</div>
