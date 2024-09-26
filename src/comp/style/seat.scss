@@ -118,18 +118,24 @@
                     .list {
                         width: 25px;
                         height: 18px;
-                        background-color: var(--mov_light_gray);
                         border-radius: 8px;
 
+                        .true {
+                            background-color: var(--mov_light_gray);
+                        }
+
+                        .false {
+                            background-color: var(--mov_gray);
+                        }
+
+                        .select {
+                            background-color: var(--mov_pink);
+                        }
                     }
 
                     .list_num {
                         cursor: default;
-                    }
 
-                    .a_0 {
-                        cursor: default;
-                        background-color: var(--mov_black);
                     }
                 }
             }
@@ -259,15 +265,17 @@
         .poster_pc {
             display: block;
             position: absolute;
-            top: 54%;
-            left: 13%;
+            width: 1024px;
+            top: 20%;
+            left: 50%;
             z-index: -1;
-            transform: translateY(-50%);
+            transform: translate(-50%, 0%);
 
 
             img {
                 width: 40%;
-                height: auto;
+                height: 100%;
+                object-fit: contain;
             }
         }
 

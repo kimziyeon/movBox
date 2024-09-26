@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import Reserve from '../../comp/UIUX/Reserve';
 import Seat from '../../comp/UIUX/Seat';
 import Complete from '../../comp/UIUX/Complete';
+import Header from '../../comp/UIUX/M_header';
 import "../../comp/style/page.scss";
 
 function page(props) {
@@ -11,6 +12,7 @@ function page(props) {
     const params = useSearchParams();
     const posterList = JSON.parse(params.get('posterUrlList'));
     const [posterId, setPosterId] = useState()
+    const [userPoster, setUserPoster] = useState()
 
     // console.log(posterList, 'posterList')
     // console.log(posterId, 'posterId')
@@ -35,22 +37,24 @@ function page(props) {
 
     useEffect(() => {
         // 최초 로드 시 `posterId`를 설정
-        const idxFromParams = params.get('id');
-        if (idxFromParams && idxFromParams !== posterId) {
-            setPosterId(idxFromParams);
+        const idFromParams = params.get('id');
+        if (idFromParams && idFromParams !== posterId) {
+            setPosterId(idFromParams);
         }
-        console.log(posterList, '전체포스터리스트');
+        // console.log(posterList, '전체포스터리스트');
     }, [params]);
 
     useEffect(() => {
         // posterId가 변경될 때마다 발생하는 동작
         if (posterList && posterList[posterId]) {
-            console.log(posterList[posterId], '선택된영화포스터');
+            // console.log(posterList[posterId], '선택된영화포스터');
+            setUserPoster(posterList[posterId])
         }
     }, [posterId, posterList]);
 
 
     return (
+
         <div className='container'>
             <div className='container_inner' >
                 <div className='reserve_page'>
@@ -62,7 +66,7 @@ function page(props) {
                 <div className='reserve_page'>
                     {
                         step === 1 &&
-                        <Seat moveNext={moveNext} moveBefore={moveBefore} isAllSelect={isAllSelect} />
+                        <Seat moveNext={moveNext} moveBefore={moveBefore} isAllSelect={isAllSelect} userPoster={userPoster} />
                     }
                 </div>
                 <div className='reserve_page'>
@@ -73,6 +77,7 @@ function page(props) {
                 </div>
             </div>
         </div>
+
     );
 }
 

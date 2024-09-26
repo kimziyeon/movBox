@@ -5,9 +5,25 @@ import React, { useState, useEffect } from 'react';
 import "../style/seat.scss";
 import Image from 'next/image';
 
-function Seat({ moveNext, isAllSelect }) {
+function Seat({ moveNext, isAllSelect, userPoster }) {
 
-    console.log(isAllSelect, 'isAllSelect(Reserve컴포넌트 유저선택정보)')
+    // console.log(isAllSelect, 'isAllSelect(유저선택 영화정보)')
+    // console.log(userPoster, 'posterId(유저선택 영화포스터)')
+    const [select, setSelect] = useState([])
+
+    const [seatList, setSeatList,] = useState({
+        A: [true, true, true, true, true, true],
+        B: [true, true, true, true, true, true],
+        C: [true, true, true, true, true, true],
+        D: [true, true, true, true, true, true],
+        E: [true, true, true, true, true, true],
+        F: [false, true, true, true, true, true],
+    })
+
+    const seatClickHandle = (row, seat, k) => {
+        console.log(row, seat, k, 'seatClickHandle')
+        setSelect()
+    }
 
 
     return (
@@ -16,18 +32,18 @@ function Seat({ moveNext, isAllSelect }) {
                 <div className='seat_cont'>
 
                     <div className="poster">
-                        <Image src="/images/아바타.jpg"
+                        <Image src={userPoster}
                             width={1000} height={1500}
-                            alt="아바타포스터"
+                            alt="영화포스터"
                             priority />
                         <div className="overlay"></div>
                     </div>
 
                     <div className="poster_pc">
-                        <Image src="/images/아바타.jpg"
+                        <Image src={userPoster}
                             width={1000} height={1500}
                             priority
-                            alt="아바타포스터"
+                            alt="영화포스터"
                         />
                     </div>
 
@@ -45,78 +61,23 @@ function Seat({ moveNext, isAllSelect }) {
                                 <div>SCREEN</div>
                             </div>
                             <div className='seat_list'>
-                                <div className='row'>
-                                    <div className='list_num'>A</div>
-                                    <div className='list a_0'></div>
-                                    <div className='list a_1'></div>
-                                    <div className='list a_2'></div>
-                                    <div className='list a_3'></div>
-                                    <div className='list a_4'></div>
-                                    <div className='list a_5'></div>
-                                    <div className='list a_0'></div>
-                                    <div className='list_num'>A</div>
-
-                                </div>
-                                <div className='row'>
-                                    <div className='list_num'>B</div>
-                                    <div className='list b_1'></div>
-                                    <div className='list b_2'></div>
-                                    <div className='list b_3'></div>
-                                    <div className='list b_4'></div>
-                                    <div className='list b_5'></div>
-                                    <div className='list b_6'></div>
-                                    <div className='list b_7'></div>
-                                    <div className='list_num'>B</div>
-
-                                </div>
-                                <div className='row'>
-                                    <div className='list_num'>C</div>
-                                    <div className='list c_1'></div>
-                                    <div className='list c_2'></div>
-                                    <div className='list c_3'></div>
-                                    <div className='list c_4'></div>
-                                    <div className='list c_5'></div>
-                                    <div className='list c_6'></div>
-                                    <div className='list c_7'></div>
-                                    <div className='list_num'>C</div>
-
-                                </div>
-                                <div className='row'>
-                                    <div className='list_num'>D</div>
-                                    <div className='list d_1'></div>
-                                    <div className='list d_2'></div>
-                                    <div className='list d_3'></div>
-                                    <div className='list d_4'></div>
-                                    <div className='list d_5'></div>
-                                    <div className='list d_6'></div>
-                                    <div className='list d_7'></div>
-                                    <div className='list_num'>D</div>
-
-                                </div>
-                                <div className='row'>
-                                    <div className='list_num'>E</div>
-                                    <div className='list e_1'></div>
-                                    <div className='list e_2'></div>
-                                    <div className='list e_3'></div>
-                                    <div className='list e_4'></div>
-                                    <div className='list e_5'></div>
-                                    <div className='list e_6'></div>
-                                    <div className='list e_7'></div>
-                                    <div className='list_num'>E</div>
-
-                                </div>
-                                <div className='row'>
-                                    <div className='list_num'>F</div>
-                                    <div className='list f_1'></div>
-                                    <div className='list f_2'></div>
-                                    <div className='list f_3'></div>
-                                    <div className='list f_4'></div>
-                                    <div className='list f_5'></div>
-                                    <div className='list f_6'></div>
-                                    <div className='list f_7'></div>
-                                    <div className='list_num'>F</div>
-
-                                </div>
+                                {
+                                    Object.keys(seatList).map((row) => (
+                                        <div key={row} className='row'>
+                                            <div className='list_num'>{row}</div>
+                                            {
+                                                seatList[row].map((seat, k) => (
+                                                    <div key={`${seat}${k}`}
+                                                        className={`list ${seat ? `true` : `false`}`}
+                                                        onClick={() => { seatClickHandle(row, seat, k + 1) }}
+                                                    >
+                                                    </div>
+                                                ))
+                                            }
+                                            <div className='list_num'>{row}</div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                             <div className='seat_info'>
                                 <p>

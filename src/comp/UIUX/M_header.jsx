@@ -2,18 +2,19 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { useStore4 } from '../store/movie_poster';
+import { loginStore } from '../store/login_store';
 import Image from 'next/image';
 import '../style/header.scss';
-import { loginStore } from '../store/login_store';
-function M_header(props) {
+
+function M_header() {
 
     let { posterUrl } = useStore4();
     let { storegeFn, storege, isLogined } = loginStore();
-
     let [menuOn, setMenuOn] = useState(false);
     const menuClick = () => {
         setMenuOn(!menuOn)
     }
+
 
     const logout = () => {
         storegeFn('logout')
@@ -34,7 +35,8 @@ function M_header(props) {
                         query: {
                             posterUrlList: JSON.stringify(posterUrl)
                         }
-                    }}>Ticket</Link>
+                    }}
+                    >Ticket</Link>
                     <Link href={isLogined ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
                     <Link href={isLogined ? "/mypage" : "/login"}>My page</Link>
                 </nav>
