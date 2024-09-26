@@ -12,12 +12,12 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
     const [select, setSelect] = useState([])
 
     const [seatList, setSeatList,] = useState({
-        A: [true, true, true, true, true, true],
+        A: [false, true, true, true, true, false],
         B: [true, true, true, true, true, true],
         C: [true, true, true, true, true, true],
         D: [true, true, true, true, true, true],
         E: [true, true, true, true, true, true],
-        F: [false, true, true, true, true, true],
+        F: [false, false, true, true, true, true],
     })
 
     const seatClickHandle = (row, seat, k) => {
