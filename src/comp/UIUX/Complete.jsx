@@ -1,11 +1,22 @@
 //예매페이지(예매완료)
 
 "use client";
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import "../style/complete.scss";
 import Image from 'next/image';
 
 function Complete() {
+
+    // const router = useRouter();
+    // useEffect(() => {
+    //     // router.isReady가 true일 때 쿼리 파라미터에 접근
+    //     if (router.isReady) {
+    //         console.log(router.query, 'router.query');
+    //     }
+    // }, [router.isReady, router.query]);
+
+
     return (
         <>
             <article className='complete'>

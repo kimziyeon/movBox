@@ -173,6 +173,7 @@
 
             .btn {
                 margin: 0 auto;
+                cursor: pointer;
             }
         }
     }
@@ -268,7 +269,7 @@
             display: block;
             position: absolute;
             width: 1024px;
-            top: 20%;
+            top: 16%;
             left: 50%;
             z-index: -1;
             transform: translate(-50%, 0%);
@@ -293,7 +294,7 @@
 
         .seat_box {
             width: auto;
-            top: 16%;
+            top: 15%;
             left: 50%;
             transform: none;
 

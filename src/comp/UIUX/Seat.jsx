@@ -2,8 +2,9 @@
 
 "use client";
 import React, { useState, useEffect } from 'react';
-import "../style/seat.scss";
+import Link from 'next/link';
 import Image from 'next/image';
+import "../style/seat.scss";
 
 function Seat({ moveNext, isAllSelect, userPoster }) {
 
@@ -21,9 +22,25 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
     })
 
     const seatClickHandle = (row, seat, k) => {
-        console.log(row, seat, k, 'seatClickHandle')
-        setSelect()
+        // console.log(row, seat, k, 'seatClickHandle')
+
+        //seat가 false일떄 return
+        if (!seat) {
+            return;
+        }
+
+        let seatState = `${row}${k}`
+
+        //seat가 true일때
+        //if(seatState 좌석이 선택된 상태(true)면 좌석 선택해제}
+        //else{seatState 좌석이 선택X(false)면 좌석 선택[...select이미 좌석에 추가선택]}
+        if (select.includes(seatState)) {
+            setSelect(select.filter(select => select !== seatState))
+        } else {
+            setSelect([...select, seatState])
+        }
     }
+
 
 
     return (
@@ -68,7 +85,7 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
                                             {
                                                 seatList[row].map((seat, k) => (
                                                     <div key={`${seat}${k}`}
-                                                        className={`list ${seat ? `true` : `false`}`}
+                                                        className={`list ${seat ? `true` : `false`} ${select.includes(`${row}${k + 1}`) ? 'select' : ''}`}
                                                         onClick={() => { seatClickHandle(row, seat, k + 1) }}
                                                     >
                                                     </div>
@@ -89,7 +106,15 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
                                     선택불가
                                 </p>
                             </div>
-                            <div className="btn mob">예매 완료</div>
+                            <Link href={{
+                                pathname: '/Complete',
+                                query: {
+                                    isAllSelect: JSON.stringify(isAllSelect),
+                                    seatSelect: JSON.stringify(select)
+                                }
+                            }}>
+                                <div className="btn mob on">예매 완료</div>
+                            </Link>
                         </div>
                     </div>
 

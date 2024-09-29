@@ -4,7 +4,6 @@ import { useSearchParams } from "next/navigation";
 import Reserve from '../../comp/UIUX/Reserve';
 import Seat from '../../comp/UIUX/Seat';
 import Complete from '../../comp/UIUX/Complete';
-import Header from '../../comp/UIUX/M_header';
 import "../../comp/style/page.scss";
 
 function page(props) {
