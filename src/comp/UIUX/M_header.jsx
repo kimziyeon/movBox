@@ -1,20 +1,48 @@
 "use client";
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useStore } from '../store/movie_store';
 import { useStore4 } from '../store/movie_poster';
 import { loginStore } from '../store/login_store';
 import Image from 'next/image';
 import '../style/header.scss';
 
 function M_header() {
-
+    let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate, movieAcc } = useStore();
     let { posterUrl } = useStore4();
     let { storegeFn, storege, isLogined } = loginStore();
     let [menuOn, setMenuOn] = useState(false);
+    let [searchInput, setSearchInput] = useState('');
+    let [searchValue, setSearchValue] = useState([]);
+
+    const dataComb = dailyBoxOffice.map((movie, id) => {
+        return {
+            movie, poster: posterUrl[id]
+        }
+    })
+    // console.log(dataComb, 'dataComb')
+
+    const submitSearch = (e) => {
+        e.preventDefault()
+        if (searchInput === '') {
+            setSearchValue([])
+            return;
+        }
+
+        let d = dataComb.filter((obj) => (
+            (obj.movie.includes(searchInput)) || (obj.poster.includes(searchInput))
+        ))
+        setSearchValue(d);
+        setSearchInput('');
+    }
+
+    useEffect(() => {
+        console.log(searchValue, 'searchValue')
+    }, [searchValue])
+
     const menuClick = () => {
         setMenuOn(!menuOn)
     }
-
 
     const logout = () => {
         storegeFn('logout')
@@ -26,8 +54,8 @@ function M_header() {
             <div className={menuOn ? "menu_btn on" : "menu_btn"} onClick={menuClick}><span>menu</span></div>
             <div className='menu'>
                 <nav>
-                    <form >
-                        <input type="text" />
+                    <form onSubmit={submitSearch}>
+                        <input type="text" value={searchInput} onChange={(e) => { setSearchInput(e.target.value) }} />
                         <Image src='/images/search_icon.png' alt='search' width={18} height={18} />
                     </form>
                     <Link href={{
@@ -40,18 +68,28 @@ function M_header() {
                     <Link href={isLogined ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
                     <Link href={isLogined ? "/mypage" : "/login"}>My page</Link>
                 </nav>
+                <div className='search_board'>
+                    {
+                        searchValue.map((obj, k) => (
+                            <div key={k} className='searchEl'>
+                                <Image src={obj.poster} width={200} height={280} />
+                                <div className='searchEl_title'>{obj.movie}</div>
+                            </div>
+
+                        ))
+                    }
+                </div>
             </div>
             <div className={menuOn ? 'sub_menu on' : 'sub_menu'}>
-                <form>
-                    <input type="text" placeholder='검색어를 입력하세요' />
+                <form onSubmit={submitSearch}>
+                    <input type="text" placeholder='검색어를 입력하세요' value={searchInput} onChange={(e) => { setSearchInput(e.target.value) }} />
                     <Image src='/images/search_icon.png' alt='search' width={18} height={18} />
                 </form>
                 <div className='search_record'>
-                    <p># 아바타</p>
-                    <p># 조정석</p>
-                    <p># 마블</p>
+                    <p># 영화검색</p>
+                    <p># 하츄핑</p>
                     <p># 송우민</p>
-                    <p># 지연</p>
+                    <p># 김지연</p>
                 </div>
                 <div className='linked'>
                     <Link href={{
@@ -62,6 +100,18 @@ function M_header() {
                     }} onClick={() => setMenuOn(false)}>Ticket</Link>
                     <Link href={storege ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
                     <Link href={isLogined ? "/mypage" : "/login"} onClick={() => setMenuOn(false)}>My page</Link>
+                </div>
+
+                <div className='search_board'>
+                    {
+                        searchValue.map((obj, k) => (
+                            <div key={k} className='searchEl'>
+                                <Image src={obj.poster} width={200} height={280} />
+                                <div className='searchEl_title'>{obj.movie}</div>
+                            </div>
+
+                        ))
+                    }
                 </div>
             </div>
         </header>
