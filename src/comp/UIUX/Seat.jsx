@@ -9,7 +9,7 @@ import "../style/seat.scss";
 function Seat({ moveNext, isAllSelect, userPoster }) {
 
     // console.log(isAllSelect, 'isAllSelect(유저선택 영화정보)')
-    // console.log(userPoster, 'posterId(유저선택 영화포스터)')
+    console.log(userPoster, 'posterId(유저선택 영화포스터)')
     const [select, setSelect] = useState([])
 
     const [seatList, setSeatList,] = useState({
@@ -42,6 +42,9 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
     }
 
 
+    const completeBtn = () => {
+        console.log('completeBtn')
+    }
 
     return (
         <>
@@ -106,15 +109,7 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
                                     선택불가
                                 </p>
                             </div>
-                            <Link href={{
-                                pathname: '/Complete',
-                                query: {
-                                    isAllSelect: JSON.stringify(isAllSelect),
-                                    seatSelect: JSON.stringify(select)
-                                }
-                            }}>
-                                <div className="btn mob on">예매 완료</div>
-                            </Link>
+                            <div className="btn mob on" onClick={completeBtn}>예매 완료</div>
                         </div>
                     </div>
 

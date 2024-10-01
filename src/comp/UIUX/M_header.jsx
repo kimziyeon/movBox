@@ -1,10 +1,11 @@
 "use client";
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useStore } from '../store/movie_store';
 import { useStore4 } from '../store/movie_poster';
 import { loginStore } from '../store/login_store';
+import { useRouter } from 'next/navigation'
 import Image from 'next/image';
+import Link from 'next/link';
 import '../style/header.scss';
 
 function M_header() {
@@ -14,6 +15,7 @@ function M_header() {
     let [menuOn, setMenuOn] = useState(false);
     let [searchInput, setSearchInput] = useState('');
     let [searchValue, setSearchValue] = useState([]);
+    const boardRef = useRef(null);
 
     const dataComb = dailyBoxOffice.map((movie, id) => {
         return {
@@ -36,8 +38,8 @@ function M_header() {
         setSearchInput('');
     }
 
+
     useEffect(() => {
-        console.log(searchValue, 'searchValue')
     }, [searchValue])
 
     const menuClick = () => {
@@ -68,17 +70,31 @@ function M_header() {
                     <Link href={isLogined ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
                     <Link href={isLogined ? "/mypage" : "/login"}>My page</Link>
                 </nav>
-                <div className={`search_board ${searchValue.length > 0 ? 'active' : ''}`}>
+
+
+                <div className={`search_board ${searchValue.length > 0 ? 'active' : ''}`} >
                     {
                         searchValue.map((obj, k) => (
                             <div key={k} className='searchEl'>
-                                <Image src={obj.poster} width={200} height={280} />
+                                <Link href={{
+                                    pathname: '/detail',
+                                    query: {
+                                        posterUrlDetail: obj.poster,
+                                        movieCd: obj.code
+                                    }
+                                }}>
+                                    <Image src={obj.poster}
+                                        width={200} height={280}
+                                        alt="poster"
+                                    />
+                                </Link>
                                 <div className='searchEl_title'>{obj.movie}</div>
                             </div>
 
                         ))
                     }
                 </div>
+
 
             </div>
             <div className={menuOn ? 'sub_menu on' : 'sub_menu'}>
@@ -107,8 +123,18 @@ function M_header() {
                     {
                         searchValue.map((obj, k) => (
                             <div key={k} className='searchEl'>
-                                <Image src={obj.poster} width={200} height={280} />
-                                <div className='searchEl_title'>{obj.movie}</div>
+                                <Link href={{
+                                    pathname: '/detail',
+                                    query: {
+                                        posterUrlDetail: obj.poster,
+                                        movieCd: obj.code
+                                    }
+                                }}>
+                                    <Image src={obj.poster}
+                                        width={200} height={280}
+                                        alt="poster"
+                                    />
+                                </Link>
                             </div>
 
                         ))

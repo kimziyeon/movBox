@@ -71,7 +71,7 @@ function page(props) {
                 <div className='reserve_page'>
                     {
                         step === 2 &&
-                        <Complete moveBefore={moveBefore} />
+                        <Complete moveBefore={moveBefore} isAllSelect={isAllSelect} />
                     }
                 </div>
             </div>
