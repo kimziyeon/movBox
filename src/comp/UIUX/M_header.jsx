@@ -8,7 +8,7 @@ import Image from 'next/image';
 import '../style/header.scss';
 
 function M_header() {
-    let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate, movieAcc } = useStore();
+    let { dataFetch, dailyBoxOffice, movieCode } = useStore();
     let { posterUrl } = useStore4();
     let { storegeFn, storege, isLogined } = loginStore();
     let [menuOn, setMenuOn] = useState(false);
@@ -17,7 +17,7 @@ function M_header() {
 
     const dataComb = dailyBoxOffice.map((movie, id) => {
         return {
-            movie, poster: posterUrl[id]
+            movie, code: movieCode[id], poster: posterUrl[id]
         }
     })
     // console.log(dataComb, 'dataComb')
@@ -68,7 +68,7 @@ function M_header() {
                     <Link href={isLogined ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
                     <Link href={isLogined ? "/mypage" : "/login"}>My page</Link>
                 </nav>
-                <div className='search_board'>
+                <div className={`search_board ${searchValue.length > 0 ? 'active' : ''}`}>
                     {
                         searchValue.map((obj, k) => (
                             <div key={k} className='searchEl'>
@@ -79,6 +79,7 @@ function M_header() {
                         ))
                     }
                 </div>
+
             </div>
             <div className={menuOn ? 'sub_menu on' : 'sub_menu'}>
                 <form onSubmit={submitSearch}>

@@ -176,22 +176,6 @@ header {
                 align-items: center;
                 flex-wrap: wrap;
                 gap: 20px 30px;
-
-                .searchEl {
-                    width: 200px;
-
-                    >img {
-                        width: 100%;
-                        object-fit: cover;
-                    }
-
-                    .searchEl_title {
-                        margin-top: 10px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-                }
             }
         }
 
@@ -209,30 +193,49 @@ header {
             display: block;
 
             .search_board {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 20px 30px;
+                display: none;
 
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
+                &.active {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 30px;
+                    background: var(--mov_black);
+                    padding: 100px 100px 50px;
+                    border-bottom: 1px solid #fff;
 
-                .searchEl {
-                    width: 200px;
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    z-index: -1;
 
-                    >img {
-                        width: 100%;
-                        object-fit: cover;
+                    .searchEl_title {
+                        text-align: center;
                     }
-
-                    .searchEl_title {}
                 }
-
             }
+        }
+    }
+}
+
+.search_board {
+    .searchEl {
+        width: 200px;
+
+        >img {
+            width: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .searchEl_title {
+            margin-top: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }
