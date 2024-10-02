@@ -95,6 +95,10 @@ header {
                     border-radius: 15px;
                     padding: 0 35px 0 15px;
                 }
+
+                input:focus {
+                    border: 1px solid var(--mov_pink);
+                }
             }
 
             a {
