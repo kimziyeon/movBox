@@ -18,7 +18,7 @@ function Detail(props) {
 
     useEffect(() => {
         dataFetch2(movieCode)
-    }, [])  // []안에가 조건이다, 조건이 만족했을때 한번만 실행해줘
+    }, [movieCode])
     console.log(detail.MvName, 'detail')
     if (detail.MvName === undefined) return;
 
