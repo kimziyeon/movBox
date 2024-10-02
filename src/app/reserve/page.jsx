@@ -27,6 +27,7 @@ function page(props) {
     const [step, setStep] = useState(0)
 
     const moveNext = () => {
+        console.log('Moving to next step');
         setStep((beforeStep) => beforeStep + 1)
     }
     const moveBefore = () => {
@@ -71,7 +72,7 @@ function page(props) {
                 <div className='reserve_page'>
                     {
                         step === 2 &&
-                        <Complete moveBefore={moveBefore} isAllSelect={isAllSelect} />
+                        <Complete isAllSelect={isAllSelect} />
                     }
                 </div>
             </div>

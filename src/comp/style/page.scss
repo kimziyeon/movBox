@@ -4,9 +4,11 @@
 
     .container_inner {
         display: flex;
+        justify-content: center;
+        align-items: center;
 
         .reserve_page {
-            width: 100%;
+            // width: 100%;
             flex-shrink: 0;
         }
     }

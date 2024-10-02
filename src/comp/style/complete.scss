@@ -5,7 +5,7 @@
 
 .complete {
     width: 100%;
-    margin-top: 100px;
+    margin: 100px 0 50px;
     position: relative;
 
     .compl_box {
@@ -92,6 +92,8 @@
 
 @media screen and (min-width : 1024px) {
     .complete {
+        margin: 50px 0;
+
         .compl_box {
             display: flex;
             align-items: center;

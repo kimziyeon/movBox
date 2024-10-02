@@ -42,22 +42,17 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
     }
 
 
+
+
     const completeBtn = () => {
         console.log('completeBtn')
+        moveNext();
     }
 
     return (
         <>
             <article className='seat'>
                 <div className='seat_cont'>
-
-                    <div className="poster">
-                        <Image src={userPoster}
-                            width={1000} height={1500}
-                            alt="영화포스터"
-                            priority />
-                        <div className="overlay"></div>
-                    </div>
 
                     <div className="poster_pc">
                         <Image src={userPoster}
@@ -109,7 +104,7 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
                                     선택불가
                                 </p>
                             </div>
-                            <div className="btn mob on" onClick={completeBtn}>예매 완료</div>
+                            <div className="btn mob on" onClick={() => { completeBtn() }}>예매 완료</div>
                         </div>
                     </div>
 

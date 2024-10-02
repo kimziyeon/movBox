@@ -31,7 +31,7 @@ function M_header() {
         }
 
         let d = dataComb.filter((obj) => (
-            (obj.movie.includes(searchInput)) || (obj.poster.includes(searchInput))
+            (obj.movie.includes(searchInput)) || (obj.code.includes(searchInput))
         ))
         setSearchValue(d);
         setSearchInput('');
