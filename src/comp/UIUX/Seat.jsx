@@ -6,10 +6,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import "../style/seat.scss";
 
-function Seat({ moveNext, isAllSelect, userPoster }) {
+function Seat({ moveNext, isAllSelect, userPoster, setIsSeatSelect }) {
 
     // console.log(isAllSelect, 'isAllSelect(유저선택 영화정보)')
-    console.log(userPoster, 'posterId(유저선택 영화포스터)')
+    // console.log(userPoster, 'posterId(유저선택 영화포스터)')
     const [select, setSelect] = useState([])
 
     const [seatList, setSeatList,] = useState({
@@ -22,7 +22,7 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
     })
 
     const seatClickHandle = (row, seat, k) => {
-        // console.log(row, seat, k, 'seatClickHandle')
+        console.log(row, seat, k, 'seatClickHandle')
 
         //seat가 false일떄 return
         if (!seat) {
@@ -45,7 +45,9 @@ function Seat({ moveNext, isAllSelect, userPoster }) {
 
 
     const completeBtn = () => {
-        console.log('completeBtn')
+        // console.log('completeBtn')
+        // console.log(select, 'select')
+        setIsSeatSelect(select)
         moveNext();
     }
 

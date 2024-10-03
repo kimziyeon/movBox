@@ -13,15 +13,11 @@ function page(props) {
     const [posterId, setPosterId] = useState()
     const [userPoster, setUserPoster] = useState()
 
-    // console.log(posterList, 'posterList')
-    // console.log(posterId, 'posterId')
-
-
     //유저 영화선택 정보
     const [isAllSelect, setIsAllSelect] = useState(null);
 
     //유저 자리선택 정보
-    const [isSeatSelect, setIsSeatSelect] = useState(null);
+    const [isSeatSelect, setIsSeatSelect] = useState([]);
 
     // 컴포넌트 이동 0: Reserve, 1: Seat, 2: Complete
     const [step, setStep] = useState(0)
@@ -66,13 +62,13 @@ function page(props) {
                 <div className='reserve_page'>
                     {
                         step === 1 &&
-                        <Seat moveNext={moveNext} moveBefore={moveBefore} isAllSelect={isAllSelect} userPoster={userPoster} />
+                        <Seat moveNext={moveNext} moveBefore={moveBefore} isAllSelect={isAllSelect} userPoster={userPoster} setIsSeatSelect={setIsSeatSelect} />
                     }
                 </div>
                 <div className='reserve_page'>
                     {
                         step === 2 &&
-                        <Complete isAllSelect={isAllSelect} />
+                        <Complete isAllSelect={isAllSelect} isSeatSelect={isSeatSelect} userPoster={userPoster} />
                     }
                 </div>
             </div>
