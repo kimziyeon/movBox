@@ -22,6 +22,9 @@ function page(props) {
     // 컴포넌트 이동 0: Reserve, 1: Seat, 2: Complete
     const [step, setStep] = useState(0)
 
+    // 유저 선택정보 합체~~~~~~~!!!!!!!!
+    const [ticketInfo, setTicketInfo] = useState(null);
+
     const moveNext = () => {
         console.log('Moving to next step');
         setStep((beforeStep) => beforeStep + 1)
@@ -62,13 +65,13 @@ function page(props) {
                 <div className='reserve_page'>
                     {
                         step === 1 &&
-                        <Seat moveNext={moveNext} moveBefore={moveBefore} isAllSelect={isAllSelect} userPoster={userPoster} setIsSeatSelect={setIsSeatSelect} />
+                        <Seat moveNext={moveNext} moveBefore={moveBefore} isAllSelect={isAllSelect} userPoster={userPoster} setIsSeatSelect={setIsSeatSelect} setTicketInfo={setTicketInfo} />
                     }
                 </div>
                 <div className='reserve_page'>
                     {
                         step === 2 &&
-                        <Complete isAllSelect={isAllSelect} isSeatSelect={isSeatSelect} userPoster={userPoster} />
+                        <Complete ticketInfo={ticketInfo} />
                     }
                 </div>
             </div>

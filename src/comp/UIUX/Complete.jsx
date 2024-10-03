@@ -5,12 +5,12 @@ import React, { useState, useEffect } from 'react';
 import "../style/complete.scss";
 import Image from 'next/image';
 
-function Complete({ isAllSelect, isSeatSelect, userPoster }) {
+function Complete({ ticketInfo }) {
 
-    console.log(isAllSelect, 'isAllSelect')
+    console.log(ticketInfo, 'ticketInfo')
 
-    const seatValue = Object.values(isSeatSelect).length;
-    const seatJoin = isSeatSelect.join(', ');
+    const seatValue = Object.values(ticketInfo.seat).length;
+    const seatJoin = ticketInfo.seat.join(', ');
 
     return (
         <>
@@ -19,7 +19,7 @@ function Complete({ isAllSelect, isSeatSelect, userPoster }) {
                 <div className='compl_box'>
 
                     <div className='mv_poster'>
-                        <Image src={userPoster}
+                        <Image src={ticketInfo.posterUrl}
                             width={1000} height={1500}
                             priority
                             alt="영화포스터"
@@ -36,14 +36,14 @@ function Complete({ isAllSelect, isSeatSelect, userPoster }) {
 
                             <dl className='row'>
                                 <dt>예매번호</dt>
-                                <dd>240815 - 0000 - 0000</dd>
+                                <dd>{ticketInfo.ticketNm} - 0000 - 0000</dd>
                                 <dt>영화</dt>
-                                <dd>{isAllSelect.title}</dd>
+                                <dd>{ticketInfo.title}</dd>
                                 <dt>상영관</dt>
                                 <dd>1관 3층</dd>
                                 <dt>일시</dt>
-                                <dd className='compl_date'>{isAllSelect.date}
-                                    <span>{isAllSelect.time}</span>
+                                <dd className='compl_date'>{ticketInfo.date}
+                                    <span>{ticketInfo.time}</span>
                                 </dd>
                                 <dt>인원</dt>
                                 <dd>일반 <span>{seatValue}</span>명</dd>

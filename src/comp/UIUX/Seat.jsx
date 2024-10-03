@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import "../style/seat.scss";
 
-function Seat({ moveNext, isAllSelect, userPoster, setIsSeatSelect }) {
+function Seat({ moveNext, isAllSelect, userPoster, setIsSeatSelect, setTicketInfo }) {
 
     // console.log(isAllSelect, 'isAllSelect(유저선택 영화정보)')
     // console.log(userPoster, 'posterId(유저선택 영화포스터)')
@@ -41,13 +41,17 @@ function Seat({ moveNext, isAllSelect, userPoster, setIsSeatSelect }) {
         }
     }
 
-
-
+    const reserveData = {
+        ...isAllSelect,
+        posterUrl: userPoster,
+        seat: select
+    };
 
     const completeBtn = () => {
-        // console.log('completeBtn')
-        // console.log(select, 'select')
         setIsSeatSelect(select)
+        //세션스토리지 데이터 저장
+        sessionStorage.setItem('reserve', JSON.stringify(reserveData));
+        setTicketInfo(reserveData)
         moveNext();
     }
 

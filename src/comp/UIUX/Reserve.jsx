@@ -16,6 +16,7 @@ function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
     const [mvElTitle, setMvElTitle] = useState();
     const [dateEl, setDateEl] = useState();
     const [timeEl, setTimeEl] = useState();
+    const [ticketNm, setTicketNm] = useState();
     const [ingStep, setIngStep] = useState('movie')
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [slideClass, setSlideClass] = useState('');
@@ -64,6 +65,9 @@ function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
         setTimeEl(time)
     }
 
+    //예매번호
+    const dateNm = String(dateEl).replace(/\D/g, '').slice(2);
+
     //다음버튼
     const afterBtn = () => {
         if (screenWidth > 1024) { //1024이상 한번에 선택
@@ -82,9 +86,10 @@ function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
             setIsAllSelect({
                 title: mvElTitle,
                 date: dateEl,
-                time: timeEl
+                time: timeEl,
+                ticketNm: dateNm
             });
-            console.log(mvElTitle, dateEl, timeEl, '유저선택완료');
+            // console.log(mvElTitle, dateEl, timeEl, dateNm, '유저선택완료');
             moveNext();
         }
         else if (ingStep === 'movie') {
@@ -114,8 +119,9 @@ function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
                 title: mvElTitle,
                 date: dateEl,
                 time: timeEl,
+                ticketNm: dateNm
             });
-            console.log(mvElTitle, dateEl, timeEl, '유저선택완료');
+            // console.log(mvElTitle, dateEl, timeEl, dateNm, '유저선택완료');
             moveNext();
         }
 
