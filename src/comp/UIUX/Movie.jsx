@@ -13,6 +13,7 @@ import { Autoplay } from 'swiper/modules';
 import Link from 'next/link';
 import Image from 'next/image';
 import 'swiper/css';
+import Loading from './Loading';
 import axios from 'axios';
 
 function Movie(props) {
@@ -49,7 +50,9 @@ function Movie(props) {
     }, [dailyBoxOffice])
     // console.log(posterUrl);
 
-    if (dailyBoxOffice.length === 0 && posterUrl.length === 0) return;
+    if (dailyBoxOffice.length === 0 && posterUrl.length === 0)
+        return <Loading />;
+
     const posterClick = (k) => {
         setListBtn(k)
     }

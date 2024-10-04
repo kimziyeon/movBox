@@ -4,6 +4,7 @@
 import "../style/detail.scss";
 import Link from 'next/link';
 import Image from 'next/image';
+import Loading from './Loading';
 import { useEffect } from 'react';
 import { useSearchParams } from "next/navigation";
 import { useStore2 } from '../store/movie_detail_store';
@@ -33,6 +34,9 @@ function Detail(props) {
     const mvActor = detail.MvActor.slice(0, 3).join(', ');
     const mvAgeView = detail.MvAge.replace('관람', ' 관람');
     // console.log(detail, 'd1234r5')
+
+    if (posterUrlDetail.length === 0 && movieCode.length === 0)
+        return <Loading />;
 
     return (
         <article className="detail">

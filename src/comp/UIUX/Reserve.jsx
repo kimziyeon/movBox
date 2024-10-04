@@ -6,6 +6,7 @@ import { useStore } from '../store/movie_store';
 import { useSearchParams } from "next/navigation";
 import "../style/reserve.scss";
 import { format, subDays } from 'date-fns';
+import Loading from './Loading';
 
 function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
     let { dataFetch, dailyBoxOffice, movieCode } = useStore();
@@ -166,6 +167,11 @@ function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
             setMvElTitle(ticketMvList[userFindMv].mvTitle)
         }
     }, [usermovieCode])
+
+
+    if (dailyBoxOffice.length === 0)
+        return <Loading />;
+
 
     return (
         <>

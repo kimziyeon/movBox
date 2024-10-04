@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import '../style/join.scss'
 import Image from 'next/image';
 import Link from 'next/link';
+import Loading from './Loading';
 import { user } from '../store/user';
 
 function Join() {
@@ -88,12 +89,12 @@ function Join() {
                 alert('중복된 아이디 입니다.')
             } else if (inputValue.id === '') {
                 alert('아이디를 입력해주세요')
-            } else if(inputValue.id.length<2){
+            } else if (inputValue.id.length < 2) {
                 alert('2자 이상 입력해주세요')
             } else {
                 alert('사용가능한 아이디 입니다.')
-            } 
-            
+            }
+
         } else if (k === 3) {
             console.log(inputValue.user_email)
             if (inputValue.user_email === '') {
@@ -103,6 +104,11 @@ function Join() {
             }
         }
     }
+
+
+    if (user.length === 0)
+        return <Loading />;
+
 
     return (
         <>
