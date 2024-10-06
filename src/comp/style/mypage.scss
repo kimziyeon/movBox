@@ -68,6 +68,13 @@
             font-size: 12px;
             font-weight: 300;
         }
+        .btn{
+            margin:0 auto;
+            background-color: var(--mov_pink);
+            color:white;
+            width:40%;
+            margin-bottom: 30px;
+        }
     }
 
     .no_ticket {
@@ -111,7 +118,7 @@
                 justify-content: center;
                 align-items: center;
                 gap:19px;
-                margin-bottom: 39px;
+                margin-bottom: 20px;
                 .theater{
                     flex-direction: column;
                     gap:0;
@@ -124,7 +131,7 @@
             }
             .notify{
                 font-size: 15px;
-                padding: 50px;
+                padding: 30px;
                 font-weight: 600;
             }
             

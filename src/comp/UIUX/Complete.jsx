@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import "../style/complete.scss";
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Complete({ ticketInfo }) {
 
@@ -52,7 +53,7 @@ function Complete({ ticketInfo }) {
                             </dl>
 
                         </div>
-                        <div className='btn on mob'>예매 내역보기</div>
+                        <Link href='/mypage'><div className='btn on mob'>예매 내역보기</div></Link>
                     </div>
                 </div>
 
