@@ -2,6 +2,8 @@
 
 "use client";
 import React, { useState, useEffect } from 'react';
+import { loginStore } from '../store/login_store';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import "../style/seat.scss";
@@ -10,8 +12,9 @@ function Seat({ moveNext, isAllSelect, userPoster, setIsSeatSelect, setTicketInf
 
     // console.log(isAllSelect, 'isAllSelect(유저선택 영화정보)')
     // console.log(userPoster, 'posterId(유저선택 영화포스터)')
+    const router = useRouter();
+    let { storegeFn, storege, isLogined } = loginStore();
     const [select, setSelect] = useState([])
-
     const [seatList, setSeatList,] = useState({
         A: [false, true, true, true, true, false],
         B: [true, true, true, true, true, true],
@@ -48,11 +51,17 @@ function Seat({ moveNext, isAllSelect, userPoster, setIsSeatSelect, setTicketInf
     };
 
     const completeBtn = () => {
-        setIsSeatSelect(select)
-        //세션스토리지 데이터 저장
-        sessionStorage.setItem('reserve', JSON.stringify(reserveData));
-        setTicketInfo(reserveData)
-        moveNext();
+        if (isLogined) {
+            setIsSeatSelect(select)
+            //세션스토리지 데이터 저장
+            sessionStorage.setItem('reserve', JSON.stringify(reserveData));
+            setTicketInfo(reserveData)
+            moveNext();
+        } else {
+            alert('로그인이 필요한 서비스입니다.')
+            router.push('/login');
+        }
+
     }
 
     return (

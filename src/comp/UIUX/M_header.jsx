@@ -70,7 +70,7 @@ function M_header() {
                         <Image src='/images/search_icon.png' alt='search' width={18} height={18} />
                     </form>
                     <Link href={{
-                        pathname: isLogined?'/reserve':'login',
+                        pathname: '/reserve',
                         query: {
                             posterUrlList: JSON.stringify(posterUrl)
                         }
@@ -122,7 +122,7 @@ function M_header() {
                 </div>
                 <div className='linked'>
                     <Link href={{
-                        pathname: isLogined?'/reserve':'login',
+                        pathname: isLogined ? '/reserve' : 'login',
                         query: {
                             posterUrlList: JSON.stringify(posterUrl)
                         }
