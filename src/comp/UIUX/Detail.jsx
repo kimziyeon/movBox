@@ -13,15 +13,18 @@ import { format, subDays } from 'date-fns';
 function Detail(props) {
     const params = useSearchParams()
     const date = params.get('date');
-    const posterUrlDetail = params.get('posterUrlDetail');
     const movieCode = params.get('movieCd');
+    const movieId = params.get('id');
+    const posterUrlDetail = params.get('posterUrlDetail');
+    const posterUrlList = params.get('posterUrlList');
+
     let { dataFetch2, detail } = useStore2();
 
     useEffect(() => {
         dataFetch2(movieCode)
     }, [movieCode])
     console.log(detail.MvName, 'detail')
-    if (detail.MvName === undefined) return;
+    if (detail.MvName === undefined) return <Loading />;
 
     const dateObject = new Date(
         Number(detail.MvDate.slice(0, 4)), // 연도
@@ -34,9 +37,6 @@ function Detail(props) {
     const mvActor = detail.MvActor.slice(0, 3).join(', ');
     const mvAgeView = detail.MvAge.replace('관람', ' 관람');
     // console.log(detail, 'd1234r5')
-
-    if (posterUrlDetail.length === 0 && movieCode.length === 0)
-        return <Loading />;
 
     return (
         <article className="detail">
@@ -92,7 +92,9 @@ function Detail(props) {
                     <Link href={{
                         pathname: '/reserve',
                         query: {
-                            movieCd: movieCode
+                            movieCd: movieCode,
+                            posterUrlList, posterUrlList,
+                            id: movieId
                         }
                     }}
                     ><div className='btn on mob'>예매하기</div></Link>

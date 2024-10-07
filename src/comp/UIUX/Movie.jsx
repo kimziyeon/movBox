@@ -172,8 +172,10 @@ function Movie(props) {
                                                 <Link href={{
                                                     pathname: '/detail',
                                                     query: {
+                                                        movieCd: movieCode[k],
                                                         posterUrlDetail: posterUrl[k],
-                                                        movieCd: movieCode[k]
+                                                        posterUrlList: JSON.stringify(posterUrl),
+                                                        id: [k]
                                                     }
 
                                                 }}

@@ -17,7 +17,6 @@ function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
     const [mvElTitle, setMvElTitle] = useState();
     const [dateEl, setDateEl] = useState();
     const [timeEl, setTimeEl] = useState();
-    const [ticketNm, setTicketNm] = useState();
     const [ingStep, setIngStep] = useState('movie')
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [slideClass, setSlideClass] = useState('');
@@ -166,12 +165,13 @@ function Reserve({ moveNext, setIsAllSelect, setPosterId }) {
             setMvElIndex(userFindMv)
             setMvElTitle(ticketMvList[userFindMv].mvTitle)
         }
+
     }, [usermovieCode])
 
 
-    if (dailyBoxOffice.length === 0)
+    if (dailyBoxOffice.length === 0 || movieCode.length === 0) {
         return <Loading />;
-
+    }
 
     return (
         <>
