@@ -114,7 +114,7 @@ function Login() {
                 <p>이름과 아이디를 입력해주세요.</p>
                 <div className='input_space'>
                     <input type="text" placeholder='이름' onChange={(e) => setPwNameInput(e.target.value)} ref={pwNameRef} />
-                    <input type="text" placeholder='아이디' onChange={(e) => setEmailInput(e.target.value)} ref={pwEmailRef} />
+                    <input type="text" placeholder='이메일' onChange={(e) => setEmailInput(e.target.value)} ref={pwEmailRef} />
                 </div>
                 <button className='btn' onClick={findPw}>비밀번호 찾기</button>
             </div>
