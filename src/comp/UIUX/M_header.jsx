@@ -54,9 +54,11 @@ function M_header() {
     }
 
     const logout = () => {
-        storegeFn('logout')
-        setSearchView(false)
-        setMenuOn(false)
+        if (confirm('로그아웃 하시겠습니까?')) {
+            storegeFn('logout')
+            setSearchView(false)
+            setMenuOn(false)
+        }
     }
 
     return (
@@ -76,7 +78,15 @@ function M_header() {
                         }
                     }}
                     >Ticket</Link>
-                    <Link href={isLogined ? "/" : "/login"} onClick={logout}>{isLogined ? 'Logout' : 'Login'}</Link>
+                    <Link href={isLogined ? "/" : "/login"}
+                        onClick={(e) => {
+                            if (isLogined) {
+                                e.preventDefault();
+                                logout();
+                            }
+                        }}
+                    >
+                        {isLogined ? 'Logout' : 'Login'}</Link>
                     <Link href={isLogined ? "/mypage" : "/login"}>My page</Link>
                 </nav>
 
