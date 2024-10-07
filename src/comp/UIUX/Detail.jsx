@@ -53,6 +53,7 @@ function Detail(props) {
                 <div className="poster_pc">
                     <Image src={posterUrlDetail}
                         width={1000} height={1500}
+                        priority
                         alt="영화포스터"
                     />
                 </div>

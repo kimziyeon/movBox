@@ -16,9 +16,10 @@
     }
 
     .ticket {
-        &.on{
-            display:block;
+        &.on {
+            display: block;
         }
+
         max-width: 540px;
         margin:42px auto 0;
         display:none;
@@ -30,57 +31,73 @@
         border-radius: 10px;
         text-align: center;
         font-size: 18px;
-        .movie_info{
-            height:140px;
+
+        .movie_info {
+            height: 140px;
             background-color: skyblue;
             border-radius: 10px 10px 0 0;
             padding-top: 28px;
-            color:white;
-            .ticket_num{
+            color: white;
+
+            .ticket_num {
                 font-weight: 300;
             }
-            .title_ko{
+
+            .title_ko {
                 margin-top: 32px;
                 font-weight: 600;
             }
-            .title_en{
+
+            .title_en {
                 font-size: 14px;
                 font-weight: 300;
                 margin-top: 5px;
             }
         }
-        .date{
+
+        .date {
             margin-top: 26px;
             font-weight: 300;
         }
-        .theater{
-            display:flex;
+
+        .theater {
+            display: flex;
             justify-content: center;
             align-items: center;
             gap: 15px;
             margin-top: 17px;
-            p{font-weight: 300;}
-            .time{font-size: 26px;}
+
+            p {
+                font-weight: 300;
+            }
+
+            .time {
+                font-size: 26px;
+            }
         }
-        .notify{
-            padding:21px;
-            border-top:1px dotted black;
+
+        .notify {
+            padding: 21px;
+            border-top: 1px dotted black;
             font-size: 12px;
             font-weight: 300;
         }
-        .btn{
-            margin:0 auto;
+
+        .btn {
+            margin: 0 auto;
             background-color: var(--mov_pink);
-            color:white;
-            width:40%;
+            color: white;
+            width: 40%;
             margin-bottom: 30px;
+            cursor: pointer;
         }
     }
 
     .no_ticket {
-        &.on{
-            display:block;
+        &.on {
+            display: block;
         }
+
         max-width: 540px;
         background-color: transparent;
         display:none;
@@ -90,51 +107,59 @@
         border:5px solid white;
         border-radius: 10px;
         margin:42px auto 0;
-        img{
-            display:block;
+
+        img {
+            display: block;
             margin: 0 auto 13px;
         }
     }
 
     @media screen and (min-width : 768px) {
-        .ticket{
-            height:655px;
+        .ticket {
+            height: 655px;
             font-size: 30px;
-            .movie_info{
+
+            .movie_info {
                 padding-top: 50px;
-                height:270px;
+                height: 270px;
                 font-size: 20px;
-                .title_ko{
+
+                .title_ko {
                     margin-top: 60px;
                     font-size: 50px;
                 }
-                .title_en{
+
+                .title_en {
                     font-size: 20px;
                     font-weight: 600;
                 }
             }
-            .theater_space{
-                display:flex;
+
+            .theater_space {
+                display: flex;
                 justify-content: center;
                 align-items: center;
-                gap:19px;
+                gap: 19px;
                 margin-bottom: 20px;
-                .theater{
+
+                .theater {
                     flex-direction: column;
-                    gap:0;
+                    gap: 0;
                     align-items: end;
-                    margin:0;
-                    .time{
+                    margin: 0;
+
+                    .time {
                         font-size: 60px;
                     }
                 }
             }
-            .notify{
+
+            .notify {
                 font-size: 15px;
                 padding: 30px;
                 font-weight: 600;
             }
-            
+
         }
     }
 }
