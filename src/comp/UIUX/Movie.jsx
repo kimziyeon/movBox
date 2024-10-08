@@ -25,30 +25,34 @@ function Movie(props) {
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
+    let [youtubeID, setYoutubeID] = useState([]);
     const youtubeMv = dailyBoxOffice.slice(0, 3);
-    // console.log(youtubeID)
 
-    let [youtubeID, setYoutubeID] = useState();
+
     useEffect(() => {
         dataFetch(yesterday)
         getMovie();
     }, [])
     // console.log(dailyBoxOffice, movieCode, movieAcc)
+
     useEffect(() => {
         dataFetch4(dailyBoxOffice, movieDate)
-        // youtubeMv.forEach((movie)=>{
+        // youtubeMv.forEach((movie) => {
         //     axios.get(
         //         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${movie} 예고편&type=video&key=AIzaSyD8Kj9MiGCaOF-6YkWkkLZmBhXxGGZSK2g`
         //     )
-        //     .then((res) => {
-        //         setYoutubeID(res.data.items[0].id.videoId);
-        //     })
-        //     .catch((err) => {
-        //         console.error(`Error fetching trailer for ${movie}: `, err);
-        //       });
+        //         .then((res) => {
+        //             console.log('res.data', res.data.items)
+        //             setYoutubeID(res.data.items);
+
+        //         })
+        //         .catch((err) => {
+        //             console.error(`Error fetching trailer for ${movie}: `, err);
+        //         });
         // })
     }, [dailyBoxOffice])
-    // console.log(posterUrl);
+
+    // console.log('youtubeID 검색결과', youtubeID);
 
     if (dailyBoxOffice.length === 0 && posterUrl.length === 0)
         return <Loading />;
@@ -57,8 +61,6 @@ function Movie(props) {
         setListBtn(k)
     }
 
-
-    // console.log(youtubeID)
     return (
         <>
             <article className='main_movie'>
@@ -233,6 +235,18 @@ function Movie(props) {
                             <SwiperSlide>
                                 <li>
                                     <div className="slide">
+
+                                        {/* {
+                                            youtubeID.map((id, index) => (
+                                                <div key={index}>
+                                                    <div className="slide_box">
+
+                                                    </div>
+                                                </div>
+                                            ))
+
+                                        } */}
+
 
                                         {/* <div className="slide_box">
                                             <Image src="/images/inside.png"

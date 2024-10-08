@@ -53,7 +53,9 @@ function Complete({ ticketInfo }) {
                             </dl>
 
                         </div>
-                        <Link href='/mypage'><div className='btn on mob'>예매 내역보기</div></Link>
+                        <Link href='/mypage'>
+                            <div className='btn on mob'>예매 내역보기</div>
+                        </Link>
                     </div>
                 </div>
 
