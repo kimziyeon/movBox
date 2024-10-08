@@ -248,7 +248,7 @@ function Movie(props) {
                                         } */}
 
 
-                                        {/* <div className="slide_box">
+                                        <div className="slide_box">
                                             <Image src="/images/inside.png"
                                                 width={200}
                                                 height={150}
@@ -262,7 +262,7 @@ function Movie(props) {
                                                 height={100}
                                                 alt="play icon"
                                             />
-                                        </div> */}
+                                        </div>
                                         <p className="slide_title">
                                             &#91;인사이드 아웃 2&#93; 파이널 예고편
                                         </p>

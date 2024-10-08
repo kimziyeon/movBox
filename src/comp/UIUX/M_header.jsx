@@ -132,7 +132,7 @@ function M_header() {
                 </div>
                 <div className='linked'>
                     <Link href={{
-                        pathname: isLogined ? '/reserve' : 'login',
+                        pathname: '/reserve',
                         query: {
                             posterUrlList: JSON.stringify(posterUrl)
                         }
