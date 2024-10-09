@@ -25,7 +25,7 @@ function Seat({ moveNext, isAllSelect, userPoster, setIsSeatSelect, setTicketInf
     })
 
     const seatClickHandle = (row, seat, k) => {
-        console.log(row, seat, k, 'seatClickHandle')
+        // console.log(row, seat, k, 'seatClickHandle')
 
         //seat가 false일떄 return
         if (!seat) {

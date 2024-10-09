@@ -83,7 +83,7 @@ function Movie(props) {
                                 <div className="poster">
                                     <Image src={obj}
                                         width={1000} height={1500}
-                                        alt={dailyBoxOffice[k]}
+                                        alt="영화포스터"
                                         priority />
                                     <div className="overlay"></div>
                                 </div>
@@ -91,7 +91,8 @@ function Movie(props) {
                                 <div className="poster_pc">
                                     <Image src={obj}
                                         width={1000} height={1500}
-                                        alt={dailyBoxOffice[k]}
+                                        alt="영화포스터"
+                                        priority
                                     />
                                 </div>
 

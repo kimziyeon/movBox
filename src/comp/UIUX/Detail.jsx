@@ -23,7 +23,8 @@ function Detail(props) {
     useEffect(() => {
         dataFetch2(movieCode)
     }, [movieCode])
-    console.log(detail.MvName, 'detail')
+
+    // console.log(detail.MvName, 'detail')
     if (detail.MvName === undefined) return <Loading />;
 
     const dateObject = new Date(
