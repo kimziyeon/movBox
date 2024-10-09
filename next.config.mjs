@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['file.koreafilm.or.kr'], // 외부 이미지 도메인 추가
+        domains: ['file.koreafilm.or.kr', 'i.ytimg.com'], // 외부 도메인 허용할 도메인추가
     },
 };
 

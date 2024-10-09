@@ -42,7 +42,7 @@ function Movie(props) {
         //         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${movie} 예고편&type=video&key=AIzaSyD8Kj9MiGCaOF-6YkWkkLZmBhXxGGZSK2g`
         //     )
         //         .then((res) => {
-        //             console.log('res.data', res.data.items)
+        //             // console.log('res.data', res.data.items)
         //             setYoutubeID(res.data.items);
 
         //         })
@@ -220,105 +220,50 @@ function Movie(props) {
                             pagination={{
                                 clickable: true,
                             }}
-                            breakpoints={{
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 20,
-                                },
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 30,
-                                },
-                            }}
+                            // breakpoints={{
+                            //     768: {
+                            //         slidesPerView: 2,
+                            //         spaceBetween: 20,
+                            //     },
+                            //     1024: {
+                            //         slidesPerView: 3,
+                            //         spaceBetween: 30,
+                            //     },
+                            // }}
                             className="mySwiper"
                         >
-                            <SwiperSlide>
-                                <li>
-                                    <div className="slide">
-
-                                        {/* {
-                                            youtubeID.map((id, index) => (
-                                                <div key={index}>
-                                                    <div className="slide_box">
-
-                                                    </div>
+                            {/* {
+                                youtubeID.slice(0, 3).map((obj, index) => (
+                                    <SwiperSlide key={index}>
+                                        <li>
+                                            <Link className="slide"
+                                                href={`https://www.youtube.com/watch?v=${obj.id.videoId}`}
+                                                target="_blank"
+                                            >
+                                                <div className="slide_box">
+                                                    <Image src={obj.snippet.thumbnails.medium.url}
+                                                        width={320}
+                                                        height={180}
+                                                        alt="트레일러 썸네일"
+                                                        priority
+                                                    />
                                                 </div>
-                                            ))
+                                                <div className="play_box">
+                                                    <Image src="/images/play_icon.svg"
+                                                        width={100}
+                                                        height={100}
+                                                        alt="play icon"
+                                                    />
+                                                </div>
 
-                                        } */}
-
-
-                                        <div className="slide_box">
-                                            <Image src="/images/inside.png"
-                                                width={200}
-                                                height={150}
-                                                alt="트레일러 썸네일"
-                                                priority
-                                            />
-                                        </div>
-                                        <div className="play_box">
-                                            <Image src="/images/play_icon.svg"
-                                                width={100}
-                                                height={100}
-                                                alt="play icon"
-                                            />
-                                        </div>
-                                        <p className="slide_title">
-                                            &#91;인사이드 아웃 2&#93; 파이널 예고편
-                                        </p>
-                                    </div>
-                                </li>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <li>
-                                    <div className="slide">
-                                        <div className="slide_box">
-                                            <Image src="/images/inside.png"
-                                                width={200}
-                                                height={150}
-                                                alt="트레일러 썸네일"
-                                                priority
-                                            />
-                                        </div>
-                                        <div className="play_box">
-                                            <Image src="/images/play_icon.svg"
-                                                width={100}
-                                                height={100}
-                                                alt="play icon"
-                                            />
-                                        </div>
-                                        <p className="slide_title">
-                                            &#91;인사이드 아웃 2&#93; 파이널 예고편
-                                        </p>
-                                    </div>
-                                </li>
-                            </SwiperSlide>
-
-                            <SwiperSlide>
-                                <li>
-                                    <div className="slide">
-                                        <div className="slide_box">
-                                            <Image src="/images/inside.png"
-                                                width={200}
-                                                height={150}
-                                                alt="트레일러 썸네일"
-                                                priority
-                                            />
-                                        </div>
-                                        <div className="play_box">
-                                            <Image src="/images/play_icon.svg"
-                                                width={100}
-                                                height={100}
-                                                alt="play icon"
-                                            />
-                                        </div>
-                                        <p className="slide_title">
-                                            &#91;인사이드 아웃 2&#93; 파이널 예고편
-                                        </p>
-                                    </div>
-                                </li>
-                            </SwiperSlide>
+                                                <p className="slide_title">
+                                                    {obj.snippet.title}
+                                                </p>
+                                            </Link>
+                                        </li>
+                                    </SwiperSlide>
+                                ))
+                            } */}
 
                         </Swiper>
                     </ul>
