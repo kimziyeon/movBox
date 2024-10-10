@@ -25,7 +25,8 @@ function Movie(props) {
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
-    let [youtubeID, setYoutubeID] = useState([]);
+    const YOUTUBE_API_KEY = 'AIzaSyD8Kj9MiGCaOF-6YkWkkLZmBhXxGGZSK2g';
+    let [youtubeId, setYoutubeId] = useState([]);
     const youtubeMv = dailyBoxOffice.slice(0, 3);
 
 
@@ -37,22 +38,32 @@ function Movie(props) {
 
     useEffect(() => {
         dataFetch4(dailyBoxOffice, movieDate)
-        // youtubeMv.forEach((movie) => {
-        //     axios.get(
-        //         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${movie} 예고편&type=video&key=AIzaSyD8Kj9MiGCaOF-6YkWkkLZmBhXxGGZSK2g`
-        //     )
-        //         .then((res) => {
-        //             // console.log('res.data', res.data.items)
-        //             setYoutubeID(res.data.items);
 
-        //         })
-        //         .catch((err) => {
-        //             console.error(`Error fetching trailer for ${movie}: `, err);
-        //         });
-        // })
+        const fetchYoutubeTrailers = async () => {
+            try {
+                // 각 영화에 대한 axios 요청 배열 생성
+                const promises = youtubeMv.map((movie) =>
+                    axios.get(
+                        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${movie} 예고편&type=video&key=${YOUTUBE_API_KEY}`
+                    )
+                );
+
+                // 모든 요청을 Promise.all로 기다림
+                const responses = await Promise.all(promises);
+
+                // 모든 응답을 처리하여 videoId 추출
+                const videoId = responses.map((response) => response.data.items[0]);
+                setYoutubeId(videoId);
+                console.log(videoId, 'videoId')
+            } catch (error) {
+                console.error('Error fetching YouTube trailers:', error);
+            }
+        };
+
+        fetchYoutubeTrailers();
     }, [dailyBoxOffice])
 
-    // console.log('youtubeID 검색결과', youtubeID);
+    console.log('youtubeId 검색결과', youtubeId);
 
     if (dailyBoxOffice.length === 0 && posterUrl.length === 0)
         return <Loading />;
@@ -215,58 +226,38 @@ function Movie(props) {
                 <div className="inner">
                     <h2>트레일러</h2>
                     <ul>
-                        <Swiper
-                            slidesPerView={1}
-                            spaceBetween={10}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            // breakpoints={{
-                            //     768: {
-                            //         slidesPerView: 2,
-                            //         spaceBetween: 20,
-                            //     },
-                            //     1024: {
-                            //         slidesPerView: 3,
-                            //         spaceBetween: 30,
-                            //     },
-                            // }}
-                            className="mySwiper"
-                        >
-                            {/* {
-                                youtubeID.slice(0, 3).map((obj, index) => (
-                                    <SwiperSlide key={index}>
-                                        <li>
-                                            <Link className="slide"
-                                                href={`https://www.youtube.com/watch?v=${obj.id.videoId}`}
-                                                target="_blank"
-                                            >
-                                                <div className="slide_box">
-                                                    <Image src={obj.snippet.thumbnails.medium.url}
-                                                        width={320}
-                                                        height={180}
-                                                        alt="트레일러 썸네일"
-                                                        priority
-                                                    />
-                                                </div>
-                                                <div className="play_box">
-                                                    <Image src="/images/play_icon.svg"
-                                                        width={100}
-                                                        height={100}
-                                                        alt="play icon"
-                                                    />
-                                                </div>
+                        {
+                            youtubeId.map((obj, index) => (
+                                <div key={index}>
+                                    <li>
+                                        <Link className="view_box"
+                                            href={`https://www.youtube.com/watch?v=${obj.id.videoId}`}
+                                            target="_blank"
+                                        >
+                                            <div className="thumb_box">
+                                                <Image src={obj.snippet.thumbnails.medium.url}
+                                                    width={320}
+                                                    height={180}
+                                                    alt="트레일러 썸네일"
+                                                    priority
+                                                />
+                                            </div>
+                                            <div className="play_box">
+                                                <Image src="/images/play_icon.svg"
+                                                    width={100}
+                                                    height={100}
+                                                    alt="play icon"
+                                                />
+                                            </div>
 
-                                                <p className="slide_title">
-                                                    {obj.snippet.title}
-                                                </p>
-                                            </Link>
-                                        </li>
-                                    </SwiperSlide>
-                                ))
-                            } */}
-
-                        </Swiper>
+                                            <p className="thumb_title">
+                                                {obj.snippet.title}
+                                            </p>
+                                        </Link>
+                                    </li>
+                                </div>
+                            ))
+                        }
                     </ul>
 
                 </div>

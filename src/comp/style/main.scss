@@ -227,10 +227,10 @@ main {
 
             ul {
                 li {
-                    .slide {
+                    .view_box {
                         position: relative;
 
-                        .slide_box {
+                        .thumb_box {
                             position: relative;
 
                             img {
@@ -255,7 +255,7 @@ main {
                         .play_box {
                             position: absolute;
                             transform: translate(-50%, -50%);
-                            top: 43%;
+                            top: 40%;
                             left: 50%;
                             z-index: 2;
 
@@ -264,9 +264,10 @@ main {
                             }
                         }
 
-                        .slide_title {
+                        .thumb_title {
                             padding: 10px;
                             color: #fff;
+                            line-height: 20px;
                         }
                     }
                 }
@@ -493,6 +494,36 @@ main {
                 ul {
                     li {
                         .rank {}
+                    }
+                }
+            }
+        }
+
+        .trailer {
+            .inner {
+                h2 {
+                    margin-bottom: 20px;
+                    font-size: 20px;
+                }
+
+                ul {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    gap: 20px;
+
+                    li {
+                        .view_box {
+                            .thumb_box {
+                                width: 320px;
+
+                                img {}
+                            }
+
+                            .play_box {}
+
+                            .thumb_title {}
+                        }
                     }
                 }
             }
