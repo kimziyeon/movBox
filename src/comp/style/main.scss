@@ -280,7 +280,7 @@ main {
 
     .notice {
         margin-top: 80px;
-        background-color: var(--mov_black);
+        background-color: #000;
         padding: 20px 0;
 
         .inner {
@@ -370,11 +370,11 @@ main {
             .poster_pc {
                 display: block;
                 position: absolute;
-                top: 20%; //55%->20% 로 수정
+                top: 20%;
                 left: 50%;
                 z-index: 2;
                 width: 1024px;
-                transform: translate(-50%, 0%); //50% 50% 에서 50% 0 으로 수정
+                transform: translate(-50%, 0%);
 
                 img {
                     width: 40%;
@@ -507,15 +507,18 @@ main {
                 }
 
                 ul {
+                    width: 100%;
                     display: flex;
                     align-items: flex-start;
-                    justify-content: center;
+                    justify-content: space-between;
                     gap: 20px;
 
                     li {
+                        width: 330px;
+
                         .view_box {
                             .thumb_box {
-                                width: 320px;
+
 
                                 img {}
                             }
