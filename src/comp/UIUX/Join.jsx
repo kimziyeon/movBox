@@ -82,11 +82,14 @@ function Join() {
     const repeat = (k) => {
         let idChecked = userData.filter(obj => obj.user_id === inputValue.id);
         let emailChecked = userData.filter(obj => obj.user_email === inputValue.email);
-        console.log(k)
         if (k === 0) {
             console.log(inputValue.id)
             if (idChecked.length !== 0) {
                 alert('중복된 아이디 입니다.')
+                setInputValue({
+                    ...inputValue,
+                    id: ''
+                });
             } else if (inputValue.id === '') {
                 alert('아이디를 입력해주세요')
             } else if (inputValue.id.length < 2) {
@@ -101,6 +104,10 @@ function Join() {
                 alert('이메일을 입력해주세요')
             } else if (emailChecked !== 0) {
                 alert('중복된 이메일 입니다.')
+                setInputValue({
+                    ...inputValue,
+                    user_email: ''
+                });
             }
         }
     }
@@ -126,7 +133,7 @@ function Join() {
             </div>
             <div className={successJoin ? 'complete' : 'complete no'}>
                 <h2>회원가입 완료</h2>
-                <Image src='/images/mob_icon.svg' width={80} height={47} alt='mob_icon' />
+                <Image src='/images/mob_icon.png' width={60} height={52} alt='mob_icon' />
                 <p>모브박스 회원이 되신것을 환영합니다.</p>
                 <Link href='/login'><button className='btn'>로그인</button></Link>
             </div>

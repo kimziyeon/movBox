@@ -1,11 +1,11 @@
 
 let mysql = require('mysql2');
 const pool = {
-    host : "svc.sel5.cloudtype.app",
-    user: "root",
-    password: "dnals153",
-    database: "mob",
-    port: "31444"
+    host:  process.env.HOST ,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE,
+    port: process.env.NEXT_PUBLIC_PORT
 }
 
 export const queryExecute = async (query,values)=>{

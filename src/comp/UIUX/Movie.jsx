@@ -25,7 +25,7 @@ function Movie(props) {
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
-    const YOUTUBE_API_KEY = 'AIzaSyD8Kj9MiGCaOF-6YkWkkLZmBhXxGGZSK2g';
+    const YOUTUBE_API_KEY = process.env.YOUTUBE_CODE;
     let [youtubeId, setYoutubeId] = useState([]);
     const youtubeMv = dailyBoxOffice.slice(0, 3);
 
