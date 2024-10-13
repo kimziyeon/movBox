@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import "../comp/style/common.scss"
+import Loading from "../comp/UIUX/Loading";
 import M_footer from "../comp/UIUX/M_footer";
 import M_header from "../comp/UIUX/M_header";
 export const metadata = {
@@ -48,7 +50,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <M_header />
-        {children}
+        <Suspense fallback={<Loading />}>
+              {children}
+        </Suspense>
         <M_footer />
       </body>
     </html>
