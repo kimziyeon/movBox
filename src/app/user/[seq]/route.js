@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import {queryExecute} from '../../comp/lib/db';
+import {queryExecute} from '../../../comp/lib/db';
 
 
 

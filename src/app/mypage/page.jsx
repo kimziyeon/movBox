@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Mypage from '../../comp/UIUX/Mypage';
 import Setting from '../../comp/UIUX/Setting';
-function page(props) {
+function Page(props) {
     const [settingClick , setSettingClick] = useState(false);
 
     return (
@@ -13,4 +13,4 @@ function page(props) {
     );
 }
 
-export default page;
+export default Page;

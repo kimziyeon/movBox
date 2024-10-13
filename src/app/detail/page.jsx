@@ -2,7 +2,7 @@
 import Detail from '../../comp/UIUX/Detail'
 import React from 'react';
 
-function page(props) {
+function Page(props) {
 
     return (
         <main>
@@ -11,4 +11,4 @@ function page(props) {
     );
 }
 
-export default page;
+export default Page;

@@ -1,7 +1,7 @@
 'use client';
 import Join from '../../../comp/UIUX/Join';
 
-function page(props) {
+function Page(props) {
     return (
         <div>
             <Join/>
@@ -9,4 +9,4 @@ function page(props) {
     );
 }
 
-export default page;
+export default Page;

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../../comp/style/change.scss';
-function page(props) {
+function Page(props) {
     return (
         <div className='change_pw'>
             <span className='close'>close_btn</span>
@@ -15,4 +15,4 @@ function page(props) {
     );
 }
 
-export default page;
+export default Page;

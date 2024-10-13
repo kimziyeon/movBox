@@ -6,7 +6,7 @@ import Seat from '../../comp/UIUX/Seat';
 import Complete from '../../comp/UIUX/Complete';
 import "../../comp/style/page.scss";
 
-function page(props) {
+function Page(props) {
 
     const params = useSearchParams();
     const posterList = JSON.parse(params.get('posterUrlList'));
@@ -80,4 +80,4 @@ function page(props) {
     );
 }
 
-export default page;
+export default Page;

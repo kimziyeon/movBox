@@ -2,7 +2,7 @@
 import React from 'react';
 import Login from '../../comp/UIUX/Login';
 
-function page(props) {
+function Page(props) {
     return (
         <>
             <Login/>
@@ -10,4 +10,4 @@ function page(props) {
     );
 }
 
-export default page;
+export default Page;
