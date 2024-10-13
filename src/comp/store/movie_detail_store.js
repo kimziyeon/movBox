@@ -3,7 +3,7 @@ import { create } from "zustand";
 
 
 const request = axios.create({
-    baseURL: 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie',
+    baseURL: 'https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie',
     timeout: 10000
 })
 

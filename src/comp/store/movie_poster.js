@@ -2,7 +2,7 @@ import axios from "axios";
 import { create } from "zustand";
 
 const request = axios.create({
-    baseURL: 'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2',
+    baseURL: 'https://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2',
     timeout: 10000,
 })
 
