@@ -102,7 +102,7 @@ function Join() {
             console.log(inputValue.user_email)
             if (inputValue.user_email === '') {
                 alert('이메일을 입력해주세요')
-            } else if (emailChecked !== 0) {
+            } else if (emailChecked.length !== 0) {
                 alert('중복된 이메일 입니다.')
                 setInputValue({
                     ...inputValue,
