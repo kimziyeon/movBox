@@ -270,6 +270,29 @@ main {
                             line-height: 20px;
                         }
                     }
+
+                    .check_box {
+                        width: 100%;
+                        height: 180px;
+                        background-color: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .check_inner {
+                            text-align: center;
+                            line-height: 20px;
+                            color: var(--mov_gray);
+
+                            img {
+                                width: 100%;
+                            }
+
+                            p {
+                                padding-top: 10px;
+                            }
+                        }
+                    }
                 }
 
 
@@ -332,6 +355,26 @@ main {
                         .rank {
                             font-size: 50px;
 
+                        }
+                    }
+                }
+            }
+        }
+
+        .trailer {
+            ul {
+                li {
+                    .view_box {
+                        .thumb_box {}
+
+                        .play_box {}
+
+                        .thumb_title {}
+                    }
+
+                    .check_box {
+                        .check_inner {
+                            p {}
                         }
                     }
                 }

@@ -225,40 +225,86 @@ function Movie(props) {
             <article className='trailer'>
                 <div className="inner">
                     <h2>트레일러</h2>
-                    <ul>
-                        {
-                            youtubeId.map((obj, index) => (
-                                <div key={index}>
-                                    <li>
-                                        <Link className="view_box"
-                                            href={`https://www.youtube.com/watch?v=${obj.id.videoId}`}
-                                            target="_blank"
-                                        >
-                                            <div className="thumb_box">
-                                                <Image src={obj.snippet.thumbnails.medium.url}
-                                                    width={320}
-                                                    height={180}
-                                                    alt="트레일러 썸네일"
-                                                    priority
-                                                />
-                                            </div>
-                                            <div className="play_box">
-                                                <Image src="/images/play_icon.svg"
-                                                    width={100}
-                                                    height={100}
-                                                    alt="play icon"
-                                                />
-                                            </div>
+                    {
+                        youtubeId.length !== 0 ?
+                            (
+                                <ul>
+                                    {
+                                        youtubeId.map((obj, index) => (
+                                            <div key={index}>
+                                                <li>
+                                                    <Link className="view_box"
+                                                        href={`https://www.youtube.com/watch?v=${obj.id.videoId}`}
+                                                        target="_blank"
+                                                    >
+                                                        <div className="thumb_box">
+                                                            <Image src={obj.snippet.thumbnails.medium.url}
+                                                                width={320}
+                                                                height={180}
+                                                                alt="트레일러 썸네일"
+                                                                priority
+                                                            />
+                                                        </div>
+                                                        <div className="play_box">
+                                                            <Image src="/images/play_icon.svg"
+                                                                width={100}
+                                                                height={100}
+                                                                alt="play icon"
+                                                            />
+                                                        </div>
 
-                                            <p className="thumb_title">
-                                                {obj.snippet.title}
-                                            </p>
-                                        </Link>
+                                                        <p className="thumb_title">
+                                                            {obj.snippet.title}
+                                                        </p>
+                                                    </Link>
+                                                </li>
+                                            </div>
+                                        ))
+                                    }
+                                </ul>
+                            ) : (
+                                <ul>
+                                    <li>
+                                        <div className="check_box">
+                                            <div className="check_inner">
+                                                <Image src='/images/T_T.png'
+                                                    width={100}
+                                                    height={30}
+                                                    alt="crying_img"
+                                                />
+                                                <p>API 할당량으로 인해<br />잠시 점검중입니다.</p>
+                                            </div>
+                                        </div>
                                     </li>
-                                </div>
-                            ))
-                        }
-                    </ul>
+                                    <li>
+                                        <div className="check_box">
+                                            <div className="check_inner">
+                                                <Image src='/images/T_T.png'
+                                                    width={100}
+                                                    height={30}
+                                                    alt="crying_img"
+                                                />
+                                                <p>API 할당량으로 인해<br />잠시 점검중입니다.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div className="check_box">
+                                            <div className="check_inner">
+                                                <Image src='/images/T_T.png'
+                                                    width={100}
+                                                    height={30}
+                                                    alt="crying_img"
+                                                />
+                                                <p>API 할당량으로 인해<br />잠시 점검중입니다.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            )
+                    }
+
+
 
                 </div>
             </article>
