@@ -108,6 +108,8 @@ function Join() {
                     ...inputValue,
                     user_email: ''
                 });
+            } else {
+                alert('사용가능한 이메일 입니다.')
             }
         }
     }
