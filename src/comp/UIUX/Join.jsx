@@ -81,7 +81,7 @@ function Join() {
 
     const repeat = (k) => {
         let idChecked = userData.filter(obj => obj.user_id === inputValue.id);
-        let emailChecked = userData.filter(obj => obj.user_email === inputValue.email);
+        let emailChecked = userData.filter(obj => obj.user_email === inputValue.user_email);
         if (k === 0) {
             console.log(inputValue.id)
             if (idChecked.length !== 0) {
