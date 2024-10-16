@@ -25,7 +25,7 @@ function Movie(props) {
 
     let today = new Date();
     let yesterday = format(subDays(today, 1), "yyyyMMdd")
-    const YOUTUBE_API_KEY = process.env.YOUTUBE_CODE;
+    const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_CODE;
     let [youtubeId, setYoutubeId] = useState([]);
     const youtubeMv = dailyBoxOffice.slice(0, 3);
 
@@ -54,7 +54,7 @@ function Movie(props) {
                 // 모든 응답을 처리하여 videoId 추출
                 const videoId = responses.map((response) => response.data.items[0]);
                 setYoutubeId(videoId);
-                console.log(videoId, 'videoId')
+
             } catch (error) {
                 console.error('Error fetching YouTube trailers:', error);
             }
@@ -63,7 +63,7 @@ function Movie(props) {
         fetchYoutubeTrailers();
     }, [dailyBoxOffice])
 
-    console.log('youtubeId 검색결과', youtubeId);
+    // console.log('youtubeId 검색결과', youtubeId);
 
     if (dailyBoxOffice.length === 0 && posterUrl.length === 0)
         return <Loading />;
@@ -303,8 +303,6 @@ function Movie(props) {
                                 </ul>
                             )
                     }
-
-
 
                 </div>
             </article>
