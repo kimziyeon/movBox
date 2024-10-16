@@ -5,7 +5,6 @@ import "../style/main.scss";
 import React, { useState, useEffect } from 'react';
 import { useStore } from '../store/movie_store';
 import { useStore4 } from '../store/movie_poster';
-import { movie_server } from '../store/movie_server';
 import { format, subDays } from 'date-fns';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRouter } from 'next/navigation'
@@ -18,7 +17,6 @@ import axios from 'axios';
 
 function Movie(props) {
     let { dataFetch, dailyBoxOffice, dailyRank, movieCode, movieDate, movieAcc } = useStore(); // 박스오피스 영화 10개 가져오는 스토어
-    let { getMovie } = movie_server();  // 우리 자체 서버에 영화 담으려고 만든 스토어
     let { dataFetch4, posterUrl } = useStore4();  // 포스터 URl 가져오는 스토어
 
     const [listBtn, setListBtn] = useState();
@@ -32,7 +30,6 @@ function Movie(props) {
 
     useEffect(() => {
         dataFetch(yesterday)
-        getMovie();
     }, [])
     // console.log(dailyBoxOffice, movieCode, movieAcc)
 

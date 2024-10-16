@@ -14,7 +14,7 @@ export const useStore2 = create((set) => ({
         try {
             const req = await request.get(`searchMovieInfo.json`, {
                 params: {
-                    key: '5bea18fec1efcc230d0c21aae406eb26', //발급받은키 무시해도됨 env로 뺄예정
+                    key: '5bea18fec1efcc230d0c21aae406eb26',
                     movieCd: movieCode, //이걸 보고 영화 가져오는거임
                 },
             });
