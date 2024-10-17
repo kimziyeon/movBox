@@ -14,7 +14,7 @@ export const useStore4 = create((set) => ({
             for (let i = 0; i < name.length; i++) {
                 const req = await request.get(``, {
                     params: {
-                        ServiceKey: '75FBKQRZBS1W0A4G30YO',
+                        ServiceKey: process.env.NEXT_PUBLIC_POSTER_SERVICEKEY,
                         title: name[i],
                         releaseDts: date[i]
                     },

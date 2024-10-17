@@ -3,10 +3,12 @@ import "../comp/style/common.scss"
 import Loading from "../comp/UIUX/Loading";
 import M_footer from "../comp/UIUX/M_footer";
 import M_header from "../comp/UIUX/M_header";
+
 export const metadata = {
 
   manifest: "/manifest.json",
   // metadataBase: new URL('https://memorit-jiyeon.vercel.app/'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
 
   title: "Mov :Box",
   description: "Now Showing - 모브박스",
@@ -51,7 +53,7 @@ export default function RootLayout({ children }) {
       <body>
         <M_header />
         <Suspense fallback={<Loading />}>
-              {children}
+          {children}
         </Suspense>
         <M_footer />
       </body>

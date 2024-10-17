@@ -17,7 +17,7 @@ export const useStore = create((set) => ({
         try {
             const req = await request.get(`/searchDailyBoxOfficeList.json`, {
                 params: {
-                    key: '5bea18fec1efcc230d0c21aae406eb26',
+                    key: process.env.NEXT_PUBLIC_MOVIE_SERVICEKEY,
                     targetDt: date,
                 },
             });
