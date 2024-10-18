@@ -8,7 +8,7 @@ export const metadata = {
 
   manifest: "/manifest.json",
   // metadataBase: new URL('https://memorit-jiyeon.vercel.app/'),
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+  // metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
 
   title: "Mov :Box",
   description: "Now Showing - 모브박스",
