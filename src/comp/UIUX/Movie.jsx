@@ -27,7 +27,6 @@ function Movie(props) {
     let [youtubeId, setYoutubeId] = useState([]);
     const youtubeMv = dailyBoxOffice.slice(0, 3);
 
-
     useEffect(() => {
         dataFetch(yesterday)
     }, [])
