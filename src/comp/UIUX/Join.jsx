@@ -135,7 +135,7 @@ function Join() {
             </div>
             <div className={successJoin ? 'complete' : 'complete no'}>
                 <h2>회원가입 완료</h2>
-                <Image src='/images/mob_icon.png' width={60} height={52} alt='mob_icon' />
+                <Image src='/images/mob_icon.png' width={65} height={48} alt='mob_icon' />
                 <p>모브박스 회원이 되신것을 환영합니다.</p>
                 <Link href='/login'><button className='btn'>로그인</button></Link>
             </div>

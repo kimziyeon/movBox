@@ -28,7 +28,7 @@ export const useStore = create((set) => ({
             let openDate = res.map((item) => (item.openDt));
             let movie_acc = res.map((item) => (item.audiAcc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')));
             // movie_acc 관객누적수 = 12345 -> 12,345(3자리 수마다 콤마를 추가) 
-            console.log(res)
+            // console.log(res)
             set({
                 dailyBoxOffice: movie_name,
                 dailyRank: rank,

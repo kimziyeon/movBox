@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 function Complete({ ticketInfo }) {
 
-    console.log(ticketInfo, 'ticketInfo')
+    // console.log(ticketInfo, 'ticketInfo')
 
     const seatValue = Object.values(ticketInfo.seat).length;
     const seatJoin = ticketInfo.seat.join(', ');

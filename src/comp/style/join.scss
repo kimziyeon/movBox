@@ -5,7 +5,7 @@
 
     display:block;
     text-align: center;
-    margin-top: 177px;
+    margin: 150px 0 50px;
     padding:0 32px;
 
     h2 {
@@ -40,9 +40,9 @@
             border: none;
             width: 120px;
             height: 45px;
-            cursor: pointer;
             font-size: 18px;
             font-weight: 600;
+            cursor: pointer;
 
             &:hover {
                 background-color: var(--mov_pink);
@@ -72,7 +72,7 @@
 
     >.btn {
         width: 100%;
-        margin-top: 30px;
+        margin-top: 50px;
         border: none;
         cursor: pointer;
         background-color: (var(--mov_pink));
@@ -89,8 +89,8 @@
 
     display:block;
     text-align: center;
-    padding:0 32px;
-    margin-top: 177px;
+    padding : 30px;
+    margin-top: 150px;
 
     h2 {
         font-size: 26px;
@@ -118,8 +118,8 @@
 @media screen and (min-width : 768px) {
     .join_membership {
         padding: 0;
-        max-width: 628px;
-        margin: 177px auto 0;
+        max-width: 630px;
+        margin: 150px auto 50px;
 
         .check {
             text-align: right;
@@ -163,15 +163,15 @@
         }
 
         >.btn {
-            width: 537px;
-            margin: 113px auto 0;
+            width: 500px;
+            margin: 50px auto 0;
         }
     }
 
     .complete {
         .btn {
-            width: 470px;
-            margin: 58px auto 0;
+            width: 630px;
+            margin: 50px auto 0;
         }
     }
 }
