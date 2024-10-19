@@ -34,9 +34,9 @@ function Login() {
         if (idCheck.length === 0) {
             alert('아이디 또는 비밀번호를 확인해주세요');
         } else {
-            console.log(idCheck)
+            // console.log(idCheck)
             if (idCheck[0].user_pw === userPw) {
-                console.log('로그인성공');
+                // console.log('로그인성공');
                 storegeFn('login', idCheck)
                 router.push('/');
             } else {

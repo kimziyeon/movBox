@@ -26,7 +26,7 @@ function Page(props) {
     const [ticketInfo, setTicketInfo] = useState(null);
 
     const moveNext = () => {
-        console.log('Moving to next step');
+        // console.log('Moving to next step');
         setStep((beforeStep) => beforeStep + 1)
     }
     const moveBefore = () => {
