@@ -58,7 +58,7 @@ function M_header() {
         setSearchValue([]);
     }
 
-    const logout = async () => {
+    const logout = () => {
         if (confirm('로그아웃 하시겠습니까?')) {
             setSearchView(false)
             setMenuOn(false)
