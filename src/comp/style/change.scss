@@ -12,7 +12,6 @@
 
         h2 {
             font-size: 18px;
-
         }
 
         .comp {
@@ -29,13 +28,15 @@
                     width: 100%;
                     border-radius: 5px;
                     padding: 11px 0 11px 15px;
+                    max-width: 80%;
 
                 }
             }
 
             .btn {
                 width: 100%;
-                margin-top: 20px;
+                max-width: 80%;
+                margin: 20px auto 0;
             }
 
 
@@ -90,4 +91,30 @@
         height: 2px;
         transform: rotate(-45deg) translateX(1px);
     }
+}
+
+@media screen and (min-width : 768px) {
+
+    .setting_pop {
+        .user_setting {
+            padding: 80px 15px 60px;
+            max-width: 50%;
+            margin: auto;
+
+            h2 {}
+
+            .comp {
+                p {}
+
+                .input_space {
+                    input {}
+                }
+
+                .btn {}
+
+
+            }
+        }
+    }
+
 }
