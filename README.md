@@ -1,6 +1,7 @@
 # Mov :Box [모브박스]
 <p> 👥 Team Project ㅣ 2 person</p>
 <p> 🗓️ 2024.08 ~ 2024.10</p>
+<p> 🔧 현재 회원탈퇴, 비밀번호 변경 <b>준비 중</b></p>
 <p>
   🔗 <a href="https://movbox.vercel.app/" target="_blank"> 배포 링크 바로가기</a>
 </p>
